@@ -29,7 +29,7 @@ export const HeroBannerSection = () => {
         "fileUrl": file.asset->url
       }
     }`;
-    
+
     client.fetch(query).then((data) => {
       if (data && data.length > 0) {
         setSlides(data.map(s => ({
@@ -84,16 +84,15 @@ export const HeroBannerSection = () => {
       {slides.map((slide, index) => (
         <div
           key={index}
-          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${
-            index === currentSlide ? "opacity-100" : "opacity-0"
-          }`}
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-[1500ms] ease-in-out ${index === currentSlide ? "opacity-100" : "opacity-0"
+            }`}
           style={{
             backgroundImage: `url('${slide.image?.asset ? urlFor(slide.image).url() : slide.image}')`,
           }}
           aria-hidden="true"
         />
       ))}
-      
+
       {/* Dark Overlay */}
       <div
         className="absolute inset-0 bg-[linear-gradient(0deg,rgba(0,0,0,0.50)_0%,rgba(0,0,0,0.50)_100%)]"
@@ -101,25 +100,27 @@ export const HeroBannerSection = () => {
       />
 
       <div className={`relative z-10 flex w-full flex-col items-center justify-center gap-6 px-5 pt-[160px] pb-24 text-center lg:pt-0 lg:pb-0 transition-all duration-700 ${isTransitioning ? "opacity-0 translate-y-4" : "opacity-100 translate-y-0"}`}>
-         <div className="flex items-center justify-center">
-          <div className="inline-flex items-center gap-2">
-            <img
-              className="h-5 w-5 opacity-60"
-              alt="Location icon"
-              src="https://c.animaapp.com/mot82cj4305Sf8/img/icons---bx-map.svg"
-            />
-            <p className="font-caption-regular text-[14px] font-normal leading-tight text-white">
-              {slides[currentSlide].location}
-            </p>
+        {slides[currentSlide].location && (
+          <div className="flex items-center justify-center">
+            <div className="inline-flex items-center gap-2">
+              <img
+                className="h-5 w-5 opacity-60"
+                alt="Location icon"
+                src="https://c.animaapp.com/mot82cj4305Sf8/img/icons---bx-map.svg"
+              />
+              <p className="font-caption-regular text-[14px] font-normal leading-tight text-white">
+                {slides[currentSlide].location}
+              </p>
+            </div>
           </div>
-        </div>
+        )}
         <header className="flex w-full flex-col items-center gap-4 sm:gap-6">
           <h1
-            className="w-full max-w-[1100px] uppercase font-bold tracking-tight text-white text-center leading-[1.15]"
-            style={{ fontSize: "clamp(1.5rem, 4vw + 0.5rem, 3.8rem)" }}
+            className="w-full max-w-[1200px] uppercase font-bold tracking-tight text-white text-center leading-[1.2]"
+            style={{ fontSize: "clamp(1rem, 0.5rem + 2.8vw, 3rem)" }}
           >
-            <span className="block">{slides[currentSlide].title1}</span>
-            <span className="block">
+            <span className="block w-full">{slides[currentSlide].title1}</span>
+            <span className="block w-full">
               {slides[currentSlide].title2}
               {slides[currentSlide].highlight && (
                 <span className="text-[#00AB92]"> {slides[currentSlide].highlight}</span>
@@ -127,12 +128,12 @@ export const HeroBannerSection = () => {
             </span>
           </h1>
           <p className="max-w-[800px] text-center font-medium leading-relaxed text-white/90"
-             style={{ fontSize: "clamp(0.85rem, 1.5vw + 0.4rem, 1.2rem)" }}>
+            style={{ fontSize: "clamp(0.85rem, 1.2vw + 0.4rem, 1.1rem)" }}>
             {slides[currentSlide].desc}
           </p>
         </header>
 
-       
+
 
         <nav
           aria-label="Hero actions"
@@ -168,9 +169,8 @@ export const HeroBannerSection = () => {
                   setIsTransitioning(false);
                 }, 400);
               }}
-              className={`h-1.5 transition-all duration-300 rounded-full ${
-                index === currentSlide ? "w-8 bg-[#00AB92]" : "w-2 bg-white/40"
-              }`}
+              className={`h-1.5 transition-all duration-300 rounded-full ${index === currentSlide ? "w-8 bg-[#00AB92]" : "w-2 bg-white/40"
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

@@ -131,10 +131,13 @@ const agendaDays = [
 
 export const EventAgendaSection = () => {
   return (
-    <section className="relative w-full bg-[#00443A] py-[120px]">
+    <section
+      className="relative w-full py-[120px]"
+      style={{ background: "linear-gradient(112.64deg, #00AB92 0.01%, #36499B 100.01%)" }}
+    >
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-10 px-5">
         <header className="flex w-full flex-col items-start gap-2">
-          <h4 className="mt-[-1.00px] font-headings-h4 font-bold text-[#00AB92]">
+          <h4 className="mt-[-1.00px] hidden font-headings-h4 font-bold text-[#00AB92]">
             LE PROGRAMME
           </h4>
           <h2 className="font-headings-h2 text-3xl font-bold leading-tight tracking-tight text-white sm:text-[40px]">

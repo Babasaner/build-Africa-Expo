@@ -1,40 +1,47 @@
-import { Button } from "../../../components/ui/button";
-import { Input } from "../../../components/ui/input";
+import React from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 const socialLinks = [
   {
-    alt: "Icons bxl instagram",
+    alt: "Instagram",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-instagram.svg",
+    href: "https://www.instagram.com/buildafricaexpo.dakar/",
   },
   {
-    alt: "Icons bxl twitter",
+    alt: "Twitter",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-twitter.svg",
+    href: "https://x.com/BuildAfricaExpo",
   },
   {
-    alt: "Icons bxl facebook",
+    alt: "Facebook",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-facebook.svg",
+    href: "#", // Non fourni par l'utilisateur
   },
   {
-    alt: "Icons bxl linkedin",
+    alt: "LinkedIn",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-linkedin.svg",
+    href: "https://www.linkedin.com/company/buildafricaexpo",
   },
   {
-    alt: "Icons bxl youtube",
+    alt: "YouTube",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-youtube.svg",
+    href: "https://www.youtube.com/channel/UCB5F__JvUvseC0RKOxd6b_w",
   },
   {
     alt: "TikTok",
-    src: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IndoaXRlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xOS41OSA2LjY5YTQuODMgNC44MyAwIDAgMS0zLjc3LTQuMjVWMmgtMy40NXYxMy42N2EyLjg5IDIuODkgMCAwIDEtNS4yIDEuNzQgMi44OSAyLjg5IDAgMCAxIDIuMzEtNC42NCAyLjkzIDIuOTMgMCAwIDEgLjg4LjEzVjkuNGE2Ljg0IDYuODQgMCAwIDAtMS0uMDVBNi4zMyA2LjMzIDAgMCAwIDUgMjAuMWE2LjM0IDYuMzQgMCAwIDAgMTAuODYtNC40M3YtN2E4LjE2IDguMTYgMCAwIDAgNC43NyAxLjUydi0zLjRhNC44NSA0Ljg1IDAgMCAxLTEuMDQtLjF6Ii8+PC9zdmc+",
+    src: "data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9IndoaXRlIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxwYXRoIGQ9Ik0xOS41OSA2LjY5YTQuODMgNC44MyAwIDAgMS0zLjc3LTQuMjVWMmgtMy40NXYxMy42N2EyLjg5IDIuODkgMCAwIDEtNS4yIDIuNzQgMi44OSAyLjg5IDAgMCAxIDIuMzEtNC42NCAyLjkzIDIuOTMgMCAwIDEgLjg4LjEzVjkuNGE2Ljg0IDYuODQgMCAwIDAtMS0uMDVBNi4zMyA2LjMzIDAgMCAwIDUgMjAuMWE2LjM0IDYuMzQgMCAwIDAgMTAuODYtNC40M3YtN2E4LjE2IDguMTYgMCAwIDAgNC43NyAxLjUydi0zLjRhNC44NSA0Ljg1IDAgMCAxLTEuMDQtLjF6Ii8+PC9zdmc+",
+    href: "https://www.tiktok.com/@build.africa.expo?_t=8pJ9C59VK1Q&_r=1",
   },
 ];
 
 const navigationLinks = [
-  "ACCUEIL",
-  "LE SALON",
-  "INTERVENANTES",
-  "PARTENAIRES",
-  "NEWSROOM",
-  "CONTACT",
+  { label: "ACCUEIL", href: "/#accueil" },
+  { label: "LE SALON", href: "/#salon" },
+  { label: "INTERVENANTES", href: "/#intervenants" },
+  { label: "PARTENAIRES", href: "/#partenaires" },
+  { label: "NEWSROOM", href: "/#newsroom" },
+  { label: "CONTACT", href: "/#contact" },
 ];
 
 const contactDetails = [
@@ -43,7 +50,7 @@ const contactDetails = [
   "Sacré Cœur 3 lot 03, Dakar Sénégal",
 ];
 
-export const FooterNavigationSection = () => {
+export const Footer = () => {
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -53,7 +60,7 @@ export const FooterNavigationSection = () => {
       <img
         className="block h-auto w-full"
         alt="Bae graphic"
-        src="BAE_Graphic.svg"
+        src="/BAE_Graphic.svg"
       />
       <div className="relative w-full bg-[#161d3e]">
         {/* Back to Top Button */}
@@ -63,9 +70,8 @@ export const FooterNavigationSection = () => {
           aria-label="Back to top"
         >
           <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.3334 10.437V26.6663H14.6667V10.437L7.51473 17.589L5.62939 15.7037L16.0001 5.33301L26.3707 15.7037L24.4854 17.589L17.3334 10.437Z" fill="white"/>
-</svg>
-
+            <path d="M17.3334 10.437V26.6663H14.6667V10.437L7.51473 17.589L5.62939 15.7037L16.0001 5.33301L26.3707 15.7037L24.4854 17.589L17.3334 10.437Z" fill="white"/>
+          </svg>
         </button>
 
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-16 px-5 py-20">
@@ -76,17 +82,17 @@ export const FooterNavigationSection = () => {
               <img
                 className="h-auto w-[180px]"
                 alt="Build Africa Expo logo"
-                src="footer-logo.png"
+                src="/footer-logo.png"
               />
               <div className="flex flex-col gap-8">
                 <div className="flex flex-wrap items-start gap-3">
                   {socialLinks.map((socialLink, index) => (
-                    <Button
+                    <a
                       key={`${socialLink.alt}-${index}`}
-                      type="button"
-                      variant="ghost"
-                      size="icon"
-                      className="h-10 w-10 rounded-lg bg-[#36499b] p-2 hover:bg-[#4157b9]"
+                      href={socialLink.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="h-10 w-10 rounded-lg bg-[#36499b] p-2 flex items-center justify-center transition-colors hover:bg-[#4157b9]"
                       aria-label={socialLink.alt}
                     >
                       <img
@@ -94,10 +100,10 @@ export const FooterNavigationSection = () => {
                         alt={socialLink.alt}
                         src={socialLink.src}
                       />
-                    </Button>
+                    </a>
                   ))}
                 </div>
-                <p className="font-caption-regular text-[14px] text-white/70">
+                <p className="text-[14px] text-white/70">
                   © 2026 — Copyright. Tous droits réservés
                 </p>
               </div>
@@ -107,18 +113,18 @@ export const FooterNavigationSection = () => {
             <div className="flex flex-col gap-12">
               <nav aria-label="Footer navigation" className="flex flex-col gap-3">
                 {navigationLinks.map((link) => (
-                  <button
-                    key={link}
-                    type="button"
-                    className="w-fit text-left font-caption-regular text-[16px] text-white hover:text-[#00ab92] transition-colors"
+                  <a
+                    key={link.label}
+                    href={link.href}
+                    className="w-fit text-left text-[16px] text-white hover:text-[#00ab92] transition-colors"
                   >
-                    {link}
-                  </button>
+                    {link.label}
+                  </a>
                 ))}
               </nav>
               <Button
                 type="button"
-                className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 font-button-default text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
               >
                 S&apos;INSCRIRE
               </Button>
@@ -130,7 +136,7 @@ export const FooterNavigationSection = () => {
                 {contactDetails.map((detail, index) => (
                   <p
                     key={`${detail}-${index}`}
-                    className="font-caption-regular text-[16px] text-white"
+                    className="text-[16px] text-white"
                   >
                     {detail}
                   </p>
@@ -140,7 +146,7 @@ export const FooterNavigationSection = () => {
               <form className="flex w-full flex-col gap-4">
                 <label
                   htmlFor="footer-newsletter-email"
-                  className="font-body-regular text-[16px] text-white"
+                  className="text-[16px] text-white"
                 >
                   Bulletin d&apos;information
                 </label>
@@ -149,7 +155,7 @@ export const FooterNavigationSection = () => {
                     id="footer-newsletter-email"
                     type="email"
                     placeholder="Email"
-                    className="h-[48px] border-0 bg-transparent px-4 font-caption-bold text-[16px] text-black shadow-none placeholder:text-gray-400 focus-visible:ring-0"
+                    className="h-[48px] border-0 bg-transparent px-4 text-[16px] text-black shadow-none placeholder:text-gray-400 focus-visible:ring-0"
                   />
                   <Button
                     type="submit"
