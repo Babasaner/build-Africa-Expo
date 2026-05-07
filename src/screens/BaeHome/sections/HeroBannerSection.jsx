@@ -114,15 +114,20 @@ export const HeroBannerSection = () => {
           </div>
         </div>
         <header className="flex w-full flex-col items-center gap-4 sm:gap-6">
-          <h1 className="w-full font-display-display-large text-[20px] uppercase font-bold leading-relaxed tracking-tight text-white sm:text-[32px] md:text-[56px] lg:text-[64px] sm:leading-[1.2] min-h-[6em] sm:min-h-[2.2em]">
-            <span className="block sm:inline">{slides[currentSlide].title1}</span>
-            <span className="hidden sm:inline"><br /></span>
-            <span className="block sm:inline ml-1 sm:ml-0">{slides[currentSlide].title2}</span>
-            <span className="text-white">
-             {slides[currentSlide].highlight}
+          <h1
+            className="w-full max-w-[1100px] uppercase font-bold tracking-tight text-white text-center leading-[1.15]"
+            style={{ fontSize: "clamp(1.5rem, 4vw + 0.5rem, 3.8rem)" }}
+          >
+            <span className="block">{slides[currentSlide].title1}</span>
+            <span className="block">
+              {slides[currentSlide].title2}
+              {slides[currentSlide].highlight && (
+                <span className="text-[#00AB92]"> {slides[currentSlide].highlight}</span>
+              )}
             </span>
           </h1>
-          <p className="max-w-[900px] font-headings-h4 text-[13px] sm:text-[16px] md:text-[20px] font-medium leading-relaxed text-white animate-fade-in">
+          <p className="max-w-[800px] text-center font-medium leading-relaxed text-white/90"
+             style={{ fontSize: "clamp(0.85rem, 1.5vw + 0.4rem, 1.2rem)" }}>
             {slides[currentSlide].desc}
           </p>
         </header>
