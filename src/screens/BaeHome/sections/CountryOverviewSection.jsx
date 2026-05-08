@@ -16,12 +16,12 @@ const forumDays = [
   {
     day: "JOURNÉE 1",
     city: "New York",
-    participants: "200 – 300 pax",
+    participants: "300 – 400 pax",
   },
   {
     day: "JOURNÉE 2",
     city: "Toronto",
-    participants: "100 – 180 pax",
+    participants: "150 – 250 pax",
   },
 ];
 

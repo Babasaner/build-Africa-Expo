@@ -31,21 +31,14 @@ const testimonials = [
     fallback: "FK",
     image: "https://cdn.sanity.io/images/d4jrc26i/production/2ee9012d08eff9ca6aab4e86c904d61e2c5b958a-169x169.png",
   },
-  {
-    quote:
-      "Il y a une énergie électrique autour de l'innovation. Les créateurs, les entrepreneurs et les entreprises sont tous au même endroit, c'est énergisant.",
-    name: "Julien Dupont",
-    role: ["Responsable des Alliances GreenInnov"],
-    fallback: "JD",
-    image: "temoignage/t4.jpg",
-  },
+
   {
     quote:
       "On encourage tout le monde à aller vers l’économie verte parce qu’on aimerait que les véhicules qui circulent maintenant soient remplacés par des véhicules électriques. ",
     name: "Serigne Mamadou MBOUP",
     role: ["Directeur General SAPCO"],
     fallback: "SMM",
-    image: "temoignage/t5.jpg",
+    image: "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
   },
 ];
 
