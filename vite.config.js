@@ -5,5 +5,5 @@ import react from '@vitejs/plugin-react'
 // base is '/' for Vercel (deployed at root, not a GitHub Pages subdirectory)
 export default defineConfig({
   plugins: [react()],
-  base: '/',
+  base: '/edition-2026/',
 })

@@ -9,27 +9,27 @@ import {
 const testimonials = [
   {
     quote:
-      "Build Africa Expo a été pour nous la meilleure opportunité de rencontrer des décideurs du secteur que nous n'aurions jamais pu atteindre autrement.",
-    name: "Jean-Marc Diallo",
-    role: ["Directeur Commercial", "Groupe Réalités"],
-    fallback: "JD",
-    image: "temoignage/t1.jpg",
+      "Notre objectif est de positionner le Senegal dans l’organisation des grands événements et faire de notre pays un hub incontournable.",
+    name: "Ibrahima WADE",
+    role: ["Coordonnateur général Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026", "COJOJ"],
+    fallback: "IW",
+    image: "https://cdn.sanity.io/images/d4jrc26i/production/882499d7585da9cf685174cf0f4590d04836a234-169x168.png",
   },
   {
     quote:
-      "L'Expo Afrique a été une occasion inestimable pour nous de nouer des liens avec des leaders du secteur que nous n'aurions jamais pu rencontrer autrement.",
-    name: "Sophie Dupont",
-    role: ["Responsable des Partenariats InnovAfrica"],
-    fallback: "SD",
-    image: "temoignage/t2.jpg",
+      "Nous nous engageons à créer des opportunités d’emplois, à stimuler les investissements et à renforcer l’attractivité des territoires.",
+    name: "Cheikh Mamadou Abiboulaye DIEYE",
+    role: ["Directeur Général", "Aéroport International Blaise Diagne (AIBD SA)"],
+    fallback: "CMAD",
+    image: "https://cdn.sanity.io/images/d4jrc26i/production/112c7edb82d9e02e4af7fa7709d128ef432e35a7-168x168.jpg",
   },
   {
     quote:
-      "L'Expo Afrique a été une opportunité précieuse pour établir des connexions avec des leaders du secteur que nous n'aurions pas eu la chance de rencontrer.",
-    name: "Claire Martin",
-    role: ["Directrice des Partenariats EcoTech"],
-    fallback: "CM",
-    image: "temoignage/t3.jpg",
+      "Il nous faut des villes pensées par et pour les africains, où l’innovation épouse nos réalités et répond à nos besoins.",
+    name: "Fadilou KEITA",
+    role: ["Directeur Général Caisse des depots et consignations (CDC)"],
+    fallback: "FK",
+    image: "https://cdn.sanity.io/images/d4jrc26i/production/2ee9012d08eff9ca6aab4e86c904d61e2c5b958a-169x169.png",
   },
   {
     quote:
@@ -41,10 +41,10 @@ const testimonials = [
   },
   {
     quote:
-      "Puisque VivaTech est mondial, il connecte plusieurs secteurs. Il n'est pas courant dans l'industrie d'avoir tout au même endroit.",
-    name: "Baba Didiers",
-    role: ["Responsable des Architecture - Ecosystem 3D"],
-    fallback: "BD",
+      "On encourage tout le monde à aller vers l’économie verte parce qu’on aimerait que les véhicules qui circulent maintenant soient remplacés par des véhicules électriques. ",
+    name: "Serigne Mamadou MBOUP",
+    role: ["Directeur General SAPCO"],
+    fallback: "SMM",
     image: "temoignage/t5.jpg",
   },
 ];
@@ -93,7 +93,7 @@ export const ExpertTestimonialsSection = () => {
         </header>
 
         {/* Carousel Container */}
-        <div 
+        <div
           ref={scrollRef}
           className="scrollbar-hide flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory"
         >
@@ -146,9 +146,8 @@ export const ExpertTestimonialsSection = () => {
               key={item.value}
               value={item.value}
               aria-label={item.ariaLabel}
-              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/60 focus-visible:ring-offset-0 ${
-                activePage === item.value ? "opacity-100" : "opacity-30"
-              } ${item.className}`}
+              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/60 focus-visible:ring-offset-0 ${activePage === item.value ? "opacity-100" : "opacity-30"
+                } ${item.className}`}
             />
           ))}
         </ToggleGroup>

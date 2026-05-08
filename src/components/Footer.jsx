@@ -60,7 +60,7 @@ export const Footer = () => {
       <img
         className="block h-auto w-full"
         alt="Bae graphic"
-        src="/BAE_Graphic.svg"
+        src={`${import.meta.env.BASE_URL}BAE_Graphic.svg`}
       />
       <div className="relative w-full bg-[#161d3e]">
         {/* Back to Top Button */}
@@ -82,7 +82,7 @@ export const Footer = () => {
               <img
                 className="h-auto w-[180px]"
                 alt="Build Africa Expo logo"
-                src="/footer-logo.png"
+                src={`${import.meta.env.BASE_URL}footer-logo.png`}
               />
               <div className="flex flex-col gap-8">
                 <div className="flex flex-wrap items-start gap-3">

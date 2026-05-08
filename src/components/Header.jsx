@@ -37,7 +37,7 @@ export const Header = () => {
                 <img
                   className="h-4 w-4 opacity-80"
                   alt="Location icon"
-                  src="/icon/map.svg"
+                  src={`${import.meta.env.BASE_URL}icon/map.svg`}
                 />
                 <span className="text-[14px] font-normal text-white/80">
                   {location}
@@ -65,11 +65,11 @@ export const Header = () => {
       {/* Main Header */}
       <header className="w-full border-b border-[#36499b14] bg-white">
         <div className="mx-auto flex h-[70px] md:h-[90px] w-full max-w-[1440px] items-center justify-between gap-6 px-5">
-          <a href="/" className="relative h-[40px] md:h-[58px] w-auto" aria-label="Logo">
+          <a href={import.meta.env.BASE_URL} className="relative h-[40px] md:h-[58px] w-auto" aria-label="Logo">
             <img
               className="h-full w-auto object-contain"
               alt="Build Africa Expo Logo"
-              src="/logo.png"
+              src={`${import.meta.env.BASE_URL}logo.png`}
             />
           </a>
 

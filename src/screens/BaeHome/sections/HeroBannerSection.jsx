@@ -180,7 +180,7 @@ export const HeroBannerSection = () => {
       <img
         className="absolute bottom-px left-0 z-10 h-[111px] w-full object-cover"
         alt="Color bars"
-        src="hero_color_bar.png"
+        src={`${import.meta.env.BASE_URL}hero_color_bar.png`}
       />
     </section>
   );

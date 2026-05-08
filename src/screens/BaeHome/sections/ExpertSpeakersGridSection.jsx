@@ -19,7 +19,7 @@ export const ExpertSpeakersGridSection = () => {
           ...s,
           alt: s.name,
           imageClassName: "w-full h-full object-cover",
-          imageSrc: s.imageSrc ? s.imageSrc : "speakers/atepa.png"
+          imageSrc: s.imageSrc ? s.imageSrc : `${import.meta.env.BASE_URL}speakers/atepa.png`
         })));
       }
       setIsLoading(false);

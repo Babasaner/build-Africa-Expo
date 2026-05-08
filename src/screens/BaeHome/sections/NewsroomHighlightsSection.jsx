@@ -10,8 +10,8 @@ const ArticleCard = ({ item, index }) => (
       <img
         className="h-full w-full object-cover"
         alt={item.title}
-        src={item.imageUrl || `actu/a-${index + 1}.jpg`}
-        onError={(e) => { e.target.src = "actu/a-1.jpg"; }}
+        src={item.imageUrl || `${import.meta.env.BASE_URL}actu/a-${index + 1}.jpg`}
+        onError={(e) => { e.target.src = `${import.meta.env.BASE_URL}actu/a-1.jpg`; }}
       />
     </div>
     <CardContent className="flex flex-1 flex-col gap-4 border-t-[6px] border-solid p-6 [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_50%,#FFC600_100%)_1]">

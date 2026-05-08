@@ -9,7 +9,7 @@ import "../tailwind.css";
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename="/edition-2026">
       <Routes>
         <Route path="/" element={<BaeHome />} />
         <Route path="/announcement" element={<SdifAnnouncement />} />

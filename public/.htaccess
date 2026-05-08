@@ -4,14 +4,6 @@
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
   RewriteRule . /edition-2026/index.html [L]
 </IfModule>
-
-# Prevent browser caching of index.html to ensure users see new builds immediately
-<FilesMatch "index\.html">
-    <IfModule mod_headers.c>
-        Header set Cache-Control "max-age=0, no-cache, no-store, must-revalidate"
-        Header set Pragma "no-cache"
-        Header set Expires "Wed, 11 Jan 1984 05:00:00 GMT"
-    </IfModule>
-</FilesMatch>
