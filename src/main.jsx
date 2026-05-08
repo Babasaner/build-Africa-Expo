@@ -13,7 +13,7 @@ createRoot(document.getElementById("app")).render(
       <Routes>
         <Route path="/" element={<BaeHome />} />
         <Route path="/announcement" element={<SdifAnnouncement />} />
-        <Route path="/news/:slug" element={<PostDetails />} />
+        <Route path="/actualite/:slug" element={<PostDetails />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

@@ -5,7 +5,7 @@ const metrics = [
   { value: 30, suffix: "+", label: "INTERVENANTS" },
   { value: 55, suffix: "+", label: "EXPOSANTS" },
   { value: 7, suffix: "+", label: "PANELS & WORKSHOPS" },
-  { value: 3000, suffix: "+", label: "VISITEURS ATTENDUS" },
+  { value: 3000, suffix: "+", label: "VISITEURS" },
 ];
 
 const Counter = ({ target, suffix }) => {

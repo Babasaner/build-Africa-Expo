@@ -74,7 +74,7 @@ export const NewsroomHighlightsSection = () => {
           {articles.map((item, index) => (
             <article key={`news-item-${index}`} className="flex h-full w-full">
               {item.slug ? (
-                <Link to={`/news/${item.slug}`} className="flex h-full w-full">
+                <Link to={`/actualite/${item.slug}`} className="flex h-full w-full">
                   <ArticleCard item={item} index={index} />
                 </Link>
               ) : (
