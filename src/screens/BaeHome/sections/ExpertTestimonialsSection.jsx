@@ -108,19 +108,21 @@ export const ExpertTestimonialsSection = () => {
                       {testimonial.fallback}
                     </AvatarFallback>
                   </Avatar>
-                  <blockquote className="[font-family:'Inter',Helvetica] text-[16px] font-normal italic leading-relaxed tracking-[0] text-white/100">
-                    &quot;{testimonial.quote}&quot;
-                  </blockquote>
-                  <footer className="mt-auto flex w-full items-center gap-4 pt-6">
+                  <div className="min-h-[200px] w-full overflow-hidden">
+                    <blockquote className="[font-family:'Inter',Helvetica] text-[16px] font-normal italic leading-relaxed tracking-[0] text-white/100">
+                      &quot;{testimonial.quote}&quot;
+                    </blockquote>
+                  </div>
+                  <footer className="w-full flex items-start gap-4 pt-6 border-t border-white/10">
                     <div className="flex flex-1 flex-col items-start gap-1">
-                      <p className="font-caption-bold text-[15px] font-bold text-[#ffc600]">
+                      <h3 className="font-caption-bold text-[15px] font-bold text-[#ffc600]">
                         {testimonial.name}
-                      </p>
-                      <p className="font-caption-regular text-[13px] font-normal text-white/100">
+                      </h3>
+                      <div className="font-caption-regular text-[13px] font-normal text-white/100">
                         {testimonial.role.map((r, i) => (
-                          <span key={i} className="block">{r}</span>
+                          <span key={i} className="block">{r.trim()}</span>
                         ))}
-                      </p>
+                      </div>
                     </div>
                   </footer>
                 </CardContent>
