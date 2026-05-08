@@ -11,7 +11,7 @@ const testimonials = [
     quote:
       "Notre objectif est de positionner le Senegal dans l’organisation des grands événements et faire de notre pays un hub incontournable.",
     name: "Ibrahima WADE",
-    role: ["Coordonnateur général ", "Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026 COJOJ"],
+    role: ["Coordonnateur Général ", "Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026 COJOJ"],
     fallback: "IW",
     image: "https://cdn.sanity.io/images/d4jrc26i/production/882499d7585da9cf685174cf0f4590d04836a234-169x168.png",
   },
@@ -36,7 +36,7 @@ const testimonials = [
     quote:
       "On encourage tout le monde à aller vers l’économie verte parce qu’on aimerait que les véhicules qui circulent maintenant soient remplacés par des véhicules électriques. ",
     name: "Serigne Mamadou MBOUP",
-    role: ["Directeur General", "Société d'Aménagement et de Promotion des côtes et Zones touristiques du Sénégal   SAPCO"],
+    role: ["Directeur Général", "Société d'Aménagement et de Promotion des côtes et Zones touristiques du Sénégal   SAPCO"],
     fallback: "SMM",
     image: "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
   },
