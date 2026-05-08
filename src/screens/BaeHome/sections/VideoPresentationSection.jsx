@@ -83,14 +83,14 @@ export const VideoPresentationSection = () => {
             {videoData.title}
           </h2>
         )}
-        
+
         {/* Placeholder container to maintain height when video is floating */}
-        <div 
+        <div
           ref={containerRef}
-          className="relative w-full shadow-xl aspect-video bg-black group rounded-2xl" 
+          className="relative w-full shadow-xl aspect-video bg-black group "
         >
           {!isPlaying ? (
-            <div className="w-full h-full cursor-pointer relative overflow-hidden rounded-2xl" onClick={() => setIsPlaying(true)}>
+            <div className="w-full h-full cursor-pointer relative overflow-hidden " onClick={() => setIsPlaying(true)}>
               {videoData.thumbnailUrl ? (
                 <img
                   src={videoData.thumbnailUrl}
@@ -102,17 +102,17 @@ export const VideoPresentationSection = () => {
                   <span className="text-white">Aperçu non disponible</span>
                 </div>
               )}
-              
-              
+
+
             </div>
           ) : (
             <div className={
-              isFloating 
-                ? "fixed bottom-5 right-5 z-[9999] w-[320px] sm:w-[400px] aspect-video rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-5" 
+              isFloating
+                ? "fixed bottom-5 right-5 z-[9999] w-[320px] sm:w-[400px] aspect-video rounded-xl shadow-2xl overflow-hidden animate-in slide-in-from-bottom-5"
                 : "w-full h-full overflow-hidden rounded-2xl"
             }>
               {isFloating && (
-                <button 
+                <button
                   onClick={() => setIsPlaying(false)}
                   className="absolute top-2 right-2 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-black/60 text-white hover:bg-black/80 transition-colors"
                   aria-label="Fermer la vidéo"

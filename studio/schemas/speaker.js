@@ -11,7 +11,8 @@ export default {
     {
       name: 'role',
       title: 'Role / Title',
-      type: 'string',
+      type: 'text',
+      rows: 2,
     },
     {
       name: 'image',

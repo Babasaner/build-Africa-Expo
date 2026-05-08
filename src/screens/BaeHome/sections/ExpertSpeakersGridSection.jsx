@@ -96,7 +96,7 @@ export const ExpertSpeakersGridSection = () => {
       </div>
 
       {/* Carousel Container - Fixed Left at 1440px, Bleeds to the Right */}
-      <div 
+      <div
         ref={scrollRef}
         className="mt-10 flex overflow-x-auto scrollbar-hide scroll-smooth snap-x snap-mandatory ml-0 lg:ml-[max(20px,calc((100vw-1440px)/2+20px))]"
       >
@@ -109,19 +109,21 @@ export const ExpertSpeakersGridSection = () => {
             >
               <CardContent className="flex h-full flex-col p-0">
                 <div className="h-[220px] w-full bg-[#333333] overflow-hidden">
-                  <img 
-                    className={`${speaker.imageClassName} transition-transform duration-500 group-hover:scale-110`} 
-                    alt={speaker.alt} 
-                    src={speaker.imageSrc} 
+                  <img
+                    className={`${speaker.imageClassName} transition-transform duration-500 group-hover:scale-110`}
+                    alt={speaker.alt}
+                    src={speaker.imageSrc}
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-4 border-b-4 border-transparent transition-colors duration-300 group-hover:border-[#00AB92]">
                   <h3 className="font-body-bold text-[15px] font-bold text-[#1d1d1b] leading-tight">
                     {speaker.name}
                   </h3>
-                  <p className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/70">
-                    {speaker.role}
-                  </p>
+                  <div className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/100">
+                    {speaker.role?.split(/[,|—\n]|(?=\bet\s)/).map((part, i) => (
+                      <span key={i} className="block">{part.trim()}</span>
+                    ))}
+                  </div>
                 </div>
               </CardContent>
             </Card>

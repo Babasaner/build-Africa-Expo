@@ -11,7 +11,7 @@ const testimonials = [
     quote:
       "Notre objectif est de positionner le Senegal dans l’organisation des grands événements et faire de notre pays un hub incontournable.",
     name: "Ibrahima WADE",
-    role: ["Coordonnateur général Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026", "COJOJ"],
+    role: ["Coordonnateur général ", "Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026 COJOJ"],
     fallback: "IW",
     image: "https://cdn.sanity.io/images/d4jrc26i/production/882499d7585da9cf685174cf0f4590d04836a234-169x168.png",
   },
@@ -27,7 +27,7 @@ const testimonials = [
     quote:
       "Il nous faut des villes pensées par et pour les africains, où l’innovation épouse nos réalités et répond à nos besoins.",
     name: "Fadilou KEITA",
-    role: ["Directeur Général Caisse des depots et consignations (CDC)"],
+    role: ["Directeur Général", "Caisse des depots et consignations (CDC)"],
     fallback: "FK",
     image: "https://cdn.sanity.io/images/d4jrc26i/production/2ee9012d08eff9ca6aab4e86c904d61e2c5b958a-169x169.png",
   },
@@ -36,7 +36,7 @@ const testimonials = [
     quote:
       "On encourage tout le monde à aller vers l’économie verte parce qu’on aimerait que les véhicules qui circulent maintenant soient remplacés par des véhicules électriques. ",
     name: "Serigne Mamadou MBOUP",
-    role: ["Directeur General SAPCO"],
+    role: ["Directeur General", "Société d'Aménagement et de Promotion des côtes et Zones touristiques du Sénégal   SAPCO"],
     fallback: "SMM",
     image: "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
   },
@@ -77,8 +77,8 @@ export const ExpertTestimonialsSection = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#161d3e] py-20 md:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-5">
+    <section className="relative w-full bg-[#161d3e]  md:py-[120px]">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 ">
         <header className="flex flex-col items-center gap-[9px]">
           <h2 className="[font-family:'Tomorrow',Helvetica] text-center text-[32px] font-bold leading-[38px] tracking-[1.08px] text-white md:text-4xl md:leading-[43.2px]">
             SOYEZ INSPIRÉ PAR LES EXPERTS
@@ -108,7 +108,7 @@ export const ExpertTestimonialsSection = () => {
                       {testimonial.fallback}
                     </AvatarFallback>
                   </Avatar>
-                  <blockquote className="[font-family:'Inter',Helvetica] text-[16px] font-normal italic leading-relaxed tracking-[0] text-white/90">
+                  <blockquote className="[font-family:'Inter',Helvetica] text-[16px] font-normal italic leading-relaxed tracking-[0] text-white/100">
                     &quot;{testimonial.quote}&quot;
                   </blockquote>
                   <footer className="mt-auto flex w-full items-center gap-4 pt-6">
@@ -116,8 +116,10 @@ export const ExpertTestimonialsSection = () => {
                       <p className="font-caption-bold text-[15px] font-bold text-[#ffc600]">
                         {testimonial.name}
                       </p>
-                      <p className="font-caption-regular text-[13px] font-normal text-white/60">
-                        {testimonial.role.join(" — ")}
+                      <p className="font-caption-regular text-[13px] font-normal text-white/100">
+                        {testimonial.role.map((r, i) => (
+                          <span key={i} className="block">{r}</span>
+                        ))}
                       </p>
                     </div>
                   </footer>
@@ -139,7 +141,7 @@ export const ExpertTestimonialsSection = () => {
               key={item.value}
               value={item.value}
               aria-label={item.ariaLabel}
-              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/60 focus-visible:ring-offset-0 ${activePage === item.value ? "opacity-100" : "opacity-30"
+              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/100 focus-visible:ring-offset-0 ${activePage === item.value ? "opacity-100" : "opacity-30"
                 } ${item.className}`}
             />
           ))}
