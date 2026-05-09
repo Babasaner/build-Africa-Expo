@@ -351,3 +351,21 @@ html {
   opacity: 1;
   transform: translateY(0);
 }
+
+/* ========== CHATBOT ========== */
+@keyframes chatbot-pulse {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(0, 171, 146, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(0, 171, 146, 0);
+  }
+}
+
+#chatbot-toggle-btn {
+  animation: chatbot-pulse 2.5s ease-in-out infinite;
+}
+
+#chatbot-window {
+  animation: fadeInUp 0.3s ease-out forwards;
+}

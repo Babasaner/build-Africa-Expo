@@ -33,24 +33,24 @@ const Counter = ({ target, suffix }) => {
   }, [target]);
 
   return (
-    <h2 className="font-display-display-large text-[48px] font-bold tracking-tight text-[#00AB92] lg:text-[64px]">
-      {count.toLocaleString()}{suffix}
-    </h2>
+    <p
+      className="font-display-display-large text-[48px] font-bold tracking-tight text-[#00AB92] lg:text-[64px]"
+      aria-label={`${count}${suffix}`}
+    >
+      {count.toLocaleString()}
+      {suffix}
+    </p>
   );
 };
 
 export const KeyMetricsStripSection = () => {
   return (
-    <section
-      aria-label="Chiffres clés"
-      className="relative w-full bg-dominant"
-    >
-
+    <section aria-label="Chiffres clés" className="relative w-full bg-dominant">
       <Card className="h-auto w-full rounded-none border-0 bg-transparent shadow-none">
         <CardContent className="mx-auto w-full max-w-[1440px] px-5 py-20 lg:py-[120px]">
-          <h3 className="mb-12 max-w-[350px] font-headings-h4 text-[20px] font-bold leading-[24px] text-white lg:mb-16">
+          <h2 className="mb-12 max-w-[450px] uppercase font-headings-h4 text-[20px] font-bold leading-[24px] text-white lg:mb-16">
             Les chiffres clés de l'édition 2025
-          </h3>
+          </h2>
 
           <div className="grid grid-cols-2 gap-y-12 gap-x-8 lg:flex lg:items-center lg:justify-between">
             {metrics.map((metric) => (

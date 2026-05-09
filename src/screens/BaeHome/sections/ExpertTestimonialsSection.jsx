@@ -1,5 +1,9 @@
 import React from "react";
-import { Avatar, AvatarFallback, AvatarImage } from "../../../components/ui/avatar";
+import {
+  Avatar,
+  AvatarFallback,
+  AvatarImage,
+} from "../../../components/ui/avatar";
 import { Card, CardContent } from "../../../components/ui/card";
 import {
   ToggleGroup,
@@ -11,17 +15,25 @@ const testimonials = [
     quote:
       "Notre objectif est de positionner le Senegal dans l’organisation des grands événements et faire de notre pays un hub incontournable.",
     name: "Ibrahima WADE",
-    role: ["Coordonnateur Général ", "Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026 COJOJ"],
+    role: [
+      "Coordonnateur Général ",
+      "Comité d’organisation des Jeux Olympiques de la Jeunesse Dakar 2026 COJOJ",
+    ],
     fallback: "IW",
-    image: "https://cdn.sanity.io/images/d4jrc26i/production/882499d7585da9cf685174cf0f4590d04836a234-169x168.png",
+    image:
+      "https://cdn.sanity.io/images/d4jrc26i/production/882499d7585da9cf685174cf0f4590d04836a234-169x168.png",
   },
   {
     quote:
       "Nous nous engageons à créer des opportunités d’emplois, à stimuler les investissements et à renforcer l’attractivité des territoires.",
     name: "Cheikh Mamadou Abiboulaye DIEYE",
-    role: ["Directeur Général", "Aéroport International Blaise Diagne (AIBD SA)"],
+    role: [
+      "Directeur Général",
+      "Aéroport International Blaise Diagne (AIBD SA)",
+    ],
     fallback: "CMAD",
-    image: "https://cdn.sanity.io/images/d4jrc26i/production/112c7edb82d9e02e4af7fa7709d128ef432e35a7-168x168.jpg",
+    image:
+      "https://cdn.sanity.io/images/d4jrc26i/production/112c7edb82d9e02e4af7fa7709d128ef432e35a7-168x168.jpg",
   },
   {
     quote:
@@ -29,16 +41,21 @@ const testimonials = [
     name: "Fadilou KEITA",
     role: ["Directeur Général", "Caisse des depots et consignations (CDC)"],
     fallback: "FK",
-    image: "https://cdn.sanity.io/images/d4jrc26i/production/2ee9012d08eff9ca6aab4e86c904d61e2c5b958a-169x169.png",
+    image:
+      "https://cdn.sanity.io/images/d4jrc26i/production/2ee9012d08eff9ca6aab4e86c904d61e2c5b958a-169x169.png",
   },
 
   {
     quote:
       "On encourage tout le monde à aller vers l’économie verte parce qu’on aimerait que les véhicules qui circulent maintenant soient remplacés par des véhicules électriques. ",
     name: "Serigne Mamadou MBOUP",
-    role: ["Directeur Général", "Société d'Aménagement et de Promotion des côtes et Zones touristiques du Sénégal   SAPCO"],
+    role: [
+      "Directeur Général",
+      "Société d'Aménagement et de Promotion des côtes et Zones touristiques du Sénégal   SAPCO",
+    ],
     fallback: "SMM",
-    image: "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
+    image:
+      "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
   },
 ];
 
@@ -77,10 +94,16 @@ export const ExpertTestimonialsSection = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#161d3e]  md:py-[120px]">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 ">
+    <section
+      className="relative w-full bg-[#161d3e] py-16 md:py-[120px]"
+      aria-labelledby="testimonials-title"
+    >
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-4 md:px-8">
         <header className="flex flex-col items-center gap-[9px]">
-          <h2 className="[font-family:'Tomorrow',Helvetica] text-center text-[32px] font-bold leading-[38px] tracking-[1.08px] text-white md:text-4xl md:leading-[43.2px]">
+          <h2
+            id="testimonials-title"
+            className="[font-family:'Tomorrow',Helvetica] text-center text-[32px] font-bold leading-[38px] tracking-[1.08px] text-white md:text-4xl md:leading-[43.2px]"
+          >
             SOYEZ INSPIRÉ PAR LES EXPERTS
           </h2>
         </header>
@@ -120,7 +143,9 @@ export const ExpertTestimonialsSection = () => {
                       </h3>
                       <div className="font-caption-regular text-[13px] font-normal text-white/100">
                         {testimonial.role.map((r, i) => (
-                          <span key={i} className="block">{r.trim()}</span>
+                          <span key={i} className="block">
+                            {r.trim()}
+                          </span>
                         ))}
                       </div>
                     </div>
@@ -143,8 +168,9 @@ export const ExpertTestimonialsSection = () => {
               key={item.value}
               value={item.value}
               aria-label={item.ariaLabel}
-              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/100 focus-visible:ring-offset-0 ${activePage === item.value ? "opacity-100" : "opacity-30"
-                } ${item.className}`}
+              className={`min-h-0 min-w-0 border-0 p-0 transition-all duration-300 hover:opacity-100 focus-visible:ring-1 focus-visible:ring-white/100 focus-visible:ring-offset-0 ${
+                activePage === item.value ? "opacity-100" : "opacity-30"
+              } ${item.className}`}
             />
           ))}
         </ToggleGroup>

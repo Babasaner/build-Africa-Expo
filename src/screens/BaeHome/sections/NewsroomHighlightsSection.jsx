@@ -10,8 +10,12 @@ const ArticleCard = ({ item, index }) => (
       <img
         className="h-full w-full object-cover"
         alt={item.title}
-        src={item.imageUrl || `${import.meta.env.BASE_URL}actu/a-${index + 1}.jpg`}
-        onError={(e) => { e.target.src = `${import.meta.env.BASE_URL}actu/a-1.jpg`; }}
+        src={
+          item.imageUrl || `${import.meta.env.BASE_URL}actu/a-${index + 1}.jpg`
+        }
+        onError={(e) => {
+          e.target.src = `${import.meta.env.BASE_URL}actu/a-1.jpg`;
+        }}
       />
     </div>
     <CardContent className="flex flex-1 flex-col gap-4 border-t-[6px] border-solid p-6 [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_50%,#FFC600_100%)_1]">
@@ -37,25 +41,36 @@ export const NewsroomHighlightsSection = () => {
       title, slug, excerpt, publishedAt, "imageUrl": mainImage.asset->url
     }`;
 
-    client.fetch(query).then(data => {
-      if (data && data.length > 0) {
-        setArticles(data.map(p => ({
-          title: p.title,
-          description: p.excerpt || "",
-          imageUrl: p.imageUrl,
-          slug: p.slug?.current,
-          date: p.publishedAt
-        })));
-      }
-      setIsLoading(false);
-    }).catch(err => {
-      console.error("Sanity fetch error:", err);
-      setIsLoading(false);
-    });
+    client
+      .fetch(query)
+      .then((data) => {
+        if (data && data.length > 0) {
+          setArticles(
+            data.map((p) => ({
+              title: p.title,
+              description: p.excerpt || "",
+              imageUrl: p.imageUrl,
+              slug: p.slug?.current,
+              date: p.publishedAt,
+            })),
+          );
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Sanity fetch error:", err);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
-    return <section className="relative w-full bg-[#D7DBEB] py-10 md:py-16 lg:py-[120px]"><div className="text-center text-[#36499B]">Chargement des actualités...</div></section>;
+    return (
+      <section className="relative w-full bg-[#D7DBEB] py-10 md:py-16 lg:py-[120px]">
+        <div className="text-center text-[#36499B]">
+          Chargement des actualités...
+        </div>
+      </section>
+    );
   }
 
   if (articles.length === 0) {
@@ -66,7 +81,7 @@ export const NewsroomHighlightsSection = () => {
     <section className="relative w-full bg-[#D7DBEB] py-10 md:py-16 lg:py-[120px]">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-5">
         <header className="flex w-full flex-wrap items-left justify-left gap-12">
-          <h2 className="mt-[-1.00px] text-left font-headings-h1 text-[32px] md:text-[48px] font-[number:var(--headings-h1-font-weight)] leading-tight tracking-[var(--headings-h1-letter-spacing)] text-[#36499b]">
+          <h2 className="mt-[-1.00px] text-left font-headings-h1 text-[32px] md:text-[48px] font-[number:var(--headings-h1-font-weight)] leading-tight tracking-[var(--headings-h1-letter-spacing)] text-[#1D1D1B]">
             DERNIÈRES NOUVELLES DU SECTEUR
           </h2>
         </header>
@@ -74,7 +89,10 @@ export const NewsroomHighlightsSection = () => {
           {articles.map((item, index) => (
             <article key={`news-item-${index}`} className="flex h-full w-full">
               {item.slug ? (
-                <Link to={`/actualite/${item.slug}`} className="flex h-full w-full">
+                <Link
+                  to={`/actualite/${item.slug}`}
+                  className="flex h-full w-full"
+                >
                   <ArticleCard item={item} index={index} />
                 </Link>
               ) : (

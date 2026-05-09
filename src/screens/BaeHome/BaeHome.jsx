@@ -3,6 +3,7 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { AudienceEngagementSection } from "./sections/AudienceEngagementSection";
+import { CojojSection } from "./sections/CojojSection";
 import { CountryOverviewSection } from "./sections/CountryOverviewSection";
 import { EventAgendaSection } from "./sections/EventAgendaSection";
 import { ExpertSpeakersGridSection } from "./sections/ExpertSpeakersGridSection";
@@ -19,12 +20,14 @@ export const BaeHome = () => {
   useScrollReveal();
 
   return (
-    <main className="relative flex min-h-screen w-full flex-col items-center bg-white pt-[110px] md:pt-[130px]">
+    <main className="relative flex min-h-screen w-full flex-col items-center bg-white">
       <Header />
 
       <div className="w-full" id="accueil">
         <HeroBannerSection />
       </div>
+
+      
 
       <div id="intervenants" className="reveal w-full">
         <ExpertSpeakersGridSection />
@@ -44,6 +47,10 @@ export const BaeHome = () => {
 
       <div className="w-full">
         <VideoPresentationSection />
+      </div>
+
+      <div className="reveal w-full">
+        <CojojSection />
       </div>
 
       <div className="reveal w-full">
