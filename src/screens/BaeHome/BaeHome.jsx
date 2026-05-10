@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet-async";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
@@ -21,6 +22,14 @@ export const BaeHome = () => {
 
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center bg-white">
+      <Helmet>
+        <title>Build Africa Expo 2026 — Plateforme d'Investissement et de Développement</title>
+        <meta name="description" content="Build Africa Expo 2026 est le rendez-vous stratégique pour connecter investisseurs, institutions et diaspora africaine autour des transformations urbaines et économiques." />
+        <meta name="keywords" content="Build Africa Expo, investissement Afrique, diaspora africaine, développement urbain, infrastructure Afrique, 2026" />
+        <meta property="og:title" content="Build Africa Expo 2026" />
+        <meta property="og:description" content="Plateforme d'Investissement et de Développement pour l'Afrique." />
+        <meta property="og:type" content="website" />
+      </Helmet>
       <Header />
 
       <div className="w-full" id="accueil">

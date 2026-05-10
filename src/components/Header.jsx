@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -6,8 +7,8 @@ import { Button } from "./ui/button";
 const announcementLocations = ["New York", "Toronto"];
 
 const navigationItems = [
-  { label: "ACCUEIL", href: "/#accueil" },
-  { label: "SALON", href: "/#salon" },
+  { label: "ACCUEIL", href: "/" },
+  { label: "LE SALON", href: "/salon" },
   { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
@@ -16,6 +17,12 @@ const navigationItems = [
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
+
+  const isActive = (href) => {
+    if (href === "/") return location.pathname === "/";
+    return location.pathname.startsWith(href);
+  };
 
   return (
     <div className="absolute top-0 left-0 z-50 w-full">
@@ -78,12 +85,14 @@ export const Header = () => {
               <ul className="flex items-center gap-6">
                 {navigationItems.map((item) => (
                   <li key={item.label}>
-                    <a
-                      href={item.href}
-                      className="text-[14px] font-bold text-[#161D3E] transition-colors hover:text-[#00AB92]"
+                    <Link
+                      to={item.href}
+                      className={`text-[14px] font-bold transition-colors hover:text-[#00AB92] ${
+                        isActive(item.href) ? "text-[#00AB92]" : "text-[#161D3E]"
+                      }`}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
               </ul>
@@ -120,13 +129,15 @@ export const Header = () => {
               <ul className="flex flex-col gap-4">
                 {navigationItems.map((item) => (
                   <li key={item.label}>
-                    <a
-                      href={item.href}
+                    <Link
+                      to={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="block w-full text-left py-2 font-bold text-[14px] text-[#161D3E] hover:text-[#00AB92]"
+                      className={`block w-full text-left py-2 font-bold text-[14px] hover:text-[#00AB92] ${
+                        isActive(item.href) ? "text-[#00AB92]" : "text-[#161D3E]"
+                      }`}
                     >
                       {item.label}
-                    </a>
+                    </Link>
                   </li>
                 ))}
                 <li className="pt-4 border-t border-gray-100 flex flex-col gap-3">

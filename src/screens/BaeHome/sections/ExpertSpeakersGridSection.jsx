@@ -13,24 +13,37 @@ export const ExpertSpeakersGridSection = () => {
       name, role, "imageSrc": image.asset->url
     }`;
 
-    client.fetch(query).then(data => {
-      if (data && data.length > 0) {
-        setSpeakers(data.map(s => ({
-          ...s,
-          alt: s.name,
-          imageClassName: "w-full h-full object-cover",
-          imageSrc: s.imageSrc ? s.imageSrc : `${import.meta.env.BASE_URL}speakers/atepa.png`
-        })));
-      }
-      setIsLoading(false);
-    }).catch(err => {
-      console.error("Sanity fetch error:", err);
-      setIsLoading(false);
-    });
+    client
+      .fetch(query)
+      .then((data) => {
+        if (data && data.length > 0) {
+          setSpeakers(
+            data.map((s) => ({
+              ...s,
+              alt: s.name,
+              imageClassName: "w-full h-full object-cover",
+              imageSrc: s.imageSrc
+                ? s.imageSrc
+                : `${import.meta.env.BASE_URL}speakers/atepa.png`,
+            })),
+          );
+        }
+        setIsLoading(false);
+      })
+      .catch((err) => {
+        console.error("Sanity fetch error:", err);
+        setIsLoading(false);
+      });
   }, []);
 
   if (isLoading) {
-    return <section className="relative w-full bg-[#EAEDF5] py-[120px]"><div className="text-center text-[#36499B]">Chargement des intervenants...</div></section>;
+    return (
+      <section className="relative w-full bg-[#EAEDF5] py-[120px]">
+        <div className="text-center text-[#36499B]">
+          Chargement des intervenants...
+        </div>
+      </section>
+    );
   }
 
   if (speakers.length === 0) {
@@ -120,9 +133,13 @@ export const ExpertSpeakersGridSection = () => {
                     {speaker.name}
                   </h3>
                   <div className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/100">
-                    {speaker.role?.split(/[,|—\n]|(?=\bet\s)/).map((part, i) => (
-                      <span key={i} className="block">{part.trim()}</span>
-                    ))}
+                    {speaker.role
+                      ?.split(/[,|—\n]|(?=\bet\s)/)
+                      .map((part, i) => (
+                        <span key={i} className="block">
+                          {part.trim()}
+                        </span>
+                      ))}
                   </div>
                 </div>
               </CardContent>

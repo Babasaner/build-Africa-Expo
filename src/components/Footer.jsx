@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 
@@ -36,9 +37,9 @@ const socialLinks = [
 ];
 
 const navigationLinks = [
-  { label: "ACCUEIL", href: "/#accueil" },
-  { label: "LE SALON", href: "/#salon" },
-  { label: "INTERVENANTES", href: "/#intervenants" },
+  { label: "ACCUEIL", href: "/" },
+  { label: "LE SALON", href: "/salon" },
+  { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
   { label: "CONTACT", href: "/#contact" },
@@ -62,7 +63,7 @@ export const Footer = () => {
         alt="Bae graphic"
         src={`${import.meta.env.BASE_URL}BAE_Graphic.svg`}
       />
-      <div className="relative w-full bg-[#1D1D1B]">
+      <div className="relative w-full bg-[#161D3E]">
         {/* Back to Top Button */}
         <button
           onClick={scrollToTop}
@@ -124,13 +125,13 @@ export const Footer = () => {
                 className="flex flex-col gap-3"
               >
                 {navigationLinks.map((link) => (
-                  <a
+                  <Link
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="w-fit text-left text-[16px] text-white hover:text-[#00ab92] transition-colors"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 ))}
               </nav>
               <Button
@@ -161,7 +162,7 @@ export const Footer = () => {
                 >
                   Bulletin d&apos;information
                 </label>
-                <div className="flex w-full items-center bg-white rounded-sm overflow-hidden">
+                <div className="flex w-full items-center bg-white  overflow-hidden">
                   <Input
                     id="footer-newsletter-email"
                     type="email"

@@ -4,11 +4,13 @@ import { Card, CardContent } from "../../../components/ui/card";
 const forumActions = [
   {
     label: "DEVENIR PARTENAIRE DU FORUM",
-    className: "h-auto rounded-lg border-0 bg-primary-bae px-8 py-4 text-left font-bold  shadow-none hover:bg-primary-bae/90 text-white/80",
+    className:
+      "h-auto rounded-lg border-0 bg-primary-bae px-8 py-4 text-left font-bold  shadow-none hover:bg-primary-bae/100 text-white/100",
   },
   {
     label: "S'INSCRIRE COMME VISITEUR",
-    className: "h-auto rounded-lg border-0 bg-accent px-8 py-4 text-left bg-[#00AB92] text-white font-bold  shadow-none hover:bg-accent/90 text-white/80",
+    className:
+      "h-auto rounded-lg border-0 bg-accent px-8 py-4 font-bold text-left bg-[#00AB92] text-white font-bold  shadow-none hover:bg-accent/100 text-white/100",
   },
 ];
 
@@ -30,7 +32,8 @@ export const CountryOverviewSection = () => {
     <section
       className="relative w-full bg-cover bg-center bg-no-repeat"
       style={{
-        backgroundImage: "linear-gradient(0deg, rgba(22, 29, 62, 0.64) 0%, rgba(22, 29, 62, 0.64) 100%), url('sdifsection.jpg')",
+        backgroundImage:
+          "linear-gradient(0deg, rgba(22, 29, 62, 0.64) 0%, rgba(22, 29, 62, 0.64) 100%), url('sdifsection.jpg')",
       }}
       aria-labelledby="country-overview-title"
     >
@@ -63,14 +66,8 @@ export const CountryOverviewSection = () => {
                 type="button"
                 className={`${action.className} flex-1 justify-between`}
               >
-                <span className="text-left">
-                  {action.label}
-                </span>
-                <img
-                  className="h-4 w-4"
-                  alt="Arrow"
-                  src="icon/Vector.svg"
-                />
+                <span className="text-left">{action.label}</span>
+                <img className="h-4 w-4" alt="Arrow" src="icon/Vector.svg" />
               </Button>
             ))}
           </div>
