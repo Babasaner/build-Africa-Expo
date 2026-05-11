@@ -44,7 +44,7 @@ const navigationLinks = [
   { label: "NEWSROOM", href: "/#newsroom" },
   { label: "CONTACT", href: "/#contact" },
 ];
-
+const announcementLocations = ["New York", "Toronto"];
 const contactDetails = [
   "+221 77 766 5757",
   "contact@buildafricaexpo.com",
@@ -119,7 +119,7 @@ export const Footer = () => {
             </div>
 
             {/* Column 2: Navigation & Action */}
-            <div className="flex flex-col gap-12">
+            <div className="flex flex-col gap-8">
               <nav
                 aria-label="Footer navigation"
                 className="flex flex-col gap-3"
@@ -134,22 +134,7 @@ export const Footer = () => {
                   </Link>
                 ))}
               </nav>
-              <a
-                href="https://tickets.buildafricaexpo.com/fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button
-                  type="button"
-                  className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
-                >
-                  S&apos;INSCRIRE
-                </Button>
-              </a>
-            </div>
 
-            {/* Column 3: Contact & Newsletter */}
-            <div className="flex flex-col gap-12">
               <address className="flex flex-col gap-3 not-italic">
                 {contactDetails.map((detail, index) => (
                   <p
@@ -161,6 +146,50 @@ export const Footer = () => {
                 ))}
               </address>
 
+              <div className="flex flex-wrap items-center justify-start gap-3">
+                {announcementLocations.map((location) => (
+                  <div
+                    key={location}
+                    className="inline-flex items-center gap-1"
+                  >
+                    <img
+                      className="h-4 w-4 opacity-80"
+                      alt="Location icon"
+                      src={`${import.meta.env.BASE_URL}icon/map.svg`}
+                    />
+                    <span className="text-[14px] font-normal text-white/80">
+                      {location}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Column 3: Contact & Newsletter */}
+            <div className="flex flex-col gap-12">
+              <div className="flex flex-row gap-[16px] items-center">
+                <a
+                  href="https://tickets.buildafricaexpo.com/fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Button
+                    type="button"
+                    className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                  >
+                    S&apos;INSCRIRE
+                  </Button>
+                </a>
+
+                <a href="#" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    type="button"
+                    className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                  >
+                    DEVENIR PARTENAIRE
+                  </Button>
+                </a>
+              </div>
               <form className="flex w-full flex-col gap-4">
                 <label
                   htmlFor="footer-newsletter-email"

@@ -70,7 +70,7 @@ export const Salon = () => {
 
       {/* Hero Section */}
       <section
-        className="relative w-full min-h-[50vh] md:min-h-[50vh]  flex items-center pt-[80px] pb-[50px] justify-center overflow-hidden"
+        className="relative w-full min-h-[50vh] md:min-h-[50vh] animate-fade-in  animate-delay-200  animate-duration-1000  flex items-center pt-[80px] pb-[50px] justify-center overflow-hidden"
         style={{
           background: "linear-gradient(92.26deg, #36499B 0.24%, #00AB92 100%)",
         }}
@@ -90,7 +90,7 @@ export const Salon = () => {
       </section>
 
       {/* Section 2 — Presentation */}
-      <section className="reveal w-full max-w-[1440px]  py-16  md:py-24 bg-white">
+      <section className="reveal w-full max-w-[1440px] animate-fade-in  animate-delay-200  animate-duration-1000  py-16  md:py-24 bg-white">
         <div className="max-w-[1440px] mx-auto  flex flex-col lg:flex-row items-center gap-12 lg:gap-24 px-[20px]">
           <div className="flex-1 flex flex-col gap-8">
             <div className="flex gap-[24px]">
@@ -117,59 +117,36 @@ export const Salon = () => {
             </p>
           </div>
           <div className="flex-1 w-full">
-            <img
-              src="ImageSection.png"
-              alt="Build Africa Expo Presentation"
-              className="w-full h-auto shadow-2xl object-contain"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* Pillars Section */}
-      <section className="reveal w-full px-[20px] py-[120px] bg-[#161D3E]">
-        <div className="max-w-[1440px] mx-auto">
-          <div className="text-left mb-16">
-            <h2 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow']  leading-[42px] md:leading-[70px] uppercase font-bold mb-4 ">
-              Les grands piliers de transformation
-            </h2>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-0">
-            {pillars.map((pillar, index) => (
-              <Card
-                key={index}
-                className={`${pillar.bg} border-none rounded-none animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group`}
-              >
-                <CardContent className="p-10 flex flex-col gap-6 h-full min-h-[176px] justify-between">
-                  <div>
-                    <h3 className="text-white uppercase text-[20px] leading-[24px] font-bold mb-4">
-                      {pillar.title}
-                    </h3>
-                    <p className="text-white/100 font-['Inter'] font-normal text-[16px] leading-[20px]">
-                      {pillar.description}
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+            <div
+              className="w-full h-[340px] md:h-[520px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300  overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-contain bg-no-repeat bg-center"
+              style={{
+                backgroundImage:
+                  "url('https://cdn.sanity.io/images/d4jrc26i/production/20a65e6dbb5cd552757b8febb7af96c18767d2b4-572x525.png')",
+              }}
+            >
+              <div className="flex flex-col items-center gap-[8px]">
+                <h4 className="text-white text-[20px] font-['Tomorrow'] font-bold uppercase">
+                  Connecter les capitaux à la vision.
+                </h4>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Capital global */}
 
-      <section className="reveal w-full px-[20px] py-[120px] bg-[#fff]">
-        <div className="max-w-[1440px] mx-auto ">
-          <div className="text-center mb-16 flex flex-col items-center max-w-[800px] mx-auto gap-[8px]">
+      <section className="reveal w-fullanimate-fade-in  animate-delay-200  animate-duration-1000 pt-[80px] bg-[#161D3E]">
+        <div className="w-full mx-auto ">
+          <div className="text-center mb-16 px-[20px] flex flex-col items-center max-w-[800px] mx-auto gap-[8px]">
             <h2 className="text-[#00A99D] text-[20px] font-['Tomorrow']  leading-[24px] uppercase font-bold ">
               INGÉNIERIE FINANCIÈRE
             </h2>
-            <h2 className="text-[#1D1D1B] text-[32px] font-['Tomorrow'] uppercase  leading-[56px] uppercase font-bold ">
-              Structurer le capital global.
+            <h2 className="text-[#fff] text-[32px]  font-['Tomorrow'] uppercase  leading-[56px] uppercase font-bold ">
+              Les grands piliers de transformation
             </h2>
 
-            <p className=" text-[#343432] text-[16px] font-['inter']  leading-[20px] font-[400] font-normal ">
+            <p className=" text-[#fff] text-[16px] font-['inter']  leading-[20px] font-[400] font-normal ">
               Pour soutenir des projets d'infrastructures à grande échelle, nous
               facilitons l'accès aux mécanismes financiers essentiels, reliant
               les porteurs de projets aux pools de liquidités mondiaux.
@@ -177,17 +154,17 @@ export const Salon = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-[24px] max-w-[1440px] mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-[0px] w-full mx-auto">
           {/* Card 1: Diaspora */}
           <div
-            className="w-full h-[300px] flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/08956dea00cddad651d0fec8e79a4538c5d002c6-1364x910.jpg')",
             }}
           >
             <div className="flex flex-col gap-[8px]">
-              <h3 className="text-white text-[24px] font-['Tomorrow'] font-bold uppercase">
+              <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
                 Engagement de la diaspora
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
@@ -199,14 +176,14 @@ export const Salon = () => {
 
           {/* Card 2: International Investment */}
           <div
-            className="w-full h-[300px] flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/3d8dc63778af67623f97a6b186b01ac511f45205-1143x755.jpg')",
             }}
           >
             <div className="flex flex-col gap-[8px]">
-              <h3 className="text-white text-[24px] font-['Tomorrow'] font-bold uppercase">
+              <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
                 Investissements internationaux
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
@@ -217,14 +194,14 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/55821e6e1716efef8192a2d26dfbc6aa527613f0-1300x535.jpg')",
             }}
           >
             <div className="flex flex-col gap-[8px]">
-              <h3 className="text-white text-[24px] font-['Tomorrow'] font-bold uppercase">
+              <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
                 Capital Global & Vert
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
@@ -235,14 +212,14 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/64b1e607235d7c13283e8ef2b226bf7b67678fea-1600x1067.jpg')",
             }}
           >
             <div className="flex flex-col gap-[8px]">
-              <h3 className="text-white text-[24px] font-['Tomorrow'] font-bold uppercase">
+              <h3 className="text-white w-[100%] md:w-[250px] text-[24px] font-['Tomorrow'] font-bold uppercase">
                 Alliances Stratégiques
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
@@ -254,9 +231,44 @@ export const Salon = () => {
         </div>
       </section>
 
+      {/* Connecter AFRIK */}
+
+      <section className="reveal w-full px-[20px] py-[120px] bg-[#D7DBEB] animate-fade-in  animate-delay-200  animate-duration-1000">
+        <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-[20px]  mx-auto max-w-[1440px]">
+          <div className="w-full">
+            <img
+              src="https://cdn.sanity.io/images/d4jrc26i/production/efb62654f4a0b09b123d7a36060fdf9e9553557d-588x520.png"
+              alt="Build Africa Future"
+              srcset=""
+            />
+          </div>
+          <div className="w-[500px]  flex flex-col justify-start gap-[40px] ">
+            <h1 className="text-[#1D1D1B] text-[20px] md:text-[40px] leading-[48px] font-['Tomorrow'] font-bold uppercase">
+              Connecter l’Afrique aux dynamiques mondiales
+            </h1>
+
+            <p className="text-[#343432] text-[16px] font-['Inter'] font-normal leading-[20px] w-[483px] flex flex-col justify-start gap-[10px]">
+              L’Afrique connaît aujourd’hui une phase majeure de transformation
+              portée par l’urbanisation, les infrastructures, la mobilité,
+              l’énergie, l’innovation, la finance et le capital humain.
+              <p>
+                Build Africa Expo a été conçu pour accompagner et structurer ces
+                dynamiques en créant des connexions entre acteurs publics,
+                privés, investisseurs internationaux, institutions et diaspora
+                africaine.
+              </p>
+              <p>
+                La plateforme ambitionne de contribuer à l’attractivité, à la
+                compétitivité et au développement durable du continent.
+              </p>
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
 
-      <section className="reveal w-full px-[20px] py-[120px] bg-[#D7DBEB]">
+      <section className="reveal w-full px-[20px] py-[120px] bg-[#fff]">
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-1 gap-[24px]">
           <div className="grid grid-cols-1 md:grid-cols-1 gap-[40px]">
             <div className="mx-auto w-full flex justify-center ">
