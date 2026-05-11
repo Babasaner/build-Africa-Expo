@@ -157,7 +157,7 @@ export const Salon = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-[0px] w-full mx-auto">
           {/* Card 1: Diaspora */}
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/08956dea00cddad651d0fec8e79a4538c5d002c6-1364x910.jpg')",
@@ -176,7 +176,7 @@ export const Salon = () => {
 
           {/* Card 2: International Investment */}
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/3d8dc63778af67623f97a6b186b01ac511f45205-1143x755.jpg')",
@@ -194,7 +194,7 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/55821e6e1716efef8192a2d26dfbc6aa527613f0-1300x535.jpg')",
@@ -212,14 +212,14 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[40px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/64b1e607235d7c13283e8ef2b226bf7b67678fea-1600x1067.jpg')",
             }}
           >
             <div className="flex flex-col gap-[8px]">
-              <h3 className="text-white w-[100%] md:w-[250px] text-[24px] font-['Tomorrow'] font-bold uppercase">
+              <h3 className="text-white w-[100%] md:w-[250px]  text-[24px] font-['Tomorrow'] font-bold uppercase">
                 Alliances Stratégiques
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
