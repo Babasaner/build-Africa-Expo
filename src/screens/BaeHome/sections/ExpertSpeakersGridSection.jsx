@@ -63,15 +63,15 @@ export const ExpertSpeakersGridSection = () => {
   };
 
   return (
-    <section className="relative w-full bg-[#EAEDF5] py-[120px]">
+    <section className="relative w-full bg-[#EAEDF5] py-16 md:py-[120px]">
       {/* Header Container - Constrained to 1440px */}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-5">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-8 md:gap-10 px-5">
         <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex max-w-[683.8px] flex-col items-start gap-4">
-            <p className="mt-[-1.00px] font-headings-h4 text-[length:var(--headings-h4-font-size)] font-bold text-[#00AB92]">
+            <p className="mt-[-1.00px] font-headings-h4 text-sm md:text-base font-bold text-[#00AB92]">
               LES VOIX INFLUENTES
             </p>
-            <h2 className="font-headings-h2 text-3xl font-bold leading-tight tracking-tight text-[#36499B] sm:text-4xl">
+            <h2 className="font-headings-h2 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#36499B]">
               SOYEZ INSPIRÉ PAR LES EXPERTS.
             </h2>
           </div>

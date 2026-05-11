@@ -132,18 +132,18 @@ const agendaDays = [
 export const EventAgendaSection = () => {
   return (
     <section
-      className="relative w-full py-[120px]"
+      className="relative w-full py-16 md:py-[120px]"
       style={{
         background:
           "linear-gradient(112.64deg, #00AB92 0.01%, #36499B 100.01%)",
       }}
     >
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-10 px-5">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-8 md:gap-10 px-5">
         <header className="flex w-full flex-col items-start gap-2">
-          <h2 className="font-headings-h2 text-3xl font-bold leading-tight tracking-tight text-white sm:text-[40px]">
+          <h2 className="font-headings-h2 text-2xl md:text-3xl font-bold leading-tight tracking-tight text-white sm:text-[40px]">
             DEUX JOURNÉES, DEUX VILLES, QUATRE PANELS.
           </h2>
-          <p className="max-w-[760px] font-body-regular text-lg text-white/100">
+          <p className="max-w-[760px] font-body-regular text-base md:text-lg text-white/100">
             Un programme dense et orienté résultats, conçu pour maximiser les
             opportunités de mise en relation entre investisseurs et porteurs de
             projets.

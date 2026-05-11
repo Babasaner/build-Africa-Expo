@@ -41,7 +41,9 @@ export const HeroBannerSection = () => {
               ...s,
               desc: s.description,
               heroActions: s.buttons?.map((b) => {
-                const isRegistration = b.label.toUpperCase().includes("INSCRIRE");
+                const isRegistration = b.label
+                  .toUpperCase()
+                  .includes("INSCRIRE");
                 return {
                   label: b.label,
                   href: isRegistration
@@ -148,88 +150,85 @@ export const HeroBannerSection = () => {
         aria-hidden="true"
       />
 
-      {/* Nav Buttons — conteneur centré limité à 1440px */}
-      {slides.length > 1 && (
-        <div
-          style={{
-            position: "absolute",
-            top: "50%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
-            width: "100%",
-            maxWidth: "1440px",
-            pointerEvents: "none",
-            zIndex: 20,
-          }}
-        >
-          {/* Bouton Précédent */}
-          <button
-            onClick={goToPrev}
-            aria-label="Slide précédente"
-            style={{
-              position: "absolute",
-              left: "20px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-              opacity: 1,
-              transition: "opacity 0.2s, transform 0.2s",
-              pointerEvents: "all",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = "1";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = "0.85";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-            }}
-          >
-            <img
-              src="icon/button_previous.svg"
-              alt="Précédent"
-              style={{ width: "48px", height: "48px", display: "block" }}
-            />
-          </button>
+      {/* {slides.length > 1 && (
+    <div
+      style={{
+        position: "absolute",
+        top: "50%",
+        left: "50%",
+        transform: "translate(-50%, -50%)",
+        width: "100%",
+        maxWidth: "1440px",
+        pointerEvents: "none",
+        zIndex: 20,
+      }}
+    >
+      <button
+        onClick={goToPrev}
+        aria-label="Slide précédente"
+        style={{
+          position: "absolute",
+          left: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+          opacity: 1,
+          transition: "opacity 0.2s, transform 0.2s",
+          pointerEvents: "all",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.opacity = "1";
+          e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.opacity = "0.85";
+          e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+        }}
+      >
+        <img
+          src="icon/button_previous.svg"
+          alt="Précédent"
+          style={{ width: "48px", height: "48px", display: "block" }}
+        />
+      </button>
 
-          {/* Bouton Suivant */}
-          <button
-            onClick={goToNext}
-            aria-label="Slide suivante"
-            style={{
-              position: "absolute",
-              right: "20px",
-              top: "50%",
-              transform: "translateY(-50%)",
-              background: "none",
-              border: "none",
-              padding: 0,
-              cursor: "pointer",
-              opacity: 1,
-              transition: "opacity 0.2s, transform 0.2s",
-              pointerEvents: "all",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.opacity = "1";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.opacity = "0.85";
-              e.currentTarget.style.transform = "translateY(-50%) scale(1)";
-            }}
-          >
-            <img
-              src="icon/button_next.svg"
-              alt="Suivant"
-              style={{ width: "48px", height: "48px", display: "block" }}
-            />
-          </button>
-        </div>
-      )}
-
+      <button
+        onClick={goToNext}
+        aria-label="Slide suivante"
+        style={{
+          position: "absolute",
+          right: "20px",
+          top: "50%",
+          transform: "translateY(-50%)",
+          background: "none",
+          border: "none",
+          padding: 0,
+          cursor: "pointer",
+          opacity: 1,
+          transition: "opacity 0.2s, transform 0.2s",
+          pointerEvents: "all",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.opacity = "1";
+          e.currentTarget.style.transform = "translateY(-50%) scale(1.1)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.opacity = "0.85";
+          e.currentTarget.style.transform = "translateY(-50%) scale(1)";
+        }}
+      >
+        <img
+          src="icon/button_next.svg"
+          alt="Suivant"
+          style={{ width: "48px", height: "48px", display: "block" }}
+        />
+      </button>
+    </div>
+  )} 
+*/}
       {/* Content */}
       <div
         className={`relative z-10 flex w-full flex-col items-center justify-center gap-6 px-5 text-center transition-all duration-700 ${
@@ -303,6 +302,27 @@ export const HeroBannerSection = () => {
         </nav>
 
         {/* Slide Indicators */}
+        <div className="mt-8 flex items-center justify-center gap-2">
+          {slides.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                if (isTransitioning) return;
+                setIsTransitioning(true);
+                setTimeout(() => {
+                  setCurrentSlide(index);
+                  setIsTransitioning(false);
+                }, 400);
+              }}
+              className={`transition-all duration-300 rounded-none ${
+                index === currentSlide
+                  ? "w-[24px] h-[8px] bg-[#00AB92]"
+                  : "w-[8px] h-[8px] bg-white/100"
+              }`}
+              aria-label={`Go to slide ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

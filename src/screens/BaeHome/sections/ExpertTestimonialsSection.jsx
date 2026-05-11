@@ -55,7 +55,7 @@ const testimonials = [
     ],
     fallback: "SMM",
     image:
-      "https://www.buildafricaexpo.com/wp-content/uploads/2025/03/DSC07089.webp",
+      "https://cdn.sanity.io/images/d4jrc26i/production/dd013268cb5d7ad49030e5a71d3966fcd8f699b5-2110x1980.webp",
   },
 ];
 

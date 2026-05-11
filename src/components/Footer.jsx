@@ -85,7 +85,7 @@ export const Footer = () => {
         </button>
 
         <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-16 px-5 py-20">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
             {/* Column 1: Logo, Socials, Copyright */}
             <div className="flex flex-col gap-12">
               <img
@@ -112,7 +112,7 @@ export const Footer = () => {
                     </a>
                   ))}
                 </div>
-                <p className="text-[14px] text-white/70">
+                <p className="text-[14px] text-white/100">
                   © 2026 — Copyright. Tous droits réservés
                 </p>
               </div>
@@ -157,7 +157,7 @@ export const Footer = () => {
                       alt="Location icon"
                       src={`${import.meta.env.BASE_URL}icon/map.svg`}
                     />
-                    <span className="text-[14px] font-normal text-white/80">
+                    <span className="text-[14px] font-normal text-white/100">
                       {location}
                     </span>
                   </div>
@@ -167,7 +167,7 @@ export const Footer = () => {
 
             {/* Column 3: Contact & Newsletter */}
             <div className="flex flex-col gap-12">
-              <div className="flex flex-row gap-[16px] items-center">
+              <div className="flex w-full flex-row gap-[16px] items-center">
                 <a
                   href="https://tickets.buildafricaexpo.com/fr/"
                   target="_blank"
@@ -175,16 +175,16 @@ export const Footer = () => {
                 >
                   <Button
                     type="button"
-                    className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                    className="h-auto  rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
                   >
                     S&apos;INSCRIRE
                   </Button>
                 </a>
 
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a href="#">
                   <Button
                     type="button"
-                    className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                    className="h-auto  rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
                   >
                     DEVENIR PARTENAIRE
                   </Button>
