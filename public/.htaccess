@@ -1,10 +1,10 @@
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  RewriteBase /edition-2026/
+  RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-l
   RewriteCond %{REQUEST_URI} !(\.map|\.json)$
-  RewriteRule . /edition-2026/index.html [L]
+  RewriteRule . /index.html [L]
 </IfModule>

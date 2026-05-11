@@ -288,21 +288,27 @@ export const Salon = () => {
                 </svg>
               </Button>
 
-              <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                S'INSCRIRE COMME VISITEUR
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="9"
-                  viewBox="0 0 10 9"
-                  fill="none"
-                >
-                  <path
-                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </Button>
+              <a
+                href="https://tickets.buildafricaexpo.com/fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+                  S'INSCRIRE COMME VISITEUR
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="9"
+                    viewBox="0 0 10 9"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </Button>
+              </a>
             </div>
           </div>
         </div>

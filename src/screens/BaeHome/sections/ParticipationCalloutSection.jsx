@@ -95,12 +95,19 @@ export const ParticipationCalloutSection = () => {
                     </li>
                   ))}
                 </ul>
-                <Button
-                  type="button"
-                  className={`h-[48px] w-full max-w-[253px] px-[32px] py-[16px] font-button-default text-[16px] font-bold tracking-wider sm:w-[253px] ${card.buttonClassName}`}
+                <a
+                  href="https://tickets.buildafricaexpo.com/fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full max-w-[253px]"
                 >
-                  {card.buttonLabel}
-                </Button>
+                  <Button
+                    type="button"
+                    className={`h-[48px] w-full px-[32px] py-[16px] font-button-default text-[16px] font-bold tracking-wider ${card.buttonClassName}`}
+                  >
+                    {card.buttonLabel}
+                  </Button>
+                </a>
               </article>
             </CardContent>
           </Card>

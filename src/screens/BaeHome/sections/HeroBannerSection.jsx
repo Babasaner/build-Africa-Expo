@@ -40,13 +40,26 @@ export const HeroBannerSection = () => {
             data.map((s) => ({
               ...s,
               desc: s.description,
-              heroActions: s.buttons?.map((b) => ({
-                label: b.label,
-                href: b.linkType === "file" ? b.fileUrl : b.url,
-                className: b.label.includes("TÉLÉCHARGER")
-                  ? "bg-[#00AB92] hover:bg-[#00AB92]/90"
-                  : "bg-primary-bae hover:bg-primary-bae/90",
-              })),
+              heroActions: s.buttons?.map((b) => {
+                const isRegistration = b.label.toUpperCase().includes("INSCRIRE");
+                return {
+                  label: b.label,
+                  href: isRegistration
+                    ? "https://tickets.buildafricaexpo.com/fr/"
+                    : b.linkType === "file"
+                      ? b.fileUrl
+                      : b.url,
+                  target:
+                    isRegistration ||
+                    b.linkType === "file" ||
+                    (b.url && b.url.startsWith("http"))
+                      ? "_blank"
+                      : "_self",
+                  className: b.label.includes("TÉLÉCHARGER")
+                    ? "bg-[#00AB92] hover:bg-[#00AB92]/90"
+                    : "bg-primary-bae hover:bg-primary-bae/90",
+                };
+              }),
             })),
           );
         }

@@ -8,7 +8,7 @@ const announcementLocations = ["New York", "Toronto"];
 
 const navigationItems = [
   { label: "ACCUEIL", href: "/" },
-  { label: "LE SALON", href: "/salon" },
+  { label: "À PROPOS", href: "/a-propos" },
   { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
@@ -54,7 +54,7 @@ export const Header = () => {
           </div>
           <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
           <a
-            href="https://buildafricaexpo.com"
+            href="https://buildafricaexpo.com/edition-2025/"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
@@ -62,9 +62,7 @@ export const Header = () => {
             <span className="text-[14px] font-bold text-[#ffc600]">
               ÉDITION 2025
             </span>
-            <span className="text-[13px] font-bold text-[#f5c518]">
-              →
-            </span>
+            <span className="text-[13px] font-bold text-[#f5c518]">→</span>
           </a>
         </div>
       </section>
@@ -72,7 +70,11 @@ export const Header = () => {
       {/* Main Header */}
       <header className="w-full border-b border-[#36499b14] bg-white">
         <div className="mx-auto flex h-[70px] md:h-[90px] w-full max-w-[1440px] items-center justify-between gap-6 px-5">
-          <a href={import.meta.env.BASE_URL} className="relative h-[40px] md:h-[58px] w-auto" aria-label="Logo">
+          <a
+            href={import.meta.env.BASE_URL}
+            className="relative h-[40px] md:h-[58px] w-auto"
+            aria-label="Logo"
+          >
             <img
               className="h-full w-auto object-contain"
               alt="Build Africa Expo Logo"
@@ -88,7 +90,9 @@ export const Header = () => {
                     <Link
                       to={item.href}
                       className={`text-[14px] font-bold transition-colors hover:text-[#00AB92] ${
-                        isActive(item.href) ? "text-[#00AB92]" : "text-[#161D3E]"
+                        isActive(item.href)
+                          ? "text-[#00AB92]"
+                          : "text-[#161D3E]"
                       }`}
                     >
                       {item.label}
@@ -99,9 +103,15 @@ export const Header = () => {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white hover:bg-[#36499B]/90">
-                S&apos;INSCRIRE
-              </Button>
+              <a
+                href="https://tickets.buildafricaexpo.com/fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white hover:bg-[#36499B]/90">
+                  S&apos;INSCRIRE
+                </Button>
+              </a>
               <Button
                 variant="outline"
                 className="hidden h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] hover:bg-[#36499B]/10 sm:inline-flex"
@@ -116,7 +126,11 @@ export const Header = () => {
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 aria-label="Toggle menu"
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </Button>
             </div>
           </div>
@@ -133,7 +147,9 @@ export const Header = () => {
                       to={item.href}
                       onClick={() => setIsMenuOpen(false)}
                       className={`block w-full text-left py-2 font-bold text-[14px] hover:text-[#00AB92] ${
-                        isActive(item.href) ? "text-[#00AB92]" : "text-[#161D3E]"
+                        isActive(item.href)
+                          ? "text-[#00AB92]"
+                          : "text-[#161D3E]"
                       }`}
                     >
                       {item.label}

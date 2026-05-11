@@ -46,7 +46,7 @@ export const BaeHome = () => {
         <ParticipationCalloutSection />
       </div>
 
-      <div id="salon" className="reveal w-full">
+      <div id="a-propos" className="reveal w-full">
         <CountryOverviewSection />
       </div>
 

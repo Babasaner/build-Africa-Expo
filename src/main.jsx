@@ -13,10 +13,10 @@ import "../tailwind.css";
 createRoot(document.getElementById("app")).render(
   <StrictMode>
     <HelmetProvider>
-      <BrowserRouter basename="/edition-2026/">
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<BaeHome />} />
-          <Route path="/salon" element={<Salon />} />
+          <Route path="/a-propos" element={<Salon />} />
           <Route path="/announcement" element={<SdifAnnouncement />} />
           <Route path="/actualite/:slug" element={<PostDetails />} />
           <Route path="*" element={<NotFound />} />

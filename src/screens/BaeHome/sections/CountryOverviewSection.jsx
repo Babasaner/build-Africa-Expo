@@ -60,16 +60,33 @@ export const CountryOverviewSection = () => {
             opportunités d&apos;investissement au Sénégal.
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px] w-full">
-            {forumActions.map((action) => (
-              <Button
-                key={action.label}
-                type="button"
-                className={`${action.className} flex-1 justify-between`}
-              >
-                <span className="text-left">{action.label}</span>
-                <img className="h-4 w-4" alt="Arrow" src="icon/Vector.svg" />
-              </Button>
-            ))}
+            {forumActions.map((action) => {
+              const button = (
+                <Button
+                  type="button"
+                  className={`${action.className} flex-1 justify-between`}
+                >
+                  <span className="text-left">{action.label}</span>
+                  <img className="h-4 w-4" alt="Arrow" src="icon/Vector.svg" />
+                </Button>
+              );
+
+              if (action.label.includes("INSCRIRE")) {
+                return (
+                  <a
+                    key={action.label}
+                    href="https://tickets.buildafricaexpo.com/fr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
+                    {button}
+                  </a>
+                );
+              }
+
+              return <div key={action.label} className="flex-1">{button}</div>;
+            })}
           </div>
         </header>
         <aside className="flex w-full lg:max-w-[280px] flex-col items-start gap-5">

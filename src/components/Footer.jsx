@@ -38,7 +38,7 @@ const socialLinks = [
 
 const navigationLinks = [
   { label: "ACCUEIL", href: "/" },
-  { label: "LE SALON", href: "/salon" },
+  { label: "À PROPOS", href: "/a-propos" },
   { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
@@ -134,12 +134,18 @@ export const Footer = () => {
                   </Link>
                 ))}
               </nav>
-              <Button
-                type="button"
-                className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+              <a
+                href="https://tickets.buildafricaexpo.com/fr/"
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                S&apos;INSCRIRE
-              </Button>
+                <Button
+                  type="button"
+                  className="h-auto w-fit rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                >
+                  S&apos;INSCRIRE
+                </Button>
+              </a>
             </div>
 
             {/* Column 3: Contact & Newsletter */}
