@@ -136,7 +136,7 @@ export const Salon = () => {
 
       {/* Capital global */}
 
-      <section className="reveal w-fullanimate-fade-in  animate-delay-200  animate-duration-1000 pt-[80px] bg-[#161D3E]">
+      <section className="reveal w-full animate-fade-in  animate-delay-200  animate-duration-1000 pt-[80px] bg-[#161D3E]">
         <div className="w-full mx-auto ">
           <div className="text-center mb-16 px-[20px] flex flex-col items-center max-w-[800px] mx-auto gap-[8px]">
             <h2 className="text-[#00A99D] text-[20px] font-['Tomorrow']  leading-[24px] uppercase font-bold ">
