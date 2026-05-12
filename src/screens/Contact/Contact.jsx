@@ -231,7 +231,7 @@ export const Contact = () => {
       {/* Form Section */}
       <section className="reveal w-full flex flex-col lg:flex-row">
         {/* Left: Form */}
-        <div className="flex-[3] bg-[#D7DBEB] p-[120px] lg:pl-[calc((100vw-1440px)/2-30px)]">
+        <div className="flex-[3] bg-[#D7DBEB] p-[20px] md:p-[120px] lg:pl-[calc((100vw-1440px)/2-30px)]">
           {status.submitted ? (
             <div className="flex flex-col items-start gap-6 animate-fade-up px-[20px]">
               <h3 className="text-[#36499B] font-['Tomorrow'] font-bold text-[32px] uppercase">
