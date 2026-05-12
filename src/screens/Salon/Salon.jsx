@@ -139,9 +139,6 @@ export const Salon = () => {
       <section className="reveal w-full animate-fade-in  animate-delay-200  animate-duration-1000 pt-[80px] bg-[#161D3E]">
         <div className="w-full mx-auto ">
           <div className="text-center mb-16 px-[20px] flex flex-col items-center max-w-[800px] mx-auto gap-[8px]">
-            <h2 className="text-[#00A99D] hidden  text-[20px] font-['Tomorrow']  leading-[24px] uppercase font-bold ">
-              INGÉNIERIE FINANCIÈRE
-            </h2>
             <h2 className="text-[#fff] text-[32px]  font-['Tomorrow'] uppercase  leading-[56px] uppercase font-bold ">
               Les grands piliers de transformation
             </h2>
@@ -157,7 +154,7 @@ export const Salon = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-[0px] w-full mx-auto">
           {/* Card 1: Diaspora */}
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[20px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/08956dea00cddad651d0fec8e79a4538c5d002c6-1364x910.jpg')",
@@ -176,7 +173,7 @@ export const Salon = () => {
 
           {/* Card 2: International Investment */}
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[20px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/3d8dc63778af67623f97a6b186b01ac511f45205-1143x755.jpg')",
@@ -194,7 +191,7 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[20px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/55821e6e1716efef8192a2d26dfbc6aa527613f0-1300x535.jpg')",
@@ -212,7 +209,7 @@ export const Salon = () => {
           </div>
 
           <div
-            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-cover bg-center"
+            className="w-full h-[300px] animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300 shadow-xl overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[20px] bg-cover bg-center"
             style={{
               backgroundImage:
                 "linear-gradient(180deg, rgba(22, 29, 62, 0) 0%, #161D3E 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/64b1e607235d7c13283e8ef2b226bf7b67678fea-1600x1067.jpg')",
