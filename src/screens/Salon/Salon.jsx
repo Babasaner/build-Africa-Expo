@@ -267,126 +267,19 @@ export const Salon = () => {
       </section>
 
       {/* ENTREPRISES INVITÉES Section */}
-      <section className="reveal w-full px-[20px] py-16 md:py-[120px] bg-[#E8E8E8]">
+      <section className="reveal w-full px-[20px] py-16 md:py-[120px] bg-[#fff]">
         <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
           <div className="text-center">
-            <h2 className="text-[#1D1D1B] text-[32px] md:text-[48px] font-['Tomorrow'] uppercase font-bold leading-tight">
+            <h2 className="text-[#202C5D] text-[32px] md:text-[48px] font-['Tomorrow'] uppercase font-bold leading-tight">
               ENTREPRISES INVITÉES
             </h2>
           </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-4 justify-items-start">
-            {[
-              "3VEJt3.tif.svg",
-              "MINCOM.svg",
-              "DTug75.tif.svg",
-              "DfrdxJ.tif.svg",
-              "FKYxS0.tif.svg",
-              "Fichier 11.svg",
-              "Fichier 18.svg",
-              "Fichier 19.svg",
-              "Fichier 26.svg",
-              "Fichier 27.svg",
-              "Fichier 28.svg",
-              "Fichier 29.svg",
-              "Fichier 30.svg",
-
-              "Fichier 41.svg",
-              "Fichier 42.svg",
-              "Fichier 43.svg",
-              "Fichier 44.svg",
-              "Fichier 45.svg",
-              "Fichier 46.svg",
-              "Fichier 47.svg",
-              "Fichier 48.svg",
-              "Fichier 49.svg",
-              "Fichier 50.svg",
-              "Fichier 51.svg",
-              "Fichier 52.svg",
-              "Fichier 53.svg",
-              "Fichier 54.svg",
-              "Fichier 55.svg",
-              "Fichier 56.svg",
-              "Fichier 57.svg",
-              "Fichier 58.svg",
-              "Fichier 59.svg",
-              "Fichier 60.svg",
-              "Fichier 61.svg",
-              "Fichier 62.svg",
-              "Fichier 63.svg",
-              "Fichier 64.svg",
-              "Fichier 65.svg",
-              "Fichier 66.svg",
-              "Fichier 67.svg",
-              "Fichier 68.svg",
-              "Fichier 69.svg",
-              "Fichier 70.svg",
-              "Fichier 71.svg",
-              "Fichier 72.svg",
-              "Fichier 73.svg",
-              "Fichier 74.svg",
-              "Fichier 75.svg",
-              "Fichier 76.svg",
-              "Fichier 77.svg",
-              "Fichier 78.svg",
-              "Fichier 79.svg",
-              "Fichier 80.svg",
-              "Fichier 81.svg",
-              "Fichier 82.svg",
-              "Fichier 83.svg",
-              "Fichier 84.svg",
-              "Fichier 85.svg",
-              "Fichier 86.svg",
-              "Fichier 87.svg",
-              "Fichier 88.svg",
-              "Fichier 89.svg",
-              "Fichier 90.svg",
-              "Fichier 91.svg",
-              "Fichier 92.svg",
-              "Fichier 93.svg",
-              "Fichier 94.svg",
-              "JCdWvz.tif.svg",
-              "NlKFQj.tif.svg",
-
-              "Pby4u6.tif.svg",
-              "Q7B1L1.tif.svg",
-              "SdKliD.tif.svg",
-              "UmYnlm.tif.svg",
-              "VeXa3F.tif.svg",
-              "XK4xOH.tif.svg",
-              "Xsfmxm.tif.svg",
-              "a3Nj5V.tif.svg",
-              "cCTti8.tif.svg",
-              "win-winrteners_SA.svg",
-              "ehyVQi.tif.svg",
-              "gPQwV9.tif.svg",
-              "knFkVW.tif.svg",
-              "lG1gFG.tif.svg",
-              "m9lSpP.tif.svg",
-              "rkAIgP.tif.svg",
-              "s8UY9c.tif.svg",
-              "sFt8hm.tif.svg",
-              "skXE6s.tif.svg",
-              "tEcsYJ.tif.svg",
-              "ucfkhT.tif.svg",
-              "xZnDWY.tif.svg",
-              "ykmXP2.tif.svg",
-            ].map((logo, index) => (
-              <Card
-                key={index}
-                className="min-w-[140px] sm:min-w-[166px] w-full h-[100px] rounded-none border-[1px] border-[#d2d2d1] bg-white shadow-none transition-all duration-300 hover:border-[#36499b] hover:shadow-md group"
-              >
-                <CardContent className="flex h-full w-full items-center justify-center p-4 overflow-hidden">
-                  <div className="relative w-full h-full flex items-center justify-center">
-                    <img
-                      src={`${import.meta.env.BASE_URL}entreprise-invites/${logo}`}
-                      alt={`Entreprise Invitée ${index + 1}`}
-                      className="max-w-full max-h-full object-contain transition-transform duration-300 group-hover:scale-110"
-                    />
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+          <div className="w-full mx-auto flex flex-col">
+            <img
+              src="https://cdn.sanity.io/images/d4jrc26i/production/a7eaf2af72e6e31dfe724f15eb9f7a60345cc1d4-1308x770.png"
+              alt="entreprises invites "
+            />
           </div>
         </div>
       </section>
