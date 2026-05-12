@@ -5,12 +5,12 @@ const forumActions = [
   {
     label: "DEVENIR PARTENAIRE DU FORUM",
     className:
-      "h-auto rounded-lg border-0 bg-primary-bae px-8 py-4 text-left font-bold  shadow-none hover:bg-primary-bae/100 text-white/100",
+      "h-auto rounded-lg border-0 bg-primary-bae px-8 py-4 text-left font-bold shadow-none transition-colors duration-300 hover:bg-[#00AB92] text-white/100 cursor-pointer",
   },
   {
     label: "S'INSCRIRE COMME VISITEUR",
     className:
-      "h-auto rounded-lg border-0 bg-accent px-8 py-4 font-bold text-left bg-[#00AB92] text-white font-bold  shadow-none hover:bg-accent/100 text-white/100",
+      "h-auto rounded-lg border-0 bg-[#00AB92] px-8 py-4 font-bold text-left text-white shadow-none transition-colors duration-300 hover:bg-[#36499B] cursor-pointer",
   },
 ];
 

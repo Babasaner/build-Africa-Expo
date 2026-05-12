@@ -12,7 +12,7 @@ const navigationItems = [
   { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
-  { label: "CONTACT", href: "/#contact" },
+  { label: "CONTACT", href: "/contact" },
 ];
 
 export const Header = () => {
@@ -110,17 +110,17 @@ export const Header = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white hover:bg-[#36499B]/90">
+                <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer">
                   S&apos;INSCRIRE
                 </Button>
               </a>
               <Button
                 variant="outline"
-                className="hidden h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] hover:bg-[#36499B]/10 sm:inline-flex"
+                className="hidden h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] transition-all duration-300 hover:bg-[#00AB92] hover:text-white hover:border-[#00AB92] cursor-pointer sm:inline-flex"
               >
                 DEVENIR PARTENAIRE
               </Button>
-              ...
+
               <Button
                 variant="ghost"
                 size="icon"

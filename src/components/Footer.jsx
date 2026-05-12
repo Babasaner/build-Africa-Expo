@@ -17,7 +17,7 @@ const socialLinks = [
   {
     alt: "Facebook",
     src: "https://c.animaapp.com/mot82cj4305Sf8/img/icons---bxl-facebook.svg",
-    href: "#", // Non fourni par l'utilisateur
+    href: "https://www.facebook.com/profile.php?id=61562911113388",
   },
   {
     alt: "LinkedIn",
@@ -42,7 +42,7 @@ const navigationLinks = [
   { label: "INTERVENANTS", href: "/#intervenants" },
   { label: "PARTENAIRES", href: "/#partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
-  { label: "CONTACT", href: "/#contact" },
+  { label: "CONTACT", href: "/contact" },
 ];
 const announcementLocations = ["New York", "Toronto"];
 const contactDetails = [
@@ -91,7 +91,7 @@ export const Footer = () => {
               <img
                 className="h-auto w-[180px]"
                 alt="Build Africa Expo logo"
-                src={`${import.meta.env.BASE_URL}footer-logo.png`}
+                src="https://cdn.sanity.io/images/d4jrc26i/production/02196f445c7cfe260d35b7a96879e1f6a112756e-102x61.svg"
               />
               <div className="flex flex-col gap-8">
                 <div className="flex flex-wrap items-start gap-3">
@@ -167,24 +167,25 @@ export const Footer = () => {
 
             {/* Column 3: Contact & Newsletter */}
             <div className="flex flex-col gap-12">
-              <div className="flex w-full flex-row gap-[16px] items-center">
+              <div className="flex w-full flex-col sm:flex-row gap-4 items-stretch sm:items-center">
                 <a
                   href="https://tickets.buildafricaexpo.com/fr/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="flex-1"
                 >
                   <Button
                     type="button"
-                    className="h-auto  rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                    className="w-full h-auto rounded-lg bg-[#36499b] px-6 py-4 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#00ab92] cursor-pointer"
                   >
                     S&apos;INSCRIRE
                   </Button>
                 </a>
 
-                <a href="#">
+                <a href="#" className="flex-1">
                   <Button
                     type="button"
-                    className="h-auto  rounded-lg bg-[#36499b] px-10 py-4 text-[16px] font-bold text-white hover:bg-[#4157b9]"
+                    className="w-full h-auto rounded-lg bg-[#36499b] px-6 py-4 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#00ab92] cursor-pointer"
                   >
                     DEVENIR PARTENAIRE
                   </Button>

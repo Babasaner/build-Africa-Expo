@@ -6,12 +6,12 @@ const heroActions = [
   {
     label: "TERMES DE RÉFÉRENCE",
     className:
-      "bg-primary-bae text-white hover:bg-primary-bae/90 focus-visible:ring-primary-bae",
+      "bg-primary-bae text-white transition-colors cursor-pointer duration-300 hover:bg-[#00AB92] focus-visible:ring-primary-bae cursor-pointer",
   },
   {
     label: "TÉLÉCHARGER LA BROCHURE ",
     className:
-      "bg-accent text-white hover:bg-accent/90 bg-[#00AB92] focus-visible:ring-accent",
+      "bg-[#00AB92] text-white transition-colors cursor-pointer duration-300 hover:bg-[#36499B] focus-visible:ring-accent cursor-pointer",
   },
 ];
 
@@ -58,8 +58,8 @@ export const HeroBannerSection = () => {
                       ? "_blank"
                       : "_self",
                   className: b.label.includes("TÉLÉCHARGER")
-                    ? "bg-[#00AB92] hover:bg-[#00AB92]/90"
-                    : "bg-primary-bae hover:bg-primary-bae/90",
+                    ? "bg-[#00AB92] transition-colors duration-300 hover:bg-[#36499B] cursor-pointer"
+                    : "bg-primary-bae transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer",
                 };
               }),
             })),

@@ -70,7 +70,7 @@ export const Salon = () => {
 
       {/* Hero Section */}
       <section
-        className="relative w-full min-h-[50vh] md:min-h-[50vh] animate-fade-in  animate-delay-200  animate-duration-1000  flex items-center pt-[80px] pb-[50px] justify-center overflow-hidden"
+        className="relative w-full min-h-[50vh] md:min-h-[50vh]  animate-fade-in  animate-delay-200  animate-duration-1000  flex items-center  justify-center overflow-hidden"
         style={{
           background: "linear-gradient(92.26deg, #36499B 0.24%, #00AB92 100%)",
         }}

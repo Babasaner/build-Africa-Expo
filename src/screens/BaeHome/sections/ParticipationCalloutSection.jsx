@@ -10,7 +10,7 @@ const calloutCards = [
     eyebrowClassName: "text-accent",
     titleClassName: "text-white",
     textClassName: "text-white/80",
-    buttonClassName: "bg-[#00AB92] text-white hover:bg-accent/90 focus-visible:ring-accent",
+    buttonClassName: "bg-[#00AB92] text-white transition-colors duration-300 hover:bg-[#36499B] cursor-pointer",
     buttonLabel: "S'INSCRIRE POUR VISITER",
     checkColor: "#00AB92",
     items: [
@@ -30,7 +30,7 @@ const calloutCards = [
     eyebrowClassName: "text-primary-bae",
     titleClassName: "text-white",
     textClassName: "text-white/80",
-    buttonClassName: "bg-primary-bae text-white hover:bg-primary-bae/90 focus-visible:ring-primary-bae",
+    buttonClassName: "bg-primary-bae text-white transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer",
     buttonLabel: "S'INSCRIRE POUR EXPOSER",
     checkColor: "#36499B",
     items: [
