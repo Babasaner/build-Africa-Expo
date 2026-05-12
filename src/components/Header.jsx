@@ -27,45 +27,47 @@ export const Header = () => {
   return (
     <div className="absolute top-0 left-0 z-50 w-full">
       {/* Announcement Bar */}
-      <section className="w-full bg-[#161D3E]">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-3 px-5 py-4">
-          <div className="inline-flex flex-wrap items-center justify-center gap-2">
-            <Badge className="rounded bg-[#00AB92] px-2 py-1 font-bold text-[10px] text-white hover:bg-[#00AB92]/90">
-              NOUVEAU
-            </Badge>
-            <p className="text-center text-[16px] md:text-[20px] font-bold leading-tight text-white">
-              Sénégal Diaspora Investment Forum 2026
-            </p>
+      {location.pathname === "/" && (
+        <section className="w-full bg-[#161D3E]">
+          <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-3 px-5 py-4">
+            <div className="inline-flex flex-wrap items-center justify-center gap-2">
+              <Badge className="rounded bg-[#00AB92] px-2 py-1 font-bold text-[10px] text-white hover:bg-[#00AB92]/90">
+                NOUVEAU
+              </Badge>
+              <p className="text-center text-[16px] md:text-[20px] font-bold leading-tight text-white">
+                Sénégal Diaspora Investment Forum 2026
+              </p>
+            </div>
+            <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
+            <div className="flex flex-wrap items-center justify-center gap-3">
+              {announcementLocations.map((location) => (
+                <div key={location} className="inline-flex items-center gap-1">
+                  <img
+                    className="h-4 w-4 opacity-80"
+                    alt="Location icon"
+                    src={`${import.meta.env.BASE_URL}icon/map.svg`}
+                  />
+                  <span className="text-[14px] font-normal text-white/80">
+                    {location}
+                  </span>
+                </div>
+              ))}
+            </div>
+            <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
+            <a
+              href="https://buildafricaexpo.com/edition-2025/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
+            >
+              <span className="text-[14px] font-bold text-[#ffc600]">
+                ÉDITION 2025
+              </span>
+              <span className="text-[13px] font-bold text-[#f5c518]">→</span>
+            </a>
           </div>
-          <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
-          <div className="flex flex-wrap items-center justify-center gap-3">
-            {announcementLocations.map((location) => (
-              <div key={location} className="inline-flex items-center gap-1">
-                <img
-                  className="h-4 w-4 opacity-80"
-                  alt="Location icon"
-                  src={`${import.meta.env.BASE_URL}icon/map.svg`}
-                />
-                <span className="text-[14px] font-normal text-white/80">
-                  {location}
-                </span>
-              </div>
-            ))}
-          </div>
-          <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
-          <a
-            href="https://buildafricaexpo.com/edition-2025/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
-          >
-            <span className="text-[14px] font-bold text-[#ffc600]">
-              ÉDITION 2025
-            </span>
-            <span className="text-[13px] font-bold text-[#f5c518]">→</span>
-          </a>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Main Header */}
       <header className="w-full border-b border-[#36499b14] bg-white">
@@ -118,7 +120,7 @@ export const Header = () => {
               >
                 DEVENIR PARTENAIRE
               </Button>
-
+              ...
               <Button
                 variant="ghost"
                 size="icon"

@@ -266,59 +266,6 @@ export const Salon = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-
-      <section className="reveal w-full px-[20px] py-16 md:py-[120px] bg-[#fff]">
-        <div className="max-w-[1440px] mx-auto grid grid-cols-1 gap-[24px]">
-          <div className="grid grid-cols-1 gap-[40px]">
-            <div className="text-center">
-              <h2 className="text-[#202C5D] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase  leading-[42px] md:leading-[72px] font-bold ">
-                Rejoignez le réseau qui bâtit l'Afrique de demain.
-              </h2>
-            </div>
-
-            <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
-              <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                DEVENIR PARTENAIRE DU FORUM
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="9"
-                  viewBox="0 0 10 9"
-                  fill="none"
-                >
-                  <path
-                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </Button>
-
-              <a
-                href="https://tickets.buildafricaexpo.com/fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                  S'INSCRIRE COMME VISITEUR
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="10"
-                    height="9"
-                    viewBox="0 0 10 9"
-                    fill="none"
-                  >
-                    <path
-                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                      fill="#fff"
-                    />
-                  </svg>
-                </Button>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
       {/* ENTREPRISES INVITÉES Section */}
       <section className="reveal w-full px-[20px] py-16 md:py-[120px] bg-[#E8E8E8]">
         <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
@@ -440,6 +387,66 @@ export const Salon = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+
+      <section
+        className="reveal w-full h-[470px] md:h-[560px] flex items-center justify-center  px-[20px] py-16 md:py-[120px] bg-cover bg-center bg-no-repeat "
+        style={{
+          backgroundImage:
+            "url('https://cdn.sanity.io/images/d4jrc26i/production/f633ca61f3426788a52d64ec61d7d40cf2728977-1440x560.png')",
+        }}
+      >
+        <div className="max-w-[1440px] mx-auto grid grid-cols-1 gap-[24px]">
+          <div className="grid grid-cols-1 gap-[40px]">
+            <div className="text-center">
+              <h2 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase  leading-[42px] md:leading-[72px] font-bold ">
+                Rejoignez le réseau qui bâtit l'Afrique de demain.
+              </h2>
+            </div>
+
+            <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
+              <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+                DEVENIR PARTENAIRE DU FORUM
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="10"
+                  height="9"
+                  viewBox="0 0 10 9"
+                  fill="none"
+                >
+                  <path
+                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                    fill="#fff"
+                  />
+                </svg>
+              </Button>
+
+              <a
+                href="https://tickets.buildafricaexpo.com/fr/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+                  S'INSCRIRE COMME VISITEUR
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="9"
+                    viewBox="0 0 10 9"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </Button>
+              </a>
+            </div>
           </div>
         </div>
       </section>
