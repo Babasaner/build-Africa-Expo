@@ -3,7 +3,7 @@ import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 import { client } from "../../../lib/sanity";
 
-export const ExpertSpeakersGridSection = () => {
+export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
   const scrollRef = React.useRef(null);
   const [speakers, setSpeakers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -148,15 +148,19 @@ export const ExpertSpeakersGridSection = () => {
         </div>
       </div>
 
-      <div className="mx-auto mt-10 flex w-full max-w-[1440px] items-center justify-end px-5">
-        <Button
-          type="button"
-          variant="ghost"
-          className="h-auto p-0 font-button-default text-[14px] font-bold text-[#00AB92] hover:bg-transparent hover:text-[#00AB92]"
-        >
-          VOIR TOUS LES INTERVENANTS →
-        </Button>
-      </div>
+      {showViewAll && (
+        <div className="mx-auto mt-10  flex w-full max-w-[1440px] items-center justify-end px-5">
+          <a className="cursor-pointer" href="/intervenants">
+            <Button
+              type="button"
+              variant="ghost"
+              className="h-auto p-0 font-button-default text-[14px] font-bold text-[#00AB92] cursor-pointer hover:bg-transparent hover:text-[#00AB92]"
+            >
+              VOIR TOUS LES INTERVENANTS →
+            </Button>
+          </a>
+        </div>
+      )}
     </section>
   );
 };
