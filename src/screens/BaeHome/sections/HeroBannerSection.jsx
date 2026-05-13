@@ -125,8 +125,7 @@ export const HeroBannerSection = () => {
 
   return (
     <section
-      className="relative flex w-full items-center justify-center overflow-hidden bg-black"
-      style={{ height: "100vh" }}
+      className="relative flex w-full items-center justify-center overflow-hidden bg-black min-h-[600px] h-[100dvh] md:h-screen"
       onMouseEnter={() => setIsPaused(true)}
       onMouseLeave={() => setIsPaused(false)}
     >
@@ -235,8 +234,7 @@ export const HeroBannerSection = () => {
           isTransitioning
             ? "opacity-0 translate-y-4"
             : "opacity-100 translate-y-0"
-        }`}
-        style={{ paddingTop: "var(--header-height, 80px)" }}
+        } pt-[120px] md:pt-[180px]`}
       >
         {slides[currentSlide].location && (
           <div className="flex items-center justify-center">

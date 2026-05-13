@@ -122,8 +122,6 @@ export const CojojSection = () => {
             }}
           >
             Retrouvez AYO à New York et Toronto pour célébrer l’énergie, la
-            jeunesse et l’esprit des Jeux Olympiques de la Jeunesse Dakar
-            2026.Retrouvez AYO à New York et Toronto pour célébrer l’énergie, la
             jeunesse et l’esprit des Jeux Olympiques de la Jeunesse Dakar 2026.
           </p>
         </div>

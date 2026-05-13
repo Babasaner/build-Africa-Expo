@@ -24,46 +24,57 @@ export const Header = () => {
     return location.pathname.startsWith(href);
   };
 
+  React.useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isMenuOpen]);
+
   return (
     <div className="absolute top-0 left-0 z-50 w-full">
       {/* Announcement Bar */}
       {location.pathname === "/" && (
         <section className="w-full bg-[#161D3E]">
-          <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-3 px-5 py-4">
-            <div className="inline-flex flex-wrap items-center justify-center gap-2">
-              <Badge className="rounded bg-[#00AB92] px-2 py-1 font-bold text-[10px] text-white hover:bg-[#00AB92]/90">
+          <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-2 md:gap-3 px-4 py-3 md:py-4">
+            <div className="inline-flex items-center justify-center gap-2">
+              <Badge className="rounded bg-[#00AB92] px-1.5 py-0.5 font-bold text-[9px] md:text-[10px] text-white hover:bg-[#00AB92]/90">
                 NOUVEAU
               </Badge>
-              <p className="text-center text-[16px] md:text-[20px] font-bold leading-tight text-white">
+              <p className="text-center text-[13px] sm:text-[16px] md:text-[20px] font-bold leading-tight text-white">
                 Sénégal Diaspora Investment Forum 2026
               </p>
             </div>
             <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
-            <div className="flex flex-wrap items-center justify-center gap-3">
+            <div className="flex items-center justify-center gap-3">
               {announcementLocations.map((location) => (
                 <div key={location} className="inline-flex items-center gap-1">
                   <img
-                    className="h-4 w-4 opacity-80"
+                    className="h-3.5 w-3.5 md:h-4 md:w-4 opacity-80"
                     alt="Location icon"
                     src={`${import.meta.env.BASE_URL}icon/map.svg`}
                   />
-                  <span className="text-[14px] font-normal text-white/80">
+                  <span className="text-[12px] md:text-[14px] font-normal text-white/80">
                     {location}
                   </span>
                 </div>
               ))}
             </div>
-            <span className="hidden h-1 w-1 rounded-full bg-white/30 sm:block" />
+            <span className="hidden h-1 w-1 rounded-full bg-white/30 md:block" />
             <a
               href="https://buildafricaexpo.com/edition-2025/"
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
-              <span className="text-[14px] font-bold text-[#ffc600]">
+              <span className="text-[12px] md:text-[14px] font-bold text-[#ffc600]">
                 ÉDITION 2025
               </span>
-              <span className="text-[13px] font-bold text-[#f5c518]">→</span>
+              <span className="text-[12px] md:text-[13px] font-bold text-[#f5c518]">→</span>
             </a>
           </div>
         </section>
@@ -138,38 +149,81 @@ export const Header = () => {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
-        {isMenuOpen && (
-          <div className="absolute left-0 top-full w-full bg-white border-b border-gray-100 shadow-xl lg:hidden">
-            <nav className="flex flex-col p-5">
-              <ul className="flex flex-col gap-4">
-                {navigationItems.map((item) => (
-                  <li key={item.label}>
-                    <Link
-                      to={item.href}
-                      onClick={() => setIsMenuOpen(false)}
-                      className={`block w-full text-left py-2 font-bold text-[14px] hover:text-[#00AB92] ${
-                        isActive(item.href)
-                          ? "text-[#00AB92]"
-                          : "text-[#161D3E]"
-                      }`}
-                    >
-                      {item.label}
-                    </Link>
-                  </li>
-                ))}
-                <li className="pt-4 border-t border-gray-100 flex flex-col gap-3">
-                  <Button
-                    variant="outline"
-                    className="w-full justify-center h-12 rounded-lg border-[#36499B] text-[#36499B] font-bold"
-                  >
-                    DEVENIR PARTENAIRE
+        {/* Mobile Navigation Drawer */}
+        <div 
+          className={`fixed inset-0 z-[100] lg:hidden transition-all duration-300 ${
+            isMenuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"
+          }`}
+        >
+          {/* Backdrop */}
+          <div 
+            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+            onClick={() => setIsMenuOpen(false)}
+          />
+          
+          {/* Side Panel */}
+          <div 
+            className={`absolute top-0 right-0 h-full w-[280px] bg-white shadow-2xl transition-transform duration-300 ease-in-out transform ${
+              isMenuOpen ? "translate-x-0" : "translate-x-full"
+            }`}
+          >
+            <div className="flex flex-col h-full">
+              {/* Header inside drawer */}
+              <div className="flex items-center justify-between p-5 border-b border-gray-100">
+                <span className="font-bold text-[#161D3E]">MENU</span>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMenuOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <X className="h-6 w-6 text-[#161D3E]" />
+                </Button>
+              </div>
+
+              {/* Navigation Links */}
+              <nav className="flex-1 overflow-y-auto p-5">
+                <ul className="flex flex-col gap-4">
+                  {navigationItems.map((item) => (
+                    <li key={item.label}>
+                      <Link
+                        to={item.href}
+                        onClick={() => setIsMenuOpen(false)}
+                        className={`block w-full text-left py-3 font-bold text-[16px] transition-colors ${
+                          isActive(item.href)
+                            ? "text-[#00AB92]"
+                            : "text-[#161D3E] hover:text-[#00AB92]"
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+
+              {/* Actions at bottom */}
+              <div className="p-5 border-t border-gray-100 bg-gray-50 flex flex-col gap-3">
+                <a
+                  href="https://tickets.buildafricaexpo.com/fr/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full"
+                >
+                  <Button className="w-full h-12 rounded-lg bg-[#36499B] font-bold text-white">
+                    S&apos;INSCRIRE
                   </Button>
-                </li>
-              </ul>
-            </nav>
+                </a>
+                <Button
+                  variant="outline"
+                  className="w-full h-12 rounded-lg border-[#36499B] text-[#36499B] font-bold"
+                >
+                  DEVENIR PARTENAIRE
+                </Button>
+              </div>
+            </div>
           </div>
-        )}
+        </div>
       </header>
     </div>
   );

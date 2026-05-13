@@ -163,31 +163,29 @@ export const EventAgendaSection = () => {
                 >
                   {day.dayLabel}
                 </Badge>
-                <h3 className="font-headings-h4 font-[number:var(--headings-h4-font-weight)] text-[length:var(--headings-h4-font-size)] leading-[var(--headings-h4-line-height)] tracking-[var(--headings-h4-letter-spacing)] text-white [font-style:var(--headings-h4-font-style)]">
+                <h3 className="font-['Tomorrow'] font-bold text-lg md:text-xl text-white uppercase">
                   {day.city}
                 </h3>
               </div>
               <CardContent className="bg-white p-6">
-                <ol className="flex flex-col gap-4">
+                <ol className="flex flex-col gap-6">
                   {day.items.map((item) => (
                     <li
                       key={`${day.city}-${item.time}-${item.title}`}
-                      className={`flex items-start gap-4 ${item.featured ? "rounded-[0px_6px_6px_0px] bg-[#f5c5181a] px-3 py-2" : ""}`}
+                      className={`flex items-start gap-4 ${item.featured ? "rounded-r-lg bg-[#f5c5181a] px-3 py-2" : ""}`}
                     >
-                      <time className="min-w-[44px] pt-[1px] font-caption-bold font-[number:var(--caption-bold-font-weight)] text-[#00ab92] text-[length:var(--caption-bold-font-size)] leading-[var(--caption-bold-line-height)] tracking-[var(--caption-bold-letter-spacing)] [font-style:var(--caption-bold-font-style)]">
+                      <time className="min-w-[50px] font-['Inter'] font-bold text-[#00ab92] text-sm md:text-base">
                         {item.time}
                       </time>
-                      <Separator
-                        orientation="vertical"
-                        className={`w-px shrink-0 bg-[#d7dbeb] ${item.tag ? "min-h-[49.5px]" : "min-h-[21.5px]"}`}
-                      />
-                      <div className="flex min-w-0 flex-1 flex-col items-start gap-2">
-                        <p className={item.titleClassName}>{item.title}</p>
-                        {item.tag ? (
-                          <Badge className="h-auto rounded-md bg-[#cceee9] px-2 py-0.5 [font-family:'Inter',Helvetica] text-[11px] font-semibold leading-[16.5px] tracking-[0] text-[#00ab92] hover:bg-[#cceee9]">
+                      <div className="flex-1 flex flex-col gap-2 border-l border-[#d7dbeb] pl-4">
+                        <p className={`font-['Inter'] font-semibold text-[#1d1d1b] text-sm md:text-base ${item.featured ? "text-[#36499b]" : ""}`}>
+                          {item.title}
+                        </p>
+                        {item.tag && (
+                          <Badge className="h-auto rounded-md bg-[#cceee9] px-2 py-0.5 font-['Inter'] text-[10px] md:text-[11px] font-semibold text-[#00ab92] hover:bg-[#cceee9] w-fit">
                             {item.tag}
                           </Badge>
-                        ) : null}
+                        )}
                       </div>
                     </li>
                   ))}

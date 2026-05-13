@@ -90,13 +90,16 @@ export const Intervenants = () => {
 
       {/* Hero Section */}
       <section
-        className="relative w-full min-h-[50vh] md:min-h-[50vh]  animate-fade-in  animate-delay-200  animate-duration-1000  flex items-center  justify-center overflow-hidden"
+        className="relative w-full min-h-[40vh] md:min-h-[50vh] animate-fade-in animate-delay-200 animate-duration-1000 flex items-center justify-center overflow-hidden"
         style={{
           background: "linear-gradient(92.26deg, #36499B 0.24%, #00AB92 100%)",
         }}
       >
-        <div className="w-full max-w-[1440px] flex flex-col justify-center gap-[24px]  min-h-[356px] mt-[120px] md:mt-[90px] px-[20px]">
-          <h1 className="text-white font-['Tomorrow'] font-bold text-[32px] md:text-[48px] leading-[40px] md:leading-[56px] max-w-[900px] animate-fade-up">
+        {/* Subtle Overlay for better contrast */}
+        <div className="absolute inset-0 bg-black/10"></div>
+        
+        <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
+          <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] animate-fade-up uppercase">
             DES VOIX QUI FAÇONNENT L'AFRIQUE DE DEMAIN
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[700px] animate-fade-up [--animation-delay:200ms]">

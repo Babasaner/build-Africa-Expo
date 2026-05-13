@@ -129,10 +129,10 @@ export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
                   />
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-4 border-b-4 border-transparent transition-colors duration-300 group-hover:border-[#00AB92]">
-                  <h3 className="font-body-bold text-[15px] font-bold text-[#1d1d1b] leading-tight">
+                  <h3 className="font-body-bold text-[15px] font-bold text-[#1d1d1b] leading-tight min-h-[40px] flex items-center">
                     {speaker.name}
                   </h3>
-                  <div className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/100">
+                  <div className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/100 min-h-[60px]">
                     {speaker.role
                       ?.split(/[,|—\n]|(?=\bet\s)/)
                       .map((part, i) => (

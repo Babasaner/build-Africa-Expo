@@ -7,7 +7,7 @@ import { client } from "../../../lib/sanity";
 
 const LogoCard = ({ alt, src, imgClassName }) => {
   return (
-    <Card className="min-w-[166px] w-[166px] h-[100px] rounded-none border-[1px] border-[#d2d2d1] bg-white shadow-none transition-all duration-300 hover:border-[#36499b] hover:shadow-md">
+    <Card className="min-w-[140px] w-[140px] md:min-w-[166px] md:w-[166px] h-[80px] md:h-[100px] rounded-none border-[1px] border-[#d2d2d1] bg-white shadow-none transition-all duration-300 hover:border-[#36499b] hover:shadow-md">
       <CardContent className="flex h-full items-center justify-center p-4">
         <img
           alt={alt}
@@ -85,11 +85,11 @@ export const PartnersShowcaseSection = () => {
       .then((data) => {
         if (data && data.length > 0) {
           const grouped = {
-            Media: data.filter((p) => p.category === "media"),
             Platinium: data.filter((p) => p.category === "platinum"),
             Gold: data.filter((p) => p.category === "gold"),
             Silver: data.filter((p) => p.category === "silver"),
             Bronze: data.filter((p) => p.category === "bronze"),
+            Media: data.filter((p) => p.category === "media"),
             "Co-organisateurs": data.filter(
               (p) => p.category === "co-organisateurs",
             ),

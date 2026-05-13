@@ -40,20 +40,20 @@ export const CountryOverviewSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col justify-between gap-10 px-5 py-12 lg:flex-row lg:items-start lg:gap-12 lg:py-[120px]">
         <header className="flex max-w-[620px] flex-col items-start gap-6">
           <div className="flex w-full flex-col items-start gap-2">
-            <p className="mt-[-1.00px] self-stretch font-body-bold font-[number:var(--body-bold-font-weight)] text-[#00ab92] text-[length:var(--body-bold-font-size)] tracking-[var(--body-bold-letter-spacing)] leading-[var(--body-bold-line-height)] [font-style:var(--body-bold-font-style)]">
+            <p className="font-bold text-[#00ab92] text-sm md:text-base uppercase tracking-wider">
               2ÈME ÉDITION — BUILD AFRICA EXPO
             </p>
             <h2
               id="country-overview-title"
-              className="self-stretch font-headings-h2 font-[number:var(--headings-h2-font-weight)] text-white text-[length:var(--headings-h2-font-size)] tracking-[var(--headings-h2-letter-spacing)] leading-[var(--headings-h2-line-height)] [font-style:var(--headings-h2-font-style)]"
+              className="font-['Tomorrow'] font-bold text-white text-3xl md:text-4xl lg:text-5xl leading-tight"
             >
               Sénégal Diaspora Investment Forum
             </h2>
-            <p className="self-stretch font-headings-h4 font-[number:var(--headings-h4-font-weight)] text-[#ffc600] text-[length:var(--headings-h4-font-size)] tracking-[var(--headings-h4-letter-spacing)] leading-[var(--headings-h4-line-height)] [font-style:var(--headings-h4-font-style)]">
+            <p className="font-bold text-[#ffc600] text-xl md:text-2xl">
               New York – Toronto 2026
             </p>
           </div>
-          <p className="max-w-[520px] font-body-regular font-[number:var(--body-regular-font-weight)] text-white text-[length:var(--body-regular-font-size)] tracking-[var(--body-regular-letter-spacing)] leading-[var(--body-regular-line-height)] [font-style:var(--body-regular-font-style)]">
+          <p className="max-w-[520px] font-['Inter'] font-normal text-white text-base md:text-lg leading-relaxed">
             Organisé en marge de la Coupe du Monde FIFA 2026, le Sénégal
             Diaspora Investment Forum est une plateforme stratégique visant à
             connecter la diaspora sénégalaise d&apos;Amérique du Nord aux
@@ -107,11 +107,11 @@ export const CountryOverviewSection = () => {
                     alt="Icons bx map"
                     src="https://c.animaapp.com/mot82cj4305Sf8/img/icons---bx-map.svg"
                   />
-                  <h3 className="whitespace-nowrap font-headings-h4 font-[number:var(--headings-h4-font-weight)] text-white text-[length:var(--headings-h4-font-size)] tracking-[var(--headings-h4-letter-spacing)] leading-[var(--headings-h4-line-height)] [font-style:var(--headings-h4-font-style)]">
+                  <h3 className="whitespace-nowrap font-['Tomorrow'] font-bold text-white text-xl">
                     {item.city}
                   </h3>
                 </div>
-                <p className="whitespace-nowrap font-caption-regular font-[number:var(--caption-regular-font-weight)] text-white text-[length:var(--caption-regular-font-size)] tracking-[var(--caption-regular-letter-spacing)] leading-[var(--caption-regular-line-height)] [font-style:var(--caption-regular-font-style)]">
+                <p className="whitespace-nowrap font-['Inter'] font-normal text-white text-sm opacity-80">
                   {item.participants}
                 </p>
               </CardContent>
