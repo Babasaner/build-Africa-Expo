@@ -239,7 +239,7 @@ export const Salon = () => {
             <img
               src="https://cdn.sanity.io/images/d4jrc26i/production/efb62654f4a0b09b123d7a36060fdf9e9553557d-588x520.png"
               alt="Build Africa Future"
-              srcset=""
+              srcSet=""
             />
           </div>
           <div className="w-full lg:w-[500px] flex flex-col justify-start gap-[40px]">
@@ -247,7 +247,7 @@ export const Salon = () => {
               Connecter l’Afrique aux dynamiques mondiales
             </h1>
 
-            <p className="text-[#343432] text-[16px] font-['Inter'] font-normal leading-[20px] w-full lg:w-[483px] flex flex-col justify-start gap-[10px]">
+            <div className="text-[#343432] text-[16px] font-['Inter'] font-normal leading-[20px] w-full lg:w-[483px] flex flex-col justify-start gap-[10px]">
               L’Afrique connaît aujourd’hui une phase majeure de transformation
               portée par l’urbanisation, les infrastructures, la mobilité,
               l’énergie, l’innovation, la finance et le capital humain.
@@ -261,7 +261,7 @@ export const Salon = () => {
                 La plateforme ambitionne de contribuer à l’attractivité, à la
                 compétitivité et au développement durable du continent.
               </p>
-            </p>
+            </div>
           </div>
         </div>
       </section>

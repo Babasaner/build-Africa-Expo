@@ -295,7 +295,7 @@ export const Intervenants = () => {
               </h3>
             </div>
 
-            <p className="text-[#fff]/70 font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
+            <div className="text-[#fff]/70 font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
               Au-delà des panels et des conférences, Build Africa Expo développe
               des espaces d'échanges et de networking pensés pour favoriser les
               rencontres stratégiques entre décideurs, investisseurs,
@@ -306,7 +306,7 @@ export const Intervenants = () => {
                 une expérience premium orientée vers les connexions, les
                 opportunités et les collaborations durables.
               </p>
-            </p>
+            </div>
           </div>
           <div className="flex-1 w-full">
             <div className="w-full h-auto  animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300  overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-contain bg-no-repeat bg-center">
