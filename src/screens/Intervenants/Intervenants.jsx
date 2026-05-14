@@ -97,7 +97,7 @@ export const Intervenants = () => {
       >
         {/* Subtle Overlay for better contrast */}
         <div className="absolute inset-0 bg-black/10"></div>
-        
+
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] animate-fade-up uppercase">
             DES VOIX QUI FAÇONNENT L'AFRIQUE DE DEMAIN
@@ -311,7 +311,7 @@ export const Intervenants = () => {
           <div className="flex-1 w-full">
             <div className="w-full h-auto  animate-fade-up [--animation-delay:200ms] hover:translate-y-[-10px] transition-all duration-300  overflow-hidden group flex flex-col justify-end pb-[20px] pt-[120px] px-[40px] bg-contain bg-no-repeat bg-center">
               <img
-                src="https://cdn.sanity.io/images/d4jrc26i/production/606e1d25c27275c34e5b5ea018e81499dea67ff8-528x384.png"
+                src="https://cdn.sanity.io/images/d4jrc26i/production/23dc96901c98ac9c63a82dfe6887a55004c947e3-528x384.png"
                 alt="Frame Build Africa Expo"
               />
             </div>

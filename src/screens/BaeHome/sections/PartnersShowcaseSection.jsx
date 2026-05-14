@@ -85,10 +85,12 @@ export const PartnersShowcaseSection = () => {
       .then((data) => {
         if (data && data.length > 0) {
           const grouped = {
+            Stratégiques: data.filter((p) => p.category === "strategique"),
             Platinium: data.filter((p) => p.category === "platinum"),
             Gold: data.filter((p) => p.category === "gold"),
             Silver: data.filter((p) => p.category === "silver"),
             Bronze: data.filter((p) => p.category === "bronze"),
+
             Media: data.filter((p) => p.category === "media"),
             "Co-organisateurs": data.filter(
               (p) => p.category === "co-organisateurs",

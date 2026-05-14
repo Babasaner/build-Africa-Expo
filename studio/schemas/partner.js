@@ -28,6 +28,7 @@ export default {
           { title: 'Gold', value: 'gold' },
           { title: 'Silver', value: 'silver' },
           { title: 'Bronze', value: 'bronze' },
+          { title: 'Stratégiques', value: 'strategique' },
         ],
       },
     },

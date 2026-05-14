@@ -7,6 +7,7 @@ import { BaeHome } from "./screens/BaeHome";
 import { PostDetails } from "./screens/PostDetails/PostDetails";
 import { NotFound } from "./screens/NotFound/NotFound";
 import { Salon } from "./screens/Salon/Salon";
+import { Partenaires } from "./screens/Partenaires/Partenaires";
 import { Contact } from "./screens/Contact/Contact";
 import { Intervenants } from "./screens/Intervenants/Intervenants";
 import { Chatbot } from "./components/Chatbot";
@@ -21,6 +22,7 @@ createRoot(document.getElementById("app")).render(
         <Routes>
           <Route path="/" element={<BaeHome />} />
           <Route path="/a-propos" element={<Salon />} />
+          <Route path="/partenaires" element={<Partenaires />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/intervenants" element={<Intervenants />} />
           <Route path="/announcement" element={<SdifAnnouncement />} />

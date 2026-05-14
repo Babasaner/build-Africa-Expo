@@ -10,7 +10,7 @@ const navigationItems = [
   { label: "ACCUEIL", href: "/" },
   { label: "À PROPOS", href: "/a-propos" },
   { label: "INTERVENANTS", href: "/intervenants" },
-  { label: "PARTENAIRES", href: "/#partenaires" },
+  { label: "PARTENAIRES", href: "/partenaires" },
   { label: "NEWSROOM", href: "/#newsroom" },
   { label: "CONTACT", href: "/contact" },
 ];
