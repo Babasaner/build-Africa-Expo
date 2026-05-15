@@ -12,12 +12,14 @@ import { Contact } from "./screens/Contact/Contact";
 import { Intervenants } from "./screens/Intervenants/Intervenants";
 import { Chatbot } from "./components/Chatbot";
 import { ScrollToTop } from "./components/ScrollToTop";
+import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import "../tailwind.css";
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
+        <GoogleAnalytics />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<BaeHome />} />
