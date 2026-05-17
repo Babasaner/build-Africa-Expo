@@ -4,6 +4,9 @@ import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/ui/button";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+import { validateEmail, validatePhone } from "../../lib/validation";
 
 export const Contact = () => {
   useScrollReveal();
@@ -16,6 +19,7 @@ export const Contact = () => {
     entreprise: "",
     ville: "",
     message: "",
+    botcheck: "",
   });
 
   const [status, setStatus] = useState({
@@ -33,9 +37,30 @@ export const Contact = () => {
     e.preventDefault();
     setStatus({ submitting: true, submitted: false, error: null });
 
+    // Anti-spam Honeypot check
+    if (formData.botcheck) {
+      // Silent success to trick the spam bot without hitting API limits
+      setStatus({ submitting: false, submitted: true, error: null });
+      return;
+    }
+
+    // Validate email (anti-disposable check)
+    const emailCheck = validateEmail(formData.email);
+    if (!emailCheck.valid) {
+      setStatus({ submitting: false, submitted: false, error: emailCheck.message });
+      return;
+    }
+
+    // Validate telephone format
+    const phoneCheck = validatePhone(formData.telephone);
+    if (!phoneCheck.valid) {
+      setStatus({ submitting: false, submitted: false, error: phoneCheck.message });
+      return;
+    }
+
     const data = {
       ...formData,
-      access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
+      access_key: import.meta.env.VITE_WEB3FORMS_CONTACT_KEY || "a9752037-7b12-4195-a489-38caa53f4833",
       from_name: "Build Africa Expo - Site Web",
       subject: `Nouveau message de ${formData.prenom} ${formData.nom}`,
       replyto: formData.email,
@@ -71,10 +96,14 @@ export const Contact = () => {
         });
       }
     } catch (err) {
+      let errMsg = "Une erreur est survenue lors de l'envoi.";
+      if (err instanceof TypeError || (err.message && err.message.toLowerCase().includes("fetch"))) {
+        errMsg = "L'envoi a été bloqué par votre navigateur ou un bloqueur de publicité (AdBlock). Veuillez désactiver votre bloqueur pour ce site ou contactez-nous directement à contact@buildafricaexpo.com / +221 77 766 5757.";
+      }
       setStatus({
         submitting: false,
         submitted: false,
-        error: "Une erreur est survenue lors de l'envoi.",
+        error: errMsg,
       });
     }
   };
@@ -166,31 +195,32 @@ export const Contact = () => {
                     {card.description}
                   </p>
                 </div>
-
-                <Button
-                  className={`${card.buttonColor} mt-6 w-fit text-white font-bold px-[16px] py-[8px] rounded-[8px] transition-colors duration-300 flex items-center gap-2 cursor-pointer ${
-                    card.buttonColor === "bg-[#00AB92]"
-                      ? "hover:bg-[#36499B]"
-                      : "hover:bg-[#00AB92]"
-                  }`}
-                >
-                  CONTACTER
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 14 14"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
+                <a href="#contact">
+                  <Button
+                    className={`${card.buttonColor} mt-6 w-fit text-white font-bold px-[16px] py-[8px] rounded-[8px] transition-colors duration-300 flex items-center gap-2 cursor-pointer ${
+                      card.buttonColor === "bg-[#00AB92]"
+                        ? "hover:bg-[#36499B]"
+                        : "hover:bg-[#00AB92]"
+                    }`}
                   >
-                    <path
-                      d="M1 7H13M13 7L7 1M13 7L7 13"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </Button>
+                    CONTACTER
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 14 14"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M1 7H13M13 7L7 1M13 7L7 13"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  </Button>
+                </a>
               </div>
             ))}
           </div>
@@ -230,7 +260,7 @@ export const Contact = () => {
       </section>
 
       {/* Form Section */}
-      <section className="reveal w-full flex flex-col lg:flex-row">
+      <section id="contact" className="reveal w-full flex flex-col lg:flex-row">
         {/* Left: Form */}
         <div className="flex-[3] bg-[#D7DBEB] p-[20px] md:p-[120px] lg:pl-[calc((100vw-1440px)/2-30px)]">
           {status.submitted ? (
@@ -254,6 +284,18 @@ export const Contact = () => {
               className="grid grid-cols-1 px-[20px] md:grid-cols-2 gap-6"
               onSubmit={handleSubmit}
             >
+              {/* Anti-spam Honeypot field (invisible to humans, traps bots) */}
+              <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+                <input
+                  type="text"
+                  name="botcheck"
+                  tabIndex="-1"
+                  autoComplete="off"
+                  value={formData.botcheck}
+                  onChange={handleChange}
+                />
+              </div>
+
               <input
                 type="text"
                 name="nom"
@@ -281,15 +323,23 @@ export const Contact = () => {
                 placeholder="Email"
                 className="bg-white p-4 outline-none border-none placeholder-[#343432]"
               />
-              <input
-                type="tel"
-                name="telephone"
-                required
-                value={formData.telephone}
-                onChange={handleChange}
-                placeholder="Telephone"
-                className="bg-white p-4 outline-none border-none placeholder-[#343432]"
-              />
+              <div className="flex w-full bg-white focus-within:ring-2 focus-within:ring-[#36499B] transition-shadow">
+                <PhoneInput
+                  defaultCountry="sn"
+                  value={formData.telephone}
+                  onChange={(phone) => setFormData((prev) => ({ ...prev, telephone: phone }))}
+                  inputClassName="w-full bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B]"
+                  countrySelectorProps={{
+                    buttonClassName: "bg-white border-none h-full px-3 flex items-center justify-center focus:outline-none hover:bg-gray-50",
+                    dropdownClassName: "bg-white border border-gray-100 shadow-xl max-h-[250px] overflow-y-auto z-50 text-black font-['Inter'] text-[14px]",
+                  }}
+                  inputProps={{
+                    name: "telephone",
+                    required: true,
+                    placeholder: "Téléphone *",
+                  }}
+                />
+              </div>
               <input
                 type="text"
                 name="entreprise"

@@ -116,21 +116,24 @@ export const Header = () => {
             </nav>
 
             <div className="flex items-center gap-2 sm:gap-3">
-              <a
-                href="https://tickets.buildafricaexpo.com/fr/"
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                to="/inscription-visiteur"
               >
                 <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer">
                   S&apos;INSCRIRE
                 </Button>
-              </a>
-              <Button
-                variant="outline"
-                className="hidden h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] transition-all duration-300 hover:bg-[#00AB92] hover:text-white hover:border-[#00AB92] cursor-pointer sm:inline-flex"
+              </Link>
+              <Link
+                to="/devenir-partenaire"
+                className="hidden sm:inline-flex"
               >
-                DEVENIR PARTENAIRE
-              </Button>
+                <Button
+                  variant="outline"
+                  className="h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] transition-all duration-300 hover:bg-[#00AB92] hover:text-white hover:border-[#00AB92] cursor-pointer"
+                >
+                  DEVENIR PARTENAIRE
+                </Button>
+              </Link>
 
               <Button
                 variant="ghost"
@@ -204,22 +207,25 @@ export const Header = () => {
 
               {/* Actions at bottom */}
               <div className="p-5 border-t border-gray-100 bg-gray-50 flex flex-col gap-3">
-                <a
-                  href="https://tickets.buildafricaexpo.com/fr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to="/inscription-visiteur"
                   className="w-full"
                 >
                   <Button className="w-full h-12 rounded-lg bg-[#36499B] font-bold text-white">
                     S&apos;INSCRIRE
                   </Button>
-                </a>
-                <Button
-                  variant="outline"
-                  className="w-full h-12 rounded-lg border-[#36499B] text-[#36499B] font-bold"
+                </Link>
+                <Link
+                  to="/devenir-partenaire"
+                  className="w-full"
                 >
-                  DEVENIR PARTENAIRE
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full h-12 rounded-lg border-[#36499B] text-[#36499B] font-bold"
+                  >
+                    DEVENIR PARTENAIRE
+                  </Button>
+                </Link>
               </div>
             </div>
           </div>

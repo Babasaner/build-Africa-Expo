@@ -163,7 +163,7 @@ export const Intervenants = () => {
                               {speaker.tag || "Expert"}
                             </span>
                           </div>
-                          <h3 className="font-bold font-['tomorrow'] text-[24px] leading-[32px] text-[#1d1d1b]/100">
+                          <h3 className="font-bold font-['tomorrow'] text-[24px] uppercase leading-[32px] text-[#1d1d1b]/100">
                             {speaker.name}
                           </h3>
                           <div className="font-['Inter'] text-[16px] leading-[20px] text-[#1D1D1B] min-h-[40px] flex flex-col justify-start">
@@ -241,24 +241,24 @@ export const Intervenants = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[120px] gap-y-[40px] mt-16">
             {[
               {
-                title: "Urban Development & Quality of Life",
-                text: "Mobilité, urbanisation, assainissement, agriculture urbaine et villes durables.",
+                title: "Sport, industries créatives & influence culturelle",
+                text: "Infrastructures sportives, grands événements internationaux, économie du sport, médias, audiovisuel, musique, mode, contenus digitaux et influence culturelle comme leviers d’attractivité et de rayonnement international.",
               },
               {
-                title: "Infrastructure & Connectivity",
+                title: "Infrastructure & Connectivité",
                 text: "Ports, aéroports, routes, VRD, logistique et infrastructures stratégiques.",
               },
               {
-                title: "Finance & Investment",
+                title: "Finance & Investissement",
                 text: "Diaspora, capitaux internationaux, investissements prioritaires et structuration du capital.",
               },
               {
-                title: "Innovation & Technology", // I'll use the French title from the image: INNOVATION & TECHNOLOGY
+                title: "Innovation & Technologie", // I'll use the French title from the image: INNOVATION & TECHNOLOGY
 
                 text: "Smart cities, mobilité intelligente, énergie, data et innovation appliquée au développement.",
               },
               {
-                title: "Human Capital & Governance",
+                title: "Capital Humain & Gouvernance",
                 text: "Formation, normes, gouvernance, compétences et structuration des écosystèmes.",
               },
             ].map((item, index) => (

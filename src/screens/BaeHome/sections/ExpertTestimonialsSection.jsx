@@ -138,7 +138,7 @@ export const ExpertTestimonialsSection = () => {
                   </div>
                   <footer className="w-full flex items-start gap-4 pt-6 border-t border-white/10">
                     <div className="flex flex-1 flex-col items-start gap-1">
-                      <h3 className="font-caption-bold text-[15px] font-bold text-[#ffc600]">
+                      <h3 className="font-caption-bold uppercase text-[15px] font-bold text-[#ffc600]">
                         {testimonial.name}
                       </h3>
                       <div className="font-caption-regular text-[13px] font-normal text-white/100">

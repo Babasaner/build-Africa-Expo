@@ -194,14 +194,13 @@ export const Partenaires = () => {
       <section className="reveal w-full h-auto mx-auto flex flex-col items-center justify-center px-[20px] py-16 md:py-[120px] bg-[#161D3E]">
         <div className="w-full max-w-[1000px] mx-auto flex flex-col md:flex-col justify-center items-center mb-10 gap-4">
           <h1 className="text-[#fff] text-[32px] mx-auto md:text-[64px] font-['Tomorrow'] uppercase leading-[42px] md:leading-[72px] font-bold">
-            PARTENAIRES PRIVILÉGIÉS
+            PARTENAIRES PREMIUM
           </h1>
         </div>
 
         {!isLoading && partners.length === 0 && (
           <div className="text-white/60 text-center mt-10">
             Aucun partenaire trouvé. <br />
-            Veuillez ajouter des partenaires dans votre Studio Sanity.
           </div>
         )}
 
@@ -241,18 +240,60 @@ export const Partenaires = () => {
             {partners.length > 2 && (
               <div className="flex gap-[16px] mt-8">
                 <button
-                  onClick={() => scrollToPage(activeIndex > 0 ? activeIndex - 1 : Math.ceil(partners.length / 2) - 1)}
-                  className="w-[32px] h-[32px] rounded-[4px] bg-[#36499B] flex items-center justify-center text-white hover:bg-[#2A3A80] transition-colors"
+                  onClick={() =>
+                    scrollToPage(
+                      activeIndex > 0
+                        ? activeIndex - 1
+                        : Math.ceil(partners.length / 2) - 1,
+                    )
+                  }
+                  className="w-[32px] h-[32px] rounded-[8px] bg-[#36499B] flex items-center justify-center text-white hover:bg-[#2A3A80] transition-colors"
                   aria-label="Previous"
                 >
-                  <span className="text-[14px]">{"<"}</span>
+                  <span className="text-[16px]">
+                    {
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M8.86131 4.19531L5.05664 7.99998L8.86131 11.8046L9.80397 10.862L6.94197 7.99998L9.80397 5.13798L8.86131 4.19531Z"
+                          fill="#D7DBEB"
+                        />
+                      </svg>
+                    }
+                  </span>
                 </button>
                 <button
-                  onClick={() => scrollToPage(activeIndex < Math.ceil(partners.length / 2) - 1 ? activeIndex + 1 : 0)}
-                  className="w-[32px] h-[32px] rounded-[4px] bg-[#36499B] flex items-center justify-center text-white hover:bg-[#2A3A80] transition-colors"
+                  onClick={() =>
+                    scrollToPage(
+                      activeIndex < Math.ceil(partners.length / 2) - 1
+                        ? activeIndex + 1
+                        : 0,
+                    )
+                  }
+                  className="w-[32px] h-[32px] rounded-[8px] bg-[#36499B] flex items-center justify-center text-white hover:bg-[#2A3A80] transition-colors"
                   aria-label="Next"
                 >
-                  <span className="text-[14px]">{">"}</span>
+                  <span className="text-[16px]">
+                    {
+                      <svg
+                        width="16"
+                        height="16"
+                        viewBox="0 0 16 16"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M5.05664 4.19531L8.86131 7.99998L5.05664 11.8046L4.11397 10.862L6.97597 7.99998L4.11397 5.13798L5.05664 4.19531Z"
+                          fill="#D7DBEB"
+                        />
+                      </svg>
+                    }
+                  </span>
                 </button>
               </div>
             )}

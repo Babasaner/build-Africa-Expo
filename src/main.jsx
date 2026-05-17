@@ -10,16 +10,23 @@ import { Salon } from "./screens/Salon/Salon";
 import { Partenaires } from "./screens/Partenaires/Partenaires";
 import { Contact } from "./screens/Contact/Contact";
 import { Intervenants } from "./screens/Intervenants/Intervenants";
+import { DevenirPartenaire } from "./screens/DevenirPartenaire/DevenirPartenaire";
+import { InscriptionVisiteur } from "./screens/InscriptionVisiteur/InscriptionVisiteur";
 import { Chatbot } from "./components/Chatbot";
 import { ScrollToTop } from "./components/ScrollToTop";
-import { GoogleAnalytics } from "./components/GoogleAnalytics";
 import "../tailwind.css";
+
+// GoogleAnalytics is excluded in development to prevent Firefox's Enhanced
+// Tracking Protection (spoofer.js) from blocking the module on localhost.
+// In production builds, the real GA component is imported and runs normally.
+import { PageTracker as RealTracker } from "./components/PageTracker";
+const PageTracker = import.meta.env.DEV ? () => null : RealTracker;
 
 createRoot(document.getElementById("app")).render(
   <StrictMode>
     <HelmetProvider>
       <BrowserRouter>
-        <GoogleAnalytics />
+        <PageTracker />
         <ScrollToTop />
         <Routes>
           <Route path="/" element={<BaeHome />} />
@@ -29,9 +36,12 @@ createRoot(document.getElementById("app")).render(
           <Route path="/intervenants" element={<Intervenants />} />
           <Route path="/announcement" element={<SdifAnnouncement />} />
           <Route path="/actualite/:slug" element={<PostDetails />} />
+          <Route path="/devenir-partenaire" element={<DevenirPartenaire />} />
+          <Route path="/inscription-visiteur" element={<InscriptionVisiteur />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
     </HelmetProvider>
   </StrictMode>,
 );
+
