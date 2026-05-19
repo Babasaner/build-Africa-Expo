@@ -18,7 +18,7 @@ const ArticleCard = ({ item, index }) => (
         }}
       />
     </div>
-    <CardContent className="flex flex-1 flex-col gap-4 border-t-[6px] border-solid p-6 [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_50%,#FFC600_100%)_1]">
+    <CardContent className="flex flex-1 flex-col gap-4 p-6 border-t-[6px] border-solid [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_100%)_1]">
       <div className="flex items-center gap-2 text-xs font-bold text-[#00ab92] uppercase tracking-wider">
         <span className="h-1 w-1 rounded-full bg-gray-300" />
       </div>
@@ -101,12 +101,14 @@ export const NewsroomHighlightsSection = () => {
             </article>
           ))}
         </div>
-        <Button
-          variant="outline"
-          className="h-auto rounded-lg border border-solid border-[#36499b] px-8 py-4 font-button-default text-[length:var(--button-default-font-size)] font-[number:var(--button-default-font-weight)] leading-[var(--button-default-line-height)] tracking-[var(--button-default-letter-spacing)] text-[#36499b] [font-style:var(--button-default-font-style)] hover:bg-transparent hover:text-[#36499b]"
-        >
-          VOIR PLUS
-        </Button>
+        <Link to="/newsroom">
+          <Button
+            variant="outline"
+            className="h-auto rounded-lg cursor-pointer border border-solid border-[#36499b] px-8 py-4 font-button-default text-[length:var(--button-default-font-size)] font-[number:var(--button-default-font-weight)] leading-[var(--button-default-line-height)] tracking-[var(--button-default-letter-spacing)] text-[#36499b] [font-style:var(--button-default-font-style)] hover:bg-transparent hover:text-[#36499b]"
+          >
+            VOIR PLUS
+          </Button>
+        </Link>
       </div>
     </section>
   );

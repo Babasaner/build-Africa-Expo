@@ -9,34 +9,144 @@ import "react-international-phone/style.css";
 import { validateEmail, validatePhone } from "../../lib/validation";
 
 const COUNTRIES = [
-  "Afghanistan", "Afrique du Sud", "Albanie", "Algérie", "Allemagne",
-  "Angola", "Arabie Saoudite", "Argentine", "Australie", "Autriche",
-  "Azerbaïdjan", "Bahreïn", "Bangladesh", "Belgique", "Bénin",
-  "Biélorussie", "Bolivie", "Botswana", "Brésil", "Bulgarie",
-  "Burkina Faso", "Burundi", "Cameroun", "Canada", "Cap-Vert",
-  "Chili", "Chine", "Chypre", "Colombie", "Comores",
-  "Congo (Brazzaville)", "Congo (Kinshasa)", "Corée du Sud", "Costa Rica",
-  "Côte d'Ivoire", "Croatie", "Cuba", "Danemark", "Djibouti",
-  "Égypte", "Émirats Arabes Unis", "Équateur", "Espagne", "États-Unis",
-  "Éthiopie", "Finlande", "France", "Gabon", "Gambie",
-  "Ghana", "Grèce", "Guatemala", "Guinée", "Guinée Bissau",
-  "Guinée Équatoriale", "Haïti", "Hongrie", "Inde", "Indonésie",
-  "Irak", "Iran", "Irlande", "Islande", "Israël",
-  "Italie", "Jamaïque", "Japon", "Jordanie", "Kazakhstan",
-  "Kenya", "Koweït", "Laos", "Lesotho", "Liban",
-  "Libéria", "Libye", "Liechtenstein", "Luxembourg", "Madagascar",
-  "Malaisie", "Malawi", "Mali", "Maroc", "Mauritanie",
-  "Maurice", "Mexique", "Moldavie", "Monaco", "Mongolie",
-  "Mozambique", "Myanmar", "Namibie", "Niger", "Nigéria",
-  "Norvège", "Nouvelle-Zélande", "Oman", "Ouganda", "Ouzbékistan",
-  "Pakistan", "Palestine", "Panama", "Paraguay", "Pays-Bas",
-  "Pérou", "Philippines", "Pologne", "Portugal", "Qatar",
-  "Roumanie", "Royaume-Uni", "Russie", "Rwanda", "Saint-Marin",
-  "Sénégal", "Serbie", "Sierra Leone", "Singapour", "Slovaquie",
-  "Slovénie", "Somalie", "Soudan", "Sri Lanka", "Suède",
-  "Suisse", "Tanzanie", "Tchad", "Thaïlande", "Togo",
-  "Tunisie", "Turquie", "Ukraine", "Uruguay", "Venezuela",
-  "Vietnam", "Yémen", "Zambie", "Zimbabwe",
+  "Afghanistan",
+  "Afrique du Sud",
+  "Albanie",
+  "Algérie",
+  "Allemagne",
+  "Angola",
+  "Arabie Saoudite",
+  "Argentine",
+  "Australie",
+  "Autriche",
+  "Azerbaïdjan",
+  "Bahreïn",
+  "Bangladesh",
+  "Belgique",
+  "Bénin",
+  "Biélorussie",
+  "Bolivie",
+  "Botswana",
+  "Brésil",
+  "Bulgarie",
+  "Burkina Faso",
+  "Burundi",
+  "Cameroun",
+  "Canada",
+  "Cap-Vert",
+  "Chili",
+  "Chine",
+  "Chypre",
+  "Colombie",
+  "Comores",
+  "Congo (Brazzaville)",
+  "Congo (Kinshasa)",
+  "Corée du Sud",
+  "Costa Rica",
+  "Côte d'Ivoire",
+  "Croatie",
+  "Cuba",
+  "Danemark",
+  "Djibouti",
+  "Égypte",
+  "Émirats Arabes Unis",
+  "Équateur",
+  "Espagne",
+  "États-Unis",
+  "Éthiopie",
+  "Finlande",
+  "France",
+  "Gabon",
+  "Gambie",
+  "Ghana",
+  "Grèce",
+  "Guatemala",
+  "Guinée",
+  "Guinée Bissau",
+  "Guinée Équatoriale",
+  "Haïti",
+  "Hongrie",
+  "Inde",
+  "Indonésie",
+  "Irak",
+  "Iran",
+  "Irlande",
+  "Islande",
+  "Israël",
+  "Italie",
+  "Jamaïque",
+  "Japon",
+  "Jordanie",
+  "Kazakhstan",
+  "Kenya",
+  "Koweït",
+  "Laos",
+  "Lesotho",
+  "Liban",
+  "Libéria",
+  "Libye",
+  "Liechtenstein",
+  "Luxembourg",
+  "Madagascar",
+  "Malaisie",
+  "Malawi",
+  "Mali",
+  "Maroc",
+  "Mauritanie",
+  "Maurice",
+  "Mexique",
+  "Moldavie",
+  "Monaco",
+  "Mongolie",
+  "Mozambique",
+  "Myanmar",
+  "Namibie",
+  "Niger",
+  "Nigéria",
+  "Norvège",
+  "Nouvelle-Zélande",
+  "Oman",
+  "Ouganda",
+  "Ouzbékistan",
+  "Pakistan",
+  "Palestine",
+  "Panama",
+  "Paraguay",
+  "Pays-Bas",
+  "Pérou",
+  "Philippines",
+  "Pologne",
+  "Portugal",
+  "Qatar",
+  "Roumanie",
+  "Royaume-Uni",
+  "Russie",
+  "Rwanda",
+  "Saint-Marin",
+  "Sénégal",
+  "Serbie",
+  "Sierra Leone",
+  "Singapour",
+  "Slovaquie",
+  "Slovénie",
+  "Somalie",
+  "Soudan",
+  "Sri Lanka",
+  "Suède",
+  "Suisse",
+  "Tanzanie",
+  "Tchad",
+  "Thaïlande",
+  "Togo",
+  "Tunisie",
+  "Turquie",
+  "Ukraine",
+  "Uruguay",
+  "Venezuela",
+  "Vietnam",
+  "Yémen",
+  "Zambie",
+  "Zimbabwe",
 ];
 
 const SECTORS = [
@@ -105,20 +215,32 @@ export const InscriptionVisiteur = () => {
     // Validate email (anti-disposable check)
     const emailCheck = validateEmail(formData.email);
     if (!emailCheck.valid) {
-      setStatus({ submitting: false, submitted: false, error: emailCheck.message });
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: emailCheck.message,
+      });
       return;
     }
 
     // Validate telephone format
     const phoneCheck = validatePhone(formData.telephone);
     if (!phoneCheck.valid) {
-      setStatus({ submitting: false, submitted: false, error: phoneCheck.message });
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: phoneCheck.message,
+      });
       return;
     }
 
     // Validate country select
     if (!formData.pays) {
-      setStatus({ submitting: false, submitted: false, error: "Veuillez choisir un pays dans la liste." });
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: "Veuillez choisir un pays dans la liste.",
+      });
       return;
     }
 
@@ -132,7 +254,9 @@ export const InscriptionVisiteur = () => {
       message: formData.message,
       newsletter: formData.newsletter ? "Oui" : "Non",
       botcheck: formData.botcheck,
-      access_key: import.meta.env.VITE_WEB3FORMS_VISITEUR_KEY || "e41d9ef6-c71a-4750-afc2-13a4f1268b0f",
+      access_key:
+        import.meta.env.VITE_WEB3FORMS_VISITEUR_KEY ||
+        "e41d9ef6-c71a-4750-afc2-13a4f1268b0f",
       from_name: "Build Africa Expo - Inscription Visiteur",
       subject: `Inscription visiteur — ${formData.prenom} ${formData.nom} (${formData.secteur || "Secteur non précisé"})`,
       replyto: formData.email,
@@ -163,12 +287,20 @@ export const InscriptionVisiteur = () => {
           botcheck: "",
         });
       } else {
-        setStatus({ submitting: false, submitted: false, error: result.message });
+        setStatus({
+          submitting: false,
+          submitted: false,
+          error: result.message,
+        });
       }
     } catch (err) {
       let errMsg = "Une erreur est survenue lors de l'envoi.";
-      if (err instanceof TypeError || (err && err.message && err.message.toLowerCase().includes("fetch"))) {
-        errMsg = "L'envoi a été bloqué par votre navigateur ou un bloqueur de publicité (AdBlock). Veuillez désactiver votre bloqueur pour ce site ou contactez-nous directement à contact@buildafricaexpo.com / +221 77 766 5757.";
+      if (
+        err instanceof TypeError ||
+        (err && err.message && err.message.toLowerCase().includes("fetch"))
+      ) {
+        errMsg =
+          "L'envoi a été bloqué par votre navigateur ou un bloqueur de publicité (AdBlock). Veuillez désactiver votre bloqueur pour ce site ou contactez-nous directement à contact@buildafricaexpo.com / +221 77 766 5757.";
       }
       setStatus({
         submitting: false,
@@ -204,7 +336,8 @@ export const InscriptionVisiteur = () => {
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[22px] max-w-[620px] animate-fade-up [--animation-delay:200ms]">
             Bienvenue au BUILD AFRICA EXPO 2026 ! Découvrez des opportunités
             passionnantes et connectez-vous avec des leaders du secteur. Ne
-            manquez pas cette chance de participer à un événement incontournable.
+            manquez pas cette chance de participer à un événement
+            incontournable.
           </p>
         </div>
       </section>
@@ -214,7 +347,7 @@ export const InscriptionVisiteur = () => {
         className="relative w-full py-[80px] md:py-[120px] px-[20px] bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            "linear-gradient(rgba(13,22,66,0.82), rgba(13,22,66,0.82)), url('https://cdn.sanity.io/images/d4jrc26i/production/8e73dd1447741c61bfc7fad310665dd0cd62879e-2880x1620.jpg')",
+            "linear-gradient(#161D3ECC 80%, #161D3ECC 100%), url('https://cdn.sanity.io/images/d4jrc26i/production/bc93a06d69809a8ae904b74ad20096393873e889-4096x2731.jpg')",
         }}
       >
         <div className="reveal max-w-[780px] mx-auto w-full">
@@ -253,7 +386,10 @@ export const InscriptionVisiteur = () => {
               onSubmit={handleSubmit}
             >
               {/* Anti-spam Honeypot field (invisible to humans, traps bots) */}
-              <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+              <div
+                style={{ position: "absolute", left: "-9999px" }}
+                aria-hidden="true"
+              >
                 <input
                   type="text"
                   name="botcheck"
@@ -289,11 +425,15 @@ export const InscriptionVisiteur = () => {
                 <PhoneInput
                   defaultCountry="sn"
                   value={formData.telephone}
-                  onChange={(phone) => setFormData((prev) => ({ ...prev, telephone: phone }))}
+                  onChange={(phone) =>
+                    setFormData((prev) => ({ ...prev, telephone: phone }))
+                  }
                   inputClassName="w-full bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B]"
                   countrySelectorProps={{
-                    buttonClassName: "bg-white border-none h-full px-3 flex items-center justify-center focus:outline-none hover:bg-gray-50",
-                    dropdownClassName: "bg-white border border-gray-100 shadow-xl max-h-[250px] overflow-y-auto z-50 text-black font-['Inter'] text-[14px]",
+                    buttonClassName:
+                      "bg-white border-none h-full px-3 flex items-center justify-center focus:outline-none hover:bg-gray-50",
+                    dropdownClassName:
+                      "bg-white border border-gray-100 shadow-xl max-h-[250px] overflow-y-auto z-50 text-black font-['Inter'] text-[14px]",
                   }}
                   inputProps={{
                     name: "telephone",
@@ -407,7 +547,12 @@ export const InscriptionVisiteur = () => {
                       }`}
                     >
                       {formData.newsletter && (
-                        <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
+                        <svg
+                          width="10"
+                          height="8"
+                          viewBox="0 0 10 8"
+                          fill="none"
+                        >
                           <path
                             d="M1 4L3.5 6.5L9 1"
                             stroke="white"
@@ -428,7 +573,7 @@ export const InscriptionVisiteur = () => {
                 <Button
                   type="submit"
                   disabled={status.submitting}
-                  className="bg-[#36499B] text-white font-bold px-8 py-3 rounded-none hover:bg-[#00AB92] transition-colors duration-300 cursor-pointer flex items-center gap-3 disabled:opacity-50 font-['Tomorrow'] text-[14px] tracking-wide"
+                  className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] w-fit px-4 md:px-6 font-bold text-white hover:bg-[#00AB92] transition-colors duration-300 cursor-pointer flex items-center gap-2 disabled:opacity-50"
                 >
                   {status.submitting ? "ENVOI EN COURS..." : "ENVOYER"}
                   {!status.submitting && (

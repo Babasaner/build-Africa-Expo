@@ -41,7 +41,7 @@ const navigationLinks = [
   { label: "À PROPOS", href: "/a-propos" },
   { label: "INTERVENANTS", href: "/intervenants" },
   { label: "PARTENAIRES", href: "/partenaires" },
-  { label: "NEWSROOM", href: "/#newsroom" },
+  { label: "NEWSROOM", href: "/newsroom" },
   { label: "CONTACT", href: "/contact" },
 ];
 const announcementLocations = ["New York", "Toronto"];
@@ -113,7 +113,8 @@ export const Footer = () => {
                   ))}
                 </div>
                 <p className="text-[14px] text-white/100">
-                  © 2026 — Copyright. Tous droits réservés
+                  © {new Date().getFullYear()} — Copyright. Tous droits réservés. Build Africa Expo
+                  Une initiative de Sovereign Insight Group
                 </p>
               </div>
             </div>

@@ -12,6 +12,7 @@ import { Contact } from "./screens/Contact/Contact";
 import { Intervenants } from "./screens/Intervenants/Intervenants";
 import { DevenirPartenaire } from "./screens/DevenirPartenaire/DevenirPartenaire";
 import { InscriptionVisiteur } from "./screens/InscriptionVisiteur/InscriptionVisiteur";
+import { Newsroom } from "./screens/Newsroom/Newsroom";
 import { Chatbot } from "./components/Chatbot";
 import { ScrollToTop } from "./components/ScrollToTop";
 import "../tailwind.css";
@@ -38,6 +39,7 @@ createRoot(document.getElementById("app")).render(
           <Route path="/actualite/:slug" element={<PostDetails />} />
           <Route path="/devenir-partenaire" element={<DevenirPartenaire />} />
           <Route path="/inscription-visiteur" element={<InscriptionVisiteur />} />
+          <Route path="/newsroom" element={<Newsroom />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

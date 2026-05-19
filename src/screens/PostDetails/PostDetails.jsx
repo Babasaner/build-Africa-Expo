@@ -15,7 +15,9 @@ const ArticleCard = ({ item, index }) => (
         className="h-full w-full object-cover"
         alt={item.title}
         src={item.imageUrl || `/actu/a-${index + 1}.jpg`}
-        onError={(e) => { e.target.src = "/actu/a-1.jpg"; }}
+        onError={(e) => {
+          e.target.src = "/actu/a-1.jpg";
+        }}
       />
     </div>
     <CardContent className="flex flex-1 flex-col gap-4 border-t-[6px] border-solid p-6 [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_50%,#FFC600_100%)_1]">
@@ -49,40 +51,52 @@ export const PostDetails = () => {
 
     Promise.all([
       client.fetch(query, { slug }),
-      client.fetch(recentQuery, { slug })
-    ]).then(([postData, recentData]) => {
-      setPost(postData);
-      setRecentPosts(recentData);
-      setLoading(false);
-    }).catch(err => {
-      console.error("Fetch error:", err);
-      setLoading(false);
-    });
+      client.fetch(recentQuery, { slug }),
+    ])
+      .then(([postData, recentData]) => {
+        setPost(postData);
+        setRecentPosts(recentData);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Fetch error:", err);
+        setLoading(false);
+      });
   }, [slug]);
 
-  if (loading) return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50">
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-12 h-12 border-4 border-[#00AB92] border-t-transparent rounded-full animate-spin"></div>
-        <p className="text-gray-500 font-medium">Chargement de l'article...</p>
+  if (loading)
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50">
+        <div className="flex flex-col items-center gap-4">
+          <div className="w-12 h-12 border-4 border-[#00AB92] border-t-transparent rounded-full animate-spin"></div>
+          <p className="text-gray-500 font-medium">
+            Chargement de l'article...
+          </p>
+        </div>
       </div>
-    </div>
-  );
+    );
 
-  if (!post) return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-5 text-center">
-      <h2 className="text-2xl font-bold text-[#161D3E] mb-4">Article non trouvé</h2>
-      <p className="text-gray-500 mb-8">Désolé, cet article n'existe pas ou a été déplacé.</p>
-      <Link to="/">
-        <Button className="bg-[#00AB92] hover:bg-[#00AB92]/90">Retour à l'accueil</Button>
-      </Link>
-    </div>
-  );
+  if (!post)
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-5 text-center">
+        <h2 className="text-2xl font-bold text-[#161D3E] mb-4">
+          Article non trouvé
+        </h2>
+        <p className="text-gray-500 mb-8">
+          Désolé, cet article n'existe pas ou a été déplacé.
+        </p>
+        <Link to="/">
+          <Button className="bg-[#00AB92] hover:bg-[#00AB92]/90">
+            Retour à l'accueil
+          </Button>
+        </Link>
+      </div>
+    );
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
       <Header />
-      
+
       <main className="flex-grow pt-[80px] lg:pt-[100px]">
         {/* Header / Hero Section */}
         <div className="relative h-[300px] md:h-[450px] w-full overflow-hidden">
@@ -98,11 +112,6 @@ export const PostDetails = () => {
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-0 flex items-center justify-center px-5">
             <div className="max-w-[900px] text-center animate-fade-in">
-              <div className="flex items-center justify-center gap-3 mb-6">
-                <span className="px-3 py-1 bg-[#00AB92] text-white text-[10px] md:text-xs font-bold uppercase tracking-widest rounded-full">
-                  Actualité
-                </span>
-              </div>
               <h1 className="font-headings-h1 text-[24px] sm:text-[32px] md:text-[42px] font-bold text-white uppercase leading-[1.2] tracking-tight">
                 {post.title}
               </h1>
@@ -112,7 +121,10 @@ export const PostDetails = () => {
 
         <div className="mx-auto max-w-[900px] px-5 py-8 md:py-16">
           <Link to="/">
-            <Button variant="ghost" className="mb-8 p-0 text-[#00AB92] hover:bg-transparent font-bold">
+            <Button
+              variant="ghost"
+              className="mb-8 p-0 text-[#00AB92] hover:bg-transparent font-bold"
+            >
               <ChevronLeft className="mr-2 h-4 w-4" /> Retour à l'accueil
             </Button>
           </Link>
@@ -121,25 +133,25 @@ export const PostDetails = () => {
             <div className="flex items-center gap-2 text-gray-500">
               <Calendar className="h-4 w-4 text-[#00AB92]" />
               <span className="text-sm">
-                {post.publishedAt ? new Date(post.publishedAt).toLocaleDateString('fr-FR', {
-                  day: 'numeric',
-                  month: 'long',
-                  year: 'numeric'
-                }) : 'Date inconnue'}
+                {post.publishedAt
+                  ? new Date(post.publishedAt).toLocaleDateString("fr-FR", {
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })
+                  : "Date inconnue"}
               </span>
-            </div>
-            <div className="flex items-center gap-2 text-gray-500">
-              <User className="h-4 w-4 text-[#00AB92]" />
-              <span className="text-sm font-medium">Administration BAE</span>
             </div>
           </div>
 
           {/* Portable Text Content */}
-          <div className="prose prose-sm sm:prose-base md:prose-lg max-w-none 
+          <div
+            className="prose prose-sm sm:prose-base md:prose-lg max-w-none 
             prose-headings:text-[#161D3E] prose-headings:font-bold 
             prose-p:text-gray-700 prose-p:leading-relaxed
             prose-img:rounded-xl prose-img:shadow-lg
-            prose-a:text-[#00AB92] prose-strong:text-[#161D3E]">
+            prose-a:text-[#00AB92] prose-strong:text-[#161D3E]"
+          >
             <PortableText value={post.body} />
           </div>
         </div>
@@ -154,8 +166,14 @@ export const PostDetails = () => {
             </header>
             <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
               {recentPosts.map((item, index) => (
-                <article key={`news-item-${index}`} className="flex h-full w-full">
-                  <Link to={`/actualite/${item.slug.current}`} className="flex h-full w-full">
+                <article
+                  key={`news-item-${index}`}
+                  className="flex h-full w-full"
+                >
+                  <Link
+                    to={`/actualite/${item.slug.current}`}
+                    className="flex h-full w-full"
+                  >
                     <ArticleCard item={item} index={index} />
                   </Link>
                 </article>
