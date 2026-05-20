@@ -4,6 +4,7 @@ import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 import { Separator } from "../../../components/ui/separator";
 import { client } from "../../../lib/sanity";
+import { T } from "../../../lib/AutoTranslate";
 
 const LogoCard = ({ alt, src, imgClassName }) => {
   return (
@@ -127,7 +128,7 @@ export const PartnersShowcaseSection = () => {
   if (isLoading) {
     return (
       <section className="relative w-full bg-[#E8E8E8] py-12 lg:py-[120px]">
-        <div className="text-center">Chargement des partenaires...</div>
+        <div className="text-center"><T>Chargement des partenaires...</T></div>
       </section>
     );
   }
@@ -141,7 +142,7 @@ export const PartnersShowcaseSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-10 px-5">
         <header>
           <h2 className="[font-family:'Tomorrow',Helvetica] text-2xl font-bold leading-[1.2] tracking-[1.08px] text-[#1D1D1B] sm:text-3xl lg:text-4xl">
-            PARTENAIRES
+            <T>PARTENAIRES</T>
           </h2>
         </header>
         {sectionData.map((section, sectionIndex) => (
@@ -151,7 +152,7 @@ export const PartnersShowcaseSection = () => {
           >
             <div className="flex w-full flex-col items-start gap-6">
               <h3 className="font-body-bold text-[18px] font-bold tracking-tight text-[#4a4a49]">
-                {section.title}
+                <T>{section.title}</T>
               </h3>
 
               <CarouselRow items={section.items} />

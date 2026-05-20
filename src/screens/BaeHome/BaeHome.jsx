@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { useLanguage } from "../../lib/i18n";
 import { AudienceEngagementSection } from "./sections/AudienceEngagementSection";
 import { CojojSection } from "./sections/CojojSection";
 import { CountryOverviewSection } from "./sections/CountryOverviewSection";
@@ -20,18 +21,13 @@ import EntrepriseInvite from "./sections/EntrepriseInvite";
 
 export const BaeHome = () => {
   useScrollReveal();
+  const { t } = useLanguage();
 
   return (
     <main className="relative flex min-h-screen w-full flex-col items-center bg-white">
       <Helmet>
-        <title>
-          Build Africa Expo 2026 — Plateforme d'Investissement et de
-          Développement
-        </title>
-        <meta
-          name="description"
-          content="Build Africa Expo 2026 est le rendez-vous stratégique pour connecter investisseurs, institutions et diaspora africaine autour des transformations urbaines et économiques."
-        />
+        <title>{t("seo.titleHome")}</title>
+        <meta name="description" content={t("seo.descriptionHome")} />
         <meta
           name="keywords"
           content="Build Africa Expo, investissement Afrique, diaspora africaine, développement urbain, infrastructure Afrique, 2026"
@@ -39,7 +35,7 @@ export const BaeHome = () => {
         <meta property="og:title" content="Build Africa Expo 2026" />
         <meta
           property="og:description"
-          content="Plateforme d'Investissement et de Développement pour l'Afrique."
+          content={t("seo.descriptionHome")}
         />
         <meta property="og:type" content="website" />
       </Helmet>

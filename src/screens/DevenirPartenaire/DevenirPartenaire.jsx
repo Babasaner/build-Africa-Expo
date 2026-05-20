@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
 import { Button } from "../../components/ui/button";
+import { T, useTText } from "../../lib/AutoTranslate";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
@@ -151,6 +152,15 @@ const COUNTRIES = [
 
 export const DevenirPartenaire = () => {
   useScrollReveal();
+
+  const tNom = useTText("Nom *");
+  const tPrenom = useTText("Prénom *");
+  const tEntreprise = useTText("Entreprise *");
+  const tEmail = useTText("Email *");
+  const tTelephone = useTText("Téléphone *");
+  const tWebsite = useTText("Website");
+  const tPays = useTText("Pays *");
+  const tMessagePlaceholder = useTText("En quoi pouvons-nous vous aider ?");
 
   const [formData, setFormData] = useState({
     nom: "",
@@ -311,11 +321,11 @@ export const DevenirPartenaire = () => {
         <div className="absolute inset-0 bg-black/10" />
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] uppercase animate-fade-up">
-            DEVENIR PARTENAIRE ? INSCRIVEZ-VOUS
+            <T>DEVENIR PARTENAIRE ? INSCRIVEZ-VOUS</T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[680px] animate-fade-up [--animation-delay:200ms]">
-            Nous vendons activement des espaces pour le BUILD AFRICA EXPO 2026.
-            Contactez-nous dès maintenant pour réserver votre espace.
+            <T>Nous vendons activement des espaces pour le BUILD AFRICA EXPO 2026.
+            Contactez-nous dès maintenant pour réserver votre espace.</T>
           </p>
         </div>
       </section>
@@ -344,17 +354,17 @@ export const DevenirPartenaire = () => {
                 </svg>
               </div>
               <h3 className="text-white font-['Tomorrow'] font-bold text-[28px] md:text-[36px] uppercase">
-                Demande envoyée !
+                <T>Demande envoyée !</T>
               </h3>
               <p className="text-white/80 font-['Inter'] text-[16px] md:text-[18px] max-w-[500px]">
-                Nous avons bien reçu votre demande de partenariat. Notre équipe
-                vous contactera dans les plus brefs délais.
+                <T>Nous avons bien reçu votre demande de partenariat. Notre équipe
+                vous contactera dans les plus brefs délais.</T>
               </p>
               <Button
                 onClick={() => setStatus({ ...status, submitted: false })}
                 className="mt-4 bg-[#00AB92] text-white font-bold px-8 py-4 rounded-none hover:bg-[#36499B] transition-colors duration-300 cursor-pointer"
               >
-                ENVOYER UNE AUTRE DEMANDE
+                <T>ENVOYER UNE AUTRE DEMANDE</T>
               </Button>
             </div>
           ) : (
@@ -385,7 +395,7 @@ export const DevenirPartenaire = () => {
                 required
                 value={formData.nom}
                 onChange={handleChange}
-                placeholder="Nom *"
+                placeholder={tNom}
                 className="bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
               {/* Prénom */}
@@ -395,7 +405,7 @@ export const DevenirPartenaire = () => {
                 required
                 value={formData.prenom}
                 onChange={handleChange}
-                placeholder="Prénom *"
+                placeholder={tPrenom}
                 className="bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
               {/* Entreprise */}
@@ -405,7 +415,7 @@ export const DevenirPartenaire = () => {
                 required
                 value={formData.entreprise}
                 onChange={handleChange}
-                placeholder="Entreprise *"
+                placeholder={tEntreprise}
                 className="bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
               {/* Email */}
@@ -415,7 +425,7 @@ export const DevenirPartenaire = () => {
                 required
                 value={formData.email}
                 onChange={handleChange}
-                placeholder="Email *"
+                placeholder={tEmail}
                 className="bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
               {/* Téléphone */}
@@ -436,7 +446,7 @@ export const DevenirPartenaire = () => {
                   inputProps={{
                     name: "telephone",
                     required: true,
-                    placeholder: "Téléphone *",
+                    placeholder: tTelephone,
                   }}
                 />
               </div>
@@ -446,7 +456,7 @@ export const DevenirPartenaire = () => {
                 name="website"
                 value={formData.website}
                 onChange={handleChange}
-                placeholder="Website"
+                placeholder={tWebsite}
                 className="bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
               {/* Pays — select (pleine largeur pour équilibrer la grille) */}
@@ -460,7 +470,7 @@ export const DevenirPartenaire = () => {
                   style={{ color: formData.pays ? "#1D1D1B" : "#343432" }}
                 >
                   <option value="" disabled>
-                    Pays *
+                    {tPays}
                   </option>
                   {COUNTRIES.map((c) => (
                     <option key={c} value={c}>
@@ -487,7 +497,7 @@ export const DevenirPartenaire = () => {
                 required
                 value={formData.message}
                 onChange={handleChange}
-                placeholder="En quoi pouvons-nous vous aider ?"
+                placeholder={tMessagePlaceholder}
                 className="md:col-span-2 bg-white p-4 outline-none border-none min-h-[140px] placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B] resize-none focus:ring-2 focus:ring-[#00AB92] transition-shadow"
               />
 
@@ -529,7 +539,7 @@ export const DevenirPartenaire = () => {
                     </div>
                   </div>
                   <span className="text-white/80 font-['Inter'] text-[14px] group-hover:text-white transition-colors">
-                    Oui, je souhaite recevoir des e-mails
+                    <T>Oui, je souhaite recevoir des e-mails</T>
                   </span>
                 </label>
 
@@ -539,7 +549,7 @@ export const DevenirPartenaire = () => {
                   disabled={status.submitting}
                   className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] w-fit px-4 md:px-6 font-bold text-white hover:bg-[#00AB92] transition-colors duration-300 cursor-pointer flex items-center gap-2 disabled:opacity-50"
                 >
-                  {status.submitting ? "ENVOI EN COURS..." : "ENVOYER"}
+                  {status.submitting ? <T>ENVOI EN COURS...</T> : <T>ENVOYER</T>}
                   {!status.submitting && (
                     <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                       <path

@@ -7,6 +7,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { ExpertSpeakersGridSection } from "../BaeHome/sections/ExpertSpeakersGridSection";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { client } from "../../lib/sanity";
+import { T } from "../../lib/AutoTranslate";
 
 export const Intervenants = () => {
   useScrollReveal();
@@ -100,12 +101,10 @@ export const Intervenants = () => {
 
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] animate-fade-up uppercase">
-            DES VOIX QUI FAÇONNENT L'AFRIQUE DE DEMAIN
+            <T>DES VOIX QUI FAÇONNENT L'AFRIQUE DE DEMAIN</T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[700px] animate-fade-up [--animation-delay:200ms]">
-            Build Africa Expo réunit dirigeants, investisseurs, experts,
-            institutions et acteurs internationaux autour des grands enjeux de
-            transformation du continent africain.
+            <T>Build Africa Expo réunit dirigeants, investisseurs, experts, institutions et acteurs internationaux autour des grands enjeux de transformation du continent africain.</T>
           </p>
         </div>
       </section>
@@ -120,7 +119,7 @@ export const Intervenants = () => {
       >
         <div className="w-full max-w-[1000px] flex flex-col md:flex-row justify-center items-center mb-10 gap-4">
           <h1 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase leading-[42px] md:leading-[72px] font-bold">
-            Intervenants à l'honneur
+            <T>Intervenants à l'honneur</T>
           </h1>
         </div>
 
@@ -160,7 +159,7 @@ export const Intervenants = () => {
                         <div className="flex flex-1 flex-col gap-[8px] p-[16px] border-b-4 border-transparent transition-colors duration-300 group-hover:border-[#00AB92]">
                           <div className="w-fit bg-[#00AB92] py-[4px] px-[8px] flex items-center rounded-[4px]">
                             <span className="text-[#fff] font-['inter'] uppercase font-bold text-[10px]">
-                              {speaker.tag || "Expert"}
+                              <T>{speaker.tag || "Expert"}</T>
                             </span>
                           </div>
                           <h3 className="font-bold font-['tomorrow'] text-[24px] uppercase leading-[32px] text-[#1d1d1b]/100">
@@ -172,16 +171,16 @@ export const Intervenants = () => {
                               return parts.length > 1 ? (
                                 <p className="block">
                                   <span className="font-bold">
-                                    {parts[0].trim()}
+                                    <T>{parts[0].trim()}</T>
                                   </span>
                                   <span className="font-normal">
                                     {" "}
-                                    · {parts.slice(1).join("·").trim()}
+                                    · <T>{parts.slice(1).join("·").trim()}</T>
                                   </span>
                                 </p>
                               ) : (
                                 <p className="font-normal">
-                                  {speaker.role?.trim()}
+                                  <T>{speaker.role?.trim()}</T>
                                 </p>
                               );
                             })()}
@@ -230,10 +229,10 @@ export const Intervenants = () => {
           <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
             <div className="flex max-w-[683.8px] flex-col items-start gap-4">
               <p className="mt-[-1.00px] font-headings-h4 text-sm md:text-base font-bold text-[#00AB92]">
-                VISION GLOBALE
+                <T>VISION GLOBALE</T>
               </p>
               <h2 className="font-headings-h2 text-2xl uppercase md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#1D1D1B]">
-                Des thématiques au cœur des transformations du continent
+                <T>Des thématiques au cœur des transformations du continent</T>
               </h2>
             </div>
           </header>
@@ -267,10 +266,10 @@ export const Intervenants = () => {
                 className="flex flex-col gap-2 pl-6 border-l-4 border-[#36499B] bg-white"
               >
                 <h3 className="font-['Tomorrow'] font-bold text-[20px] leading-[24px] text-[#1D1D1B] uppercase">
-                  {item.title_fr || item.title}
+                  <T>{item.title_fr || item.title}</T>
                 </h3>
                 <p className="font-['Inter'] font-normal text-[16px] leading-[20px] text-[#343432]">
-                  {item.text}
+                  <T>{item.text}</T>
                 </p>
               </div>
             ))}
@@ -285,26 +284,20 @@ export const Intervenants = () => {
           <div className="flex-1 flex flex-col gap-8">
             <div className="flex gap-[24px]">
               <h2 className="text-[#00AB92] flex flex-col uppercase text-[20px] gap-[8px]  font-bold leading-[24px]">
-                EXECUTIVE EXPERIENCES
-              </h2>
-            </div>
+              <T>EXECUTIVE EXPERIENCES</T>
+            </h2>
+          </div>
 
             <div className="flex max-w-[530px] gap-[24px]">
               <h3 className="text-[#fff] uppercase flex flex-col uppercase text-[32px] gap-[8px]  font-bold leading-[40px]">
-                Des formats conçus pour créer des connexions à forte valeur
+                <T>Des formats conçus pour créer des connexions à forte valeur</T>
               </h3>
             </div>
 
             <div className="text-[#fff]/70 font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
-              Au-delà des panels et des conférences, Build Africa Expo développe
-              des espaces d'échanges et de networking pensés pour favoriser les
-              rencontres stratégiques entre décideurs, investisseurs,
-              institutions, entreprises et diaspora.
+              <T>Au-delà des panels et des conférences, Build Africa Expo développe des espaces d'échanges et de networking pensés pour favoriser les rencontres stratégiques entre décideurs, investisseurs, institutions, entreprises et diaspora.</T>
               <p className="text-[#fff]/70 font-['Inter'] mt-4 font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
-                Dîners de travail, rencontres exécutives, cocktails networking,
-                sessions privées et discussions sectorielles participent à créer
-                une expérience premium orientée vers les connexions, les
-                opportunités et les collaborations durables.
+                <T>Dîners de travail, rencontres exécutives, cocktails networking, sessions privées et discussions sectorielles participent à créer une expérience premium orientée vers les connexions, les opportunités et les collaborations durables.</T>
               </p>
             </div>
           </div>
@@ -331,13 +324,13 @@ export const Intervenants = () => {
           <div className="grid grid-cols-1 gap-[40px]">
             <div className="text-center">
               <h2 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase  leading-[42px] md:leading-[72px] font-bold ">
-                Rejoignez le réseau qui bâtit l'Afrique de demain.
+                <T>Rejoignez le réseau qui bâtit l'Afrique de demain.</T>
               </h2>
             </div>
 
             <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
               <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                DEVENIR PARTENAIRE DU FORUM
+                <T>DEVENIR PARTENAIRE DU FORUM</T>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
@@ -358,7 +351,7 @@ export const Intervenants = () => {
                 rel="noopener noreferrer"
               >
                 <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                  S'INSCRIRE COMME VISITEUR
+                  <T>S'INSCRIRE COMME VISITEUR</T>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"

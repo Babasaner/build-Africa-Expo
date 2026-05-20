@@ -15,56 +15,140 @@ import {
   Calendar,
   Headphones,
   Clock,
+  X,
 } from "lucide-react";
+import { ExpertTestimonialsSection } from "../BaeHome/sections/ExpertTestimonialsSection";
+import { useLanguage } from "../../lib/i18n";
+import { T, useTText } from "../../lib/AutoTranslate";
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
-const formatDate = (dateStr) => {
-  if (!dateStr) return "08 Mai 2026"; // Fallback matching screenshot date style
-  return new Date(dateStr).toLocaleDateString("fr-FR", {
-    day: "2-digit",
-    month: "long",
-    year: "numeric",
-  });
+const formatDate = (dateStr, locale = "fr") => {
+  if (!dateStr) return locale === "fr" ? "08 Mai 2026" : "May 08, 2026";
+  return new Date(dateStr).toLocaleDateString(
+    locale === "fr" ? "fr-FR" : "en-US",
+    {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    },
+  );
 };
 
-const CATEGORIES = [
-  "TOUT",
-  "ACTUALITE",
-  "INFRASTRUCTURE",
-  "URBANISME",
-  "INNOVATION",
-  "PARTENARIAT",
-];
+// Dynamically fetched categories will be appended to this list
+const DEFAULT_CATEGORIES = ["TOUT"];
 
 export const Newsroom = () => {
   useScrollReveal();
 
+  const { locale, translateText } = useLanguage();
+  const tSearchPlaceholder = useTText("Rechercher...");
+
   const [articles, setArticles] = useState([]);
+  const [categories, setCategories] = useState(DEFAULT_CATEGORIES);
+  const [podcasts, setPodcasts] = useState([]);
+  const [isPodcastModalOpen, setIsPodcastModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
   const [activeCategory, setActiveCategory] = useState("TOUT");
   const [searchQuery, setSearchQuery] = useState("");
 
-  // Fetch Sanity posts
+  // Fetch Sanity posts and categories
   useEffect(() => {
-    const query = `*[_type == "post"] | order(publishedAt desc)[0...12] {
-      title, slug, excerpt, publishedAt, category,
+    const postsQuery = `*[_type == "post"] | order(publishedAt desc)[0...12] {
+      title, slug, excerpt, publishedAt,
+      "category": category->title,
       "imageUrl": mainImage.asset->url
     }`;
+    const categoriesQuery = `*[_type == "category"] | order(title asc) { title }`;
+    const podcastsQuery = `*[_type == "podcast"] | order(publishedAt desc)[0...3] {
+      episode, title, guests, duration,
+      "imageUrl": image.asset->url
+    }`;
 
-    client
-      .fetch(query)
-      .then((data) => {
-        if (data && data.length > 0) {
-          setArticles(
-            data.map((p) => ({
+    Promise.all([
+      client.fetch(postsQuery),
+      client.fetch(categoriesQuery),
+      client.fetch(podcastsQuery),
+    ])
+      .then(([postsData, categoriesData, podcastsData]) => {
+        if (categoriesData && categoriesData.length > 0) {
+          const fetchedCategories = categoriesData
+            .map((c) => c.title)
+            .filter(Boolean);
+          setCategories(["TOUT", ...fetchedCategories]);
+        }
+
+        if (podcastsData && podcastsData.length > 0) {
+          setPodcasts(
+            podcastsData.map((p) => ({
+              ep: p.episode,
               title: p.title,
-              description: p.excerpt || "",
-              imageUrl: p.imageUrl,
-              slug: p.slug?.current,
-              date: p.publishedAt,
-              category: p.category || "ACTUALITE",
+              sub: p.guests || "",
+              time: p.duration || "",
+              img: p.imageUrl,
             })),
           );
+        } else {
+          setPodcasts([
+            {
+              ep: "EP. 12",
+              title:
+                "Bâtir l'Afrique : conversation avec les architectes du continent",
+              sub: "Diébédo Francis Kéré · Pierre Goudiaby Atepa",
+              time: "48 min",
+              img: "https://cdn.sanity.io/images/d4jrc26i/production/32a05929e0c85e9f6f605fef2a18c2735e99e88f-519x779.jpg",
+            },
+            {
+              ep: "EP. 11",
+              title:
+                "Diaspora & capital : structurer les flux d'investissement vers l'Afrique",
+              sub: "Acha Leke · Mossadeck Bally",
+              time: "52 min",
+              img: "https://cdn.sanity.io/images/d4jrc26i/production/1683d30a74ec909b4c7110be972c49bb03bad187-666x999.jpg",
+            },
+            {
+              ep: "EP. 10",
+              title:
+                "Sport & industries créatives : l'Afrique comme puissance d'influence",
+              sub: "Mamadou Gaye · Aliou Cissé",
+              time: "41 min",
+              img: "https://cdn.sanity.io/images/d4jrc26i/production/2885c31225d904fdbd82a2188d5890950b970ce4-562x999.jpg",
+            },
+          ]);
+        }
+
+        if (postsData && postsData.length > 0) {
+          const mapped = postsData.map((p) => ({
+            title: p.title,
+            description: p.excerpt || "",
+            imageUrl: p.imageUrl,
+            slug: p.slug?.current,
+            date: p.publishedAt,
+            category: p.category || "ACTUALITE",
+          }));
+
+          setArticles(mapped);
+
+          // If English requested, translate titles/descriptions via DeepL
+          if (locale === "en" && translateText) {
+            (async () => {
+              try {
+                const translated = await Promise.all(
+                  mapped.map(async (a) => ({
+                    ...a,
+                    title: a.title
+                      ? await translateText(a.title, "en")
+                      : a.title,
+                    description: a.description
+                      ? await translateText(a.description, "en")
+                      : a.description,
+                  })),
+                );
+                setArticles(translated);
+              } catch (e) {
+                console.warn("Article translations failed:", e);
+              }
+            })();
+          }
         } else {
           // Robust mock fallback matching the screenshot perfectly if no articles exist yet
           setArticles([
@@ -77,7 +161,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/08956dea00cddad651d0fec8e79a4538c5d002c6-1364x910.jpg",
               slug: "joj-dakar-2026",
               date: "2026-05-08",
-              category: "ACTUALITE",
+              category: "Actualité",
             },
             {
               title:
@@ -88,7 +172,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/cf9f90e9bee395fd5cfe8b9d361e09d663ac3d5e-672x448.jpg",
               slug: "goethe-institut",
               date: "2026-05-06",
-              category: "URBANISME",
+              category: "Urbanisme",
             },
             {
               title:
@@ -99,7 +183,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/35a0f34241921d36e650c9c38188551965e8892e-672x378.jpg",
               slug: "sports-funding",
               date: "2026-05-02",
-              category: "PARTENARIAT",
+              category: "Partenariat",
             },
             {
               title:
@@ -110,7 +194,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/bd56213318b622e22bcbfd1f05b08e25692c982f-672x448.jpg",
               slug: "commercial-hubs",
               date: "2026-04-28",
-              category: "INFRASTRUCTURE",
+              category: "Infrastructure",
             },
             {
               title:
@@ -121,7 +205,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/fe64667476ef49999173d8c8d8f71cdc33bc4540-720x480.jpg",
               slug: "smart-city",
               date: "2026-04-24",
-              category: "INNOVATION",
+              category: "Innovation",
             },
             {
               title:
@@ -132,7 +216,7 @@ export const Newsroom = () => {
                 "https://cdn.sanity.io/images/d4jrc26i/production/1fbb9e8cab3d2be0ee2e1f8e11ef369dcdfc92e7-671x448.jpg",
               slug: "olympic-venues",
               date: "2026-04-20",
-              category: "ACTUALITE",
+              category: "Actualité",
             },
           ]);
         }
@@ -142,7 +226,7 @@ export const Newsroom = () => {
         console.error("Sanity fetch error:", err);
         setIsLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   const handleSearchChange = (e) => {
     setSearchQuery(e.target.value);
@@ -182,13 +266,19 @@ export const Newsroom = () => {
 
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[280px] md:min-h-[340px] mt-[100px] md:mt-[80px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[34px] md:text-[50px] leading-[1.2] w-full uppercase tracking-wide">
-            PERSPECTIVES, ANALYSES ET DYNAMIQUES AUTOUR DES TRANSFORMATIONS
-            AFRICAINES
+            {" "}
+            <T>
+              PERSPECTIVES, ANALYSES ET DYNAMIQUES AUTOUR DES TRANSFORMATIONS
+              AFRICAINES
+            </T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[1.6] w-full">
-            Retrouvez les tribunes, actualités, analyses et points de vue des
-            experts de Build Africa Expo sur les grands enjeux économiques et
-            sectoriels.
+            {" "}
+            <T>
+              Retrouvez les tribunes, actualités, analyses et points de vue des
+              experts de Build Africa Expo sur les grands enjeux économiques et
+              sectoriels.
+            </T>
           </p>
         </div>
       </section>
@@ -198,24 +288,24 @@ export const Newsroom = () => {
         <div className="mx-auto w-full max-w-[1440px] flex flex-col gap-8">
           {/* Title */}
           <h2 className="text-[#1B3A6B] font-['Tomorrow'] w-full md:max-w-[500px] font-bold text-[32px] md:text-[32px] leading-[40px] uppercase tracking-wide">
-            LES TRANSFORMATIONS QUI REDESSINENT L'AFRIQUE
+            <T>LES TRANSFORMATIONS QUI REDESSINENT L'AFRIQUE</T>
           </h2>
 
           {/* Filters and Search Area */}
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             {/* Pill Filters */}
             <div className="flex flex-wrap gap-2 md:gap-3">
-              {CATEGORIES.map((cat) => (
+              {categories.map((cat) => (
                 <button
                   key={cat}
-                  onClick={() => setActiveCategory(cat)}
+                  onClick={() => setActiveCategory(cat.toUpperCase())}
                   className={`px-[16px] py-[8px] text-[14px] font-bold uppercase tracking-wider transition-all duration-300 rounded-[8px] ${
-                    activeCategory === cat
+                    activeCategory === cat.toUpperCase()
                       ? "bg-[#36499B] text-white"
                       : "bg-transparent border-[1px] border-[#36499B] text-[#36499B] hover:bg-[#36499B]/10"
                   }`}
                 >
-                  {cat}
+                  <T>{cat === "TOUT" && locale === "en" ? "ALL" : cat}</T>
                 </button>
               ))}
             </div>
@@ -224,7 +314,7 @@ export const Newsroom = () => {
             <div className="relative w-full lg:w-[280px]">
               <input
                 type="text"
-                placeholder="Rechercher..."
+                placeholder={` ${tSearchPlaceholder}`}
                 value={searchQuery}
                 onChange={handleSearchChange}
                 className="w-full h-[34px] bg-white placeholder:text-[#000] border px-4 pr-10 text-[14px] text-[#1D1D1B] outline-none font-['Inter']  shadow-sm"
@@ -245,7 +335,11 @@ export const Newsroom = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[24px] mt-4">
               {filteredArticles.map((article, index) => (
                 <Link
-                  to={article.slug ? `/actualite/${article.slug}` : "#"}
+                  to={
+                    article.slug
+                      ? `/${locale === "en" ? "en/news" : "actualite"}/${article.slug}`
+                      : "#"
+                  }
                   key={index}
                   className="group flex flex-col h-full w-full bg-white transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
                 >
@@ -263,13 +357,13 @@ export const Newsroom = () => {
 
                   <div className="flex flex-col flex-grow p-6 gap-3 border-solid p-6 border-t-[6px] [border-image:linear-gradient(90deg,#00AB92_0%,#36499B_100%)_1] ">
                     <h3 className="font-headings-h4 text-[16px] md:text-[16px] font-bold leading-tight text-[#1D1D1B]">
-                      {article.title}
+                      <T> {article.title}</T>
                     </h3>
                     <p className="flex-1 font-body-regular text-[16px] leading-relaxed text-[#1d1d1b]/100">
-                      {article.description}
+                      <T> {article.description}</T>
                     </p>
                     <span className="text-[#00AB92] font-['inter'] font-[400] text-[16px] uppercase mt-auto pt-2 block">
-                      Lire la suite
+                      <T>Lire la suite</T>
                     </span>
                   </div>
                 </Link>
@@ -282,68 +376,46 @@ export const Newsroom = () => {
       {/* ── SIX UNIVERS POUR DÉCRYPTER L'AFRIQUE CONTEMPORAINE ─────────────── */}
       <section className="reveal w-full bg-white py-[120px] px-[20px]">
         <div className="mx-auto w-full max-w-[1440px] flex flex-col gap-10">
-          <h2 className="text-[#1B3A6B] font-['Tomorrow'] w-full md:max-w-[600px] line-clamp-none md:line-clamp-2 font-bold text-[32px] md:text-[32px] leading-[40px] uppercase tracking-wide">
-            SIX UNIVERS POUR DÉCRYPTER L'AFRIQUE CONTEMPORAINE
+          <h2 className="text-[#1B3A6B] font-['Tomorrow'] w-full md:max-w-[600px] line-clamp-none md:line-clamp-3 font-bold text-[32px] md:text-[32px] leading-[40px] uppercase tracking-wide">
+            <T> Quelques UNIVERS POUR DÉCRYPTER L'AFRIQUE CONTEMPORAINE</T>
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0">
             {[
               {
                 title: "FINANCE & INVESTISSEMENT",
-                node: (
-                  <>
-                    FINANCE &<br className="hidden md:block" /> INVESTISSEMENT
-                  </>
-                ),
+                part1: "FINANCE &",
+                part2: "INVESTISSEMENT",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/64b1e607235d7c13283e8ef2b226bf7b67678fea-1600x1067.jpg",
               },
               {
                 title: "IMMOBILIER & ATTRACTIVITÉ TERRITORIALE",
-                node: (
-                  <>
-                    IMMOBILIER & ATTRACTIVITÉ
-                    <br className="hidden md:block" /> TERRITORIALE
-                  </>
-                ),
+                part1: "IMMOBILIER & ATTRACTIVITÉ",
+                part2: "TERRITORIALE",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/0f8e5ab77bca4d8ad4ed3e080d77338f1c71db8f-720x540.jpg",
               },
               {
                 title: "DEVELOPPEMENT URBAIN & INFRASTRUCTURES",
-                node: (
-                  <>
-                    DEVELOPPEMENT URBAIN &<br className="hidden md:block" />{" "}
-                    INFRASTRUCTURES
-                  </>
-                ),
+                part1: "DEVELOPPEMENT URBAIN &",
+                part2: "INFRASTRUCTURES",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/55821e6e1716efef8192a2d26dfbc6aa527613f0-1300x535.jpg",
               },
               {
                 title: "INDUSTRIE & SOUVERAINETÉ ÉCONOMIQUE",
-                node: (
-                  <>
-                    INDUSTRIE & SOUVERAINETÉ
-                    <br className="hidden md:block" /> ÉCONOMIQUE
-                  </>
-                ),
+                part1: "INDUSTRIE & SOUVERAINETÉ",
+                part2: "ÉCONOMIQUE",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/a09040ca48d4bd1c789b0fb5b0a6112b4c4f30a7-720x480.jpg",
               },
               {
                 title: "SPORT, CULTURE & INDUSTRIES CRÉATIVES",
-                node: (
-                  <>
-                    SPORT, CULTURE &<br className="hidden md:block" />{" "}
-                    INDUSTRIES CRÉATIVES
-                  </>
-                ),
+                part1: "SPORT, CULTURE &",
+                part2: "INDUSTRIES CRÉATIVES",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/96f86553030c298c807049684523a7d3e0c2f810-800x533.jpg",
               },
               {
                 title: "INNOVATION & TECHNOLOGIE",
-                node: (
-                  <>
-                    INNOVATION &<br className="hidden md:block" /> TECHNOLOGIE
-                  </>
-                ),
+                part1: "INNOVATION &",
+                part2: "TECHNOLOGIE",
                 bg: "https://cdn.sanity.io/images/d4jrc26i/production/48d31b7624fb4c8e8b31f3c1d40282c502599078-800x533.jpg",
               },
             ].map((univ, index) => (
@@ -365,7 +437,9 @@ export const Newsroom = () => {
                 />
                 <div className="absolute inset-0 flex items-end p-6">
                   <h4 className="text-white font-['Tomorrow'] font-bold text-[16px] w-full md:text-[18px] line-clamp-none uppercase leading-snug tracking-wider">
-                    {univ.node}
+                    <T>{univ.part1}</T>
+                    <br className="hidden md:block" />
+                    <T>{univ.part2}</T>
                   </h4>
                 </div>
               </div>
@@ -373,6 +447,88 @@ export const Newsroom = () => {
           </div>
         </div>
       </section>
+
+      {/* ── PODCAST SECTION ────────────────────────────────────────────── */}
+      <section className="reveal w-full bg-[#36499B] py-[80px] md:py-[120px] px-[20px]">
+        <div className="mx-auto w-full max-w-[1440px] flex flex-col gap-12">
+          {/* Header area */}
+          <div className="flex flex-col lg:flex-row justify-between items-start lg:items-end gap-6">
+            <div className="flex flex-col gap-4 w-full">
+              <h3 className="text-[#00AB92] font-['Tomorrow'] font-bold text-[14px] md:text-[16px] uppercase tracking-wider">
+                <T>PODCASTS & CONVERSATIONS STRATÉGIQUES</T>
+              </h3>
+              <h2 className="text-white font-['Tomorrow'] font-bold text-[28px] md:text-[40px] uppercase leading-[1.2] tracking-wide">
+                <T>LES VOIX QUI PENSENT ET BÂTISSENT L'AFRIQUE DE DEMAIN</T>
+              </h2>
+              <p className="text-[#D7DBEB] font-['Inter'] text-[14px] md:text-[16px] leading-relaxed max-w-[600px]">
+                <T>
+                  Entretiens d'exécutifs, débats sur l'infrastructure, la
+                  diaspora, le sport et l'investissement. Une conversation
+                  continue, toute l'année.
+                </T>
+              </p>
+            </div>
+            <Button className="bg-[#00AB92] hover:bg-[#00AB92]/90 text-white font-bold px-[16px] py-[8px] rounded-[4px] w-fit flex items-center gap-2 transition-colors text-[14px] uppercase tracking-wider">
+              <T>TOUTES LES ÉPISODES</T>{" "}
+              <span className="text-lg leading-none">&rarr;</span>
+            </Button>
+          </div>
+
+          {/* Cards Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {podcasts.map((podcast, idx) => (
+              <div
+                key={idx}
+                onClick={() => setIsPodcastModalOpen(true)}
+                className="group relative h-[520px] w-full overflow-hidden bg-[#0d132c] flex flex-col justify-between cursor-pointer border border-white/10 transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl hover:shadow-black/50"
+              >
+                {/* Background Image */}
+                <img
+                  src={podcast.img}
+                  className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-70 group-hover:scale-105 transition-all duration-700"
+                  alt={podcast.title}
+                />
+                {/* Overlay gradient */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+                {/* Top Icons */}
+                <div className="relative z-10 flex justify-between items-center p-6">
+                  <span className="bg-[#00AB92] text-white text-[12px] font-bold px-3 py-1 rounded-[4px] uppercase tracking-wider">
+                    {podcast.ep}
+                  </span>
+                  <Headphones className="w-5 h-5 text-white/80" />
+                </div>
+
+                {/* Play Button Center */}
+                <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
+                  <div className="w-16 h-16 rounded-full border border-white/30 flex items-center justify-center bg-black/20 backdrop-blur-md group-hover:bg-[#00AB92]/90 group-hover:border-[#00AB92] group-hover:scale-110 transition-all duration-300 pointer-events-auto shadow-lg">
+                    <Play
+                      className="w-6 h-6 text-white ml-1"
+                      fill="currentColor"
+                    />
+                  </div>
+                </div>
+
+                {/* Bottom Content */}
+                <div className="relative z-10 p-6 flex flex-col gap-3">
+                  <h4 className="text-white font-bold text-[18px] md:text-[20px] leading-snug font-['Inter']">
+                    <T>{podcast.title}</T>
+                  </h4>
+                  <p className="text-white/70 text-[14px] font-['Inter']">
+                    <T>{podcast.sub}</T>
+                  </p>
+                  <div className="flex items-center gap-2 mt-1 text-white/50 text-[12px] font-['Inter'] font-medium">
+                    <Clock className="w-4 h-4" />
+                    <span> {podcast.time}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ExpertTestimonialsSection variant="light" />
 
       {/* ── NEWSLETTER SECTION ───────────────────────────────────────────── */}
       <section
@@ -384,7 +540,9 @@ export const Newsroom = () => {
       >
         <div className="mx-auto w-full max-w-[1440px] flex flex-col items-start justify-start gap-[40px] text-start">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[24px] sm:text-[32px] md:text-[40px] uppercase leading-tight max-w-[950px] tracking-wide">
-            ABONNEZ-VOUS À NOTRE NEWSLETTER ET RECEVEZ LES DERNIÈRES NOUVELLES
+            <T>
+              ABONNEZ-VOUS À NOTRE NEWSLETTER ET RECEVEZ LES DERNIÈRES NOUVELLES
+            </T>
           </h1>
 
           <form className="flex w-full md:w-[400px] flex-col gap-4">
@@ -421,6 +579,38 @@ export const Newsroom = () => {
       </section>
 
       <Footer />
+
+      {/* ── PODCAST MODAL ─────────────────────────────────────────────── */}
+      {isPodcastModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4 backdrop-blur-sm animate-fade-in">
+          <div className="relative w-full max-w-md bg-white rounded-xl p-8 flex flex-col items-center text-center shadow-2xl animate-fade-in-up">
+            <button
+              onClick={() => setIsPodcastModalOpen(false)}
+              className="absolute top-4 right-4 text-gray-500 hover:text-black transition-colors"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="w-16 h-16 bg-[#00AB92]/10 rounded-full flex items-center justify-center mb-6">
+              <Headphones className="w-8 h-8 text-[#00AB92]" />
+            </div>
+            <h3 className="text-2xl font-['Tomorrow'] font-bold text-[#1B3A6B] mb-2 uppercase">
+              <T>Podcast à venir</T>
+            </h3>
+            <p className="text-gray-600 font-['Inter'] mb-6">
+              <T>
+                Cet épisode sera bientôt disponible. Restez à l'écoute pour ne
+                rien manquer de nos prochaines conversations stratégiques !
+              </T>
+            </p>
+            <Button
+              onClick={() => setIsPodcastModalOpen(false)}
+              className="bg-[#00AB92] rounded-[4px] px-[16px] py-[8px] hover:bg-[#00AB92]/90 text-white font-bold px-8 py-3 w-full"
+            >
+              <T>Fermer</T>
+            </Button>
+          </div>
+        </div>
+      )}
     </main>
   );
 };

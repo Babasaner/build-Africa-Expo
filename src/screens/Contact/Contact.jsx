@@ -7,6 +7,7 @@ import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import { validateEmail, validatePhone } from "../../lib/validation";
+import { T } from "../../lib/AutoTranslate";
 
 export const Contact = () => {
   useScrollReveal();
@@ -47,20 +48,30 @@ export const Contact = () => {
     // Validate email (anti-disposable check)
     const emailCheck = validateEmail(formData.email);
     if (!emailCheck.valid) {
-      setStatus({ submitting: false, submitted: false, error: emailCheck.message });
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: emailCheck.message,
+      });
       return;
     }
 
     // Validate telephone format
     const phoneCheck = validatePhone(formData.telephone);
     if (!phoneCheck.valid) {
-      setStatus({ submitting: false, submitted: false, error: phoneCheck.message });
+      setStatus({
+        submitting: false,
+        submitted: false,
+        error: phoneCheck.message,
+      });
       return;
     }
 
     const data = {
       ...formData,
-      access_key: import.meta.env.VITE_WEB3FORMS_CONTACT_KEY || "a9752037-7b12-4195-a489-38caa53f4833",
+      access_key:
+        import.meta.env.VITE_WEB3FORMS_CONTACT_KEY ||
+        "a9752037-7b12-4195-a489-38caa53f4833",
       from_name: "Build Africa Expo - Site Web",
       subject: `Nouveau message de ${formData.prenom} ${formData.nom}`,
       replyto: formData.email,
@@ -97,8 +108,12 @@ export const Contact = () => {
       }
     } catch (err) {
       let errMsg = "Une erreur est survenue lors de l'envoi.";
-      if (err instanceof TypeError || (err.message && err.message.toLowerCase().includes("fetch"))) {
-        errMsg = "L'envoi a été bloqué par votre navigateur ou un bloqueur de publicité (AdBlock). Veuillez désactiver votre bloqueur pour ce site ou contactez-nous directement à contact@buildafricaexpo.com / +221 77 766 5757.";
+      if (
+        err instanceof TypeError ||
+        (err.message && err.message.toLowerCase().includes("fetch"))
+      ) {
+        errMsg =
+          "L'envoi a été bloqué par votre navigateur ou un bloqueur de publicité (AdBlock). Veuillez désactiver votre bloqueur pour ce site ou contactez-nous directement à contact@buildafricaexpo.com / +221 77 766 5757.";
       }
       setStatus({
         submitting: false,
@@ -160,11 +175,13 @@ export const Contact = () => {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[32px] md:text-[48px] leading-[40px] md:leading-[56px] max-w-[900px] animate-fade-up">
-            CONTACT
+            <T>CONTACT</T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[700px] animate-fade-up [--animation-delay:200ms]">
-            Sélectionnez le département concerné pour assurer un traitement
-            rapide et personnalisé de votre demande.
+            <T>
+              Sélectionnez le département concerné pour assurer un traitement
+              rapide et personnalisé de votre demande.
+            </T>
           </p>
         </div>
       </section>
@@ -179,7 +196,7 @@ export const Contact = () => {
       >
         <div className="max-w-[1440px] mx-auto reveal animate-fade-up">
           <h2 className="text-white text-center font-['Tomorrow'] font-bold text-[20px] md:text-[32px] mb-12 uppercase">
-            COMMENT POUVONS-NOUS COLLABORER ?
+            <T>COMMENT POUVONS-NOUS COLLABORER ?</T>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {collaborationCards.map((card, index) => (
@@ -189,10 +206,10 @@ export const Contact = () => {
               >
                 <div className="flex flex-col gap-4">
                   <h4 className="text-white font-['Tomorrow'] font-bold leading-[24px] text-[20px] ">
-                    {card.title}
+                    <T>{card.title}</T>
                   </h4>
                   <p className="text-white/100 font-['Inter'] text-[14px] leading-relaxed ">
-                    {card.description}
+                    <T>{card.description}</T>
                   </p>
                 </div>
                 <a href="#contact">
@@ -203,7 +220,7 @@ export const Contact = () => {
                         : "hover:bg-[#00AB92]"
                     }`}
                   >
-                    CONTACTER
+                    <T>CONTACTER</T>
                     <svg
                       width="14"
                       height="14"
@@ -233,15 +250,17 @@ export const Contact = () => {
           {/* Left: Constrained Content */}
           <div className="w-full lg:w-1/2 lg:pl-[calc((100vw-1440px)/2-30px)] lg:pr-12 mb-12 lg:mb-[80px] reveal animate-fade-left">
             <h2 className="text-[#1D1D1B] w-[100%] md:w-[425px] font-['Tomorrow'] font-bold text-[28px] md:text-[32px] leading-tight mb-8 uppercase">
-              UNE PLATEFORME AFRICAINE CONNECTÉE AUX ÉCOSYSTÈMES MONDIAUX
+              <T>UNE PLATEFORME AFRICAINE CONNECTÉE AUX ÉCOSYSTÈMES MONDIAUX</T>
             </h2>
             <p className="text-[#343432] w-[100%] md:w-[425px] font-['Inter'] text-[16px] md:text-[18px] leading-relaxed max-w-[540px]">
-              Build Africa Expo crée des liens entre l’Afrique, sa diaspora et
-              les centres économiques mondiaux grâce à des initiatives
-              stratégiques et des partenariats. Cette plateforme favorise les
-              rencontres entre territoires, investisseurs et acteurs du
-              développement pour soutenir les transformations du continent
-              africain.
+              <T>
+                Build Africa Expo crée des liens entre l’Afrique, sa diaspora et
+                les centres économiques mondiaux grâce à des initiatives
+                stratégiques et des partenariats. Cette plateforme favorise les
+                rencontres entre territoires, investisseurs et acteurs du
+                développement pour soutenir les transformations du continent
+                africain.
+              </T>
             </p>
           </div>
 
@@ -266,17 +285,19 @@ export const Contact = () => {
           {status.submitted ? (
             <div className="flex flex-col items-start gap-6 animate-fade-up px-[20px]">
               <h3 className="text-[#36499B] font-['Tomorrow'] font-bold text-[32px] uppercase">
-                Merci pour votre message !
+                <T>Merci pour votre message !</T>
               </h3>
               <p className="text-[#1D1D1B] font-['Inter'] text-[18px]">
-                Nous avons bien reçu votre demande et nous vous répondrons dans
-                les plus brefs délais.
+                <T>
+                  Nous avons bien reçu votre demande et nous vous répondrons
+                  dans les plus brefs délais.
+                </T>
               </p>
               <Button
                 onClick={() => setStatus({ ...status, submitted: false })}
                 className="bg-[#36499B] text-white font-bold px-8 py-4 rounded-none hover:bg-[#00AB92] transition-colors"
               >
-                ENVOYER UN AUTRE MESSAGE
+                <T>ENVOYER UN AUTRE MESSAGE</T>
               </Button>
             </div>
           ) : (
@@ -285,7 +306,10 @@ export const Contact = () => {
               onSubmit={handleSubmit}
             >
               {/* Anti-spam Honeypot field (invisible to humans, traps bots) */}
-              <div style={{ position: "absolute", left: "-9999px" }} aria-hidden="true">
+              <div
+                style={{ position: "absolute", left: "-9999px" }}
+                aria-hidden="true"
+              >
                 <input
                   type="text"
                   name="botcheck"
@@ -327,11 +351,15 @@ export const Contact = () => {
                 <PhoneInput
                   defaultCountry="sn"
                   value={formData.telephone}
-                  onChange={(phone) => setFormData((prev) => ({ ...prev, telephone: phone }))}
+                  onChange={(phone) =>
+                    setFormData((prev) => ({ ...prev, telephone: phone }))
+                  }
                   inputClassName="w-full bg-white p-4 outline-none border-none placeholder-[#343432] font-['Inter'] text-[14px] text-[#1D1D1B]"
                   countrySelectorProps={{
-                    buttonClassName: "bg-white border-none h-full px-3 flex items-center justify-center focus:outline-none hover:bg-gray-50",
-                    dropdownClassName: "bg-white border border-gray-100 shadow-xl max-h-[250px] overflow-y-auto z-50 text-black font-['Inter'] text-[14px]",
+                    buttonClassName:
+                      "bg-white border-none h-full px-3 flex items-center justify-center focus:outline-none hover:bg-gray-50",
+                    dropdownClassName:
+                      "bg-white border border-gray-100 shadow-xl max-h-[250px] overflow-y-auto z-50 text-black font-['Inter'] text-[14px]",
                   }}
                   inputProps={{
                     name: "telephone",
@@ -369,7 +397,11 @@ export const Contact = () => {
                   disabled={status.submitting}
                   className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] w-fit px-4 md:px-6 font-bold text-white hover:bg-[#00AB92] transition-colors duration-300 cursor-pointer flex items-center gap-2 disabled:opacity-50"
                 >
-                  {status.submitting ? "ENVOI EN COURS..." : "ENVOYER"}
+                  {status.submitting ? (
+                    <T>ENVOI EN COURS...</T>
+                  ) : (
+                    <T>ENVOYER</T>
+                  )}
                   {!status.submitting && (
                     <svg
                       width="16"
@@ -399,7 +431,7 @@ export const Contact = () => {
         <div className="flex-[2] bg-[#1D1D1B] flex flex-col items-center py-16 md:py-[120px] px-6 md:px-[80px] lg:pr-[calc((100vw-1440px)/2-30px)] lg:pl-20 text-white gap-12">
           <div className="flex flex-col gap-4">
             <h4 className="text-[#00AB92] font-['Tomorrow'] font-bold leading-[24px] text-[20px] uppercase">
-              POUR VISITER
+              <T>POUR VISITER</T>
             </h4>
             <div className="flex flex-col gap-1">
               <p className="font-['Inter'] font-normal text-[16px]">
@@ -412,7 +444,7 @@ export const Contact = () => {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-[#00AB92] font-['Tomorrow'] font-bold leading-[24px] text-[20px] uppercase">
-              POUR EXPOSER
+              <T>POUR EXPOSER</T>
             </h4>
             <div className="flex flex-col gap-1">
               <p className="font-['Inter'] font-normal text-[16px]">
@@ -425,7 +457,7 @@ export const Contact = () => {
           </div>
           <div className="flex flex-col gap-4">
             <h4 className="text-[#00AB92] font-['Tomorrow'] font-bold leading-[24px] text-[20px] uppercase">
-              MEDIA & PRESSE
+              <T>MEDIA & PRESSE</T>
             </h4>
             <div className="flex flex-col gap-1">
               <p className="font-['Inter'] font-normal text-[16px]">

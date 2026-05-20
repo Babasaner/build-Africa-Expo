@@ -9,6 +9,7 @@ import {
   ToggleGroup,
   ToggleGroupItem,
 } from "../../../components/ui/toggle-group";
+import { T } from "../../../lib/AutoTranslate";
 
 const testimonials = [
   {
@@ -77,7 +78,7 @@ const paginationItems = [
   },
 ];
 
-export const ExpertTestimonialsSection = () => {
+export const ExpertTestimonialsSection = ({ variant = "dark" }) => {
   const scrollRef = React.useRef(null);
   const [activePage, setActivePage] = React.useState("page-1");
 
@@ -93,20 +94,44 @@ export const ExpertTestimonialsSection = () => {
     }
   };
 
+  const displayTestimonials =
+    variant === "light" ? testimonials.slice(0, 3) : testimonials;
+
   return (
     <section
-      className="relative w-full bg-[#161d3e] py-16 md:py-[120px]"
+      className={`relative w-full px-[20px] py-16 md:py-[120px] ${
+        variant === "light" ? "bg-white" : "bg-[#161d3e]"
+      }`}
       aria-labelledby="testimonials-title"
     >
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-4 md:px-8">
-        <header className="flex flex-col items-center gap-[9px]">
-          <h2
-            id="testimonials-title"
-            className="[font-family:'Tomorrow',Helvetica] text-center text-[32px] font-bold leading-[38px] tracking-[1.08px] text-white md:text-4xl md:leading-[43.2px]"
-          >
-            SOYEZ INSPIRÉ PAR LES EXPERTS
-          </h2>
-        </header>
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10  ">
+        {variant === "light" ? (
+          <header className="flex flex-col items-start gap-[12px] w-full text-left">
+            <h3 className="text-[#00AB92] font-['Tomorrow'] font-bold text-[14px] md:text-[16px] uppercase tracking-wider">
+              <T> ANALYSES & OPINIONS</T>
+            </h3>
+            <h2
+              id="testimonials-title"
+              className="[font-family:'Tomorrow',Helvetica] text-[32px] font-bold leading-[38px] tracking-[1.08px] text-[#1D1D1B] md:text-[40px] md:leading-[1.2] uppercase max-w-[800px]"
+            >
+              <T>LES REGARDS QUI</T> <br /> <T>ÉCLAIRENT LES DÉCISIONS</T>
+            </h2>
+            <p className="font-['Inter'] text-[16px] font-normal leading-relaxed text-[#1D1D1B]/100 max-w-[600px]">
+              <T>Tribunes signées, perspectives de dirigeants, lectures stratégiques de l'écosystème africain.</T>
+              <br />
+              <T>Un espace éditorial d'inspiration leadership, business et influence.</T>
+            </p>
+          </header>
+        ) : (
+          <header className="flex flex-col items-center gap-[9px]">
+            <h2
+              id="testimonials-title"
+              className="[font-family:'Tomorrow',Helvetica] text-center text-[32px] font-bold leading-[38px] tracking-[1.08px] text-white md:text-4xl md:leading-[43.2px]"
+            >
+              <T>SOYEZ INSPIRÉ PAR LES EXPERTS</T>
+            </h2>
+          </header>
+        )}
 
         {/* Carousel Container */}
         <div
@@ -114,11 +139,15 @@ export const ExpertTestimonialsSection = () => {
           className="scrollbar-hide flex w-full overflow-x-auto scroll-smooth snap-x snap-mandatory"
         >
           <div className="flex w-full gap-6">
-            {testimonials.map((testimonial, index) => (
+            {displayTestimonials.map((testimonial, index) => (
               <Card
                 key={testimonial.name}
                 style={{ animationDelay: `${index * 0.1}s` }}
-                className="animate-fade-in-up opacity-0 min-w-full sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-start rounded-none border-0 bg-[#36499b] text-white shadow-none transition-all duration-300 hover:bg-[#36499b]/80 group"
+                className={`animate-fade-in-up opacity-0 min-w-full sm:min-w-[calc(50%-12px)] ${
+                  variant === "light"
+                    ? "lg:min-w-[calc(33.333%-16px)]"
+                    : "lg:min-w-[calc(25%-18px)]"
+                } snap-start rounded-none border-0 bg-[#36499b] text-white shadow-none transition-all duration-300 hover:bg-[#36499b]/80 group`}
               >
                 <CardContent className="flex h-full flex-col items-start gap-6 p-8">
                   <Avatar className="h-16 w-16 rounded-full border-2 border-transparent transition-colors duration-300 group-hover:border-[#ffc600]">
@@ -131,20 +160,22 @@ export const ExpertTestimonialsSection = () => {
                       {testimonial.fallback}
                     </AvatarFallback>
                   </Avatar>
-                  <div className="min-h-[200px] w-full overflow-hidden">
+                  <div
+                    className={`${variant === "light" ? "min-h-auto" : "min-h-[200px]"} w-full overflow-hidden`}
+                  >
                     <blockquote className="[font-family:'Inter',Helvetica] text-[16px] font-normal italic leading-relaxed tracking-[0] text-white/100">
-                      &quot;{testimonial.quote}&quot;
+                      "<T>{testimonial.quote}</T>"
                     </blockquote>
                   </div>
                   <footer className="w-full flex items-start gap-4 pt-6 border-t border-white/10">
                     <div className="flex flex-1 flex-col items-start gap-1">
                       <h3 className="font-caption-bold uppercase text-[15px] font-bold text-[#ffc600]">
-                        {testimonial.name}
+                        <T>{testimonial.name}</T>
                       </h3>
                       <div className="font-caption-regular text-[13px] font-normal text-white/100">
                         {testimonial.role.map((r, i) => (
                           <span key={i} className="block">
-                            {r.trim()}
+                            <T>{r.trim()}</T>
                           </span>
                         ))}
                       </div>

@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useLanguage } from "../../lib/i18n";
 
 export const NotFound = () => {
   const navigate = useNavigate();
+  const { t } = useLanguage();
   const [count, setCount] = useState(10);
 
   useEffect(() => {
@@ -126,12 +128,14 @@ export const NotFound = () => {
               margin: 0,
             }}
           >
-            Page introuvable
+            {t("common.pageNotFound")}
           </h1>
           <p style={{ fontSize: "clamp(0.85rem, 1.5vw, 1rem)", color: "rgba(255,255,255,0.65)", margin: 0, lineHeight: 1.6 }}>
-            Cette page n&apos;existe pas ou a été déplacée.<br />
-            Vous serez redirigé vers l&apos;accueil dans{" "}
-            <span style={{ color: "#00AB92", fontWeight: 700 }}>{count}</span> seconde{count > 1 ? "s" : ""}.
+            {t("common.pageNotFoundMsg")}<br />
+            {t("common.redirecting", {
+              count,
+              plural: count > 1 ? "s" : "",
+            })}
           </p>
         </div>
 
@@ -171,7 +175,7 @@ export const NotFound = () => {
               letterSpacing: "0.05em",
             }}
           >
-            ← RETOUR À L&apos;ACCUEIL
+            ← {t("common.backHome")}
           </button>
           <button
             className="btn-home"
@@ -188,7 +192,7 @@ export const NotFound = () => {
               letterSpacing: "0.05em",
             }}
           >
-            PAGE PRÉCÉDENTE
+            {t("common.pagePrevious")}
           </button>
         </div>
       </div>

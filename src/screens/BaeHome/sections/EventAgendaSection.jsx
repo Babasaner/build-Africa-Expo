@@ -1,6 +1,7 @@
 import { Badge } from "../../../components/ui/badge";
 import { Card, CardContent } from "../../../components/ui/card";
 import { Separator } from "../../../components/ui/separator";
+import { T } from "../../../lib/AutoTranslate";
 
 const agendaDays = [
   {
@@ -141,12 +142,12 @@ export const EventAgendaSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-8 md:gap-10 px-5">
         <header className="flex w-full flex-col items-start gap-2">
           <h2 className="font-headings-h2 text-2xl md:text-3xl font-bold leading-tight tracking-tight text-white sm:text-[40px]">
-            DEUX JOURNÉES, DEUX VILLES, QUATRE PANELS.
+            <T>DEUX JOURNÉES, DEUX VILLES, QUATRE PANELS.</T>
           </h2>
           <p className="max-w-[760px] font-body-regular text-base md:text-lg text-white/100">
-            Un programme dense et orienté résultats, conçu pour maximiser les
+            <T>Un programme dense et orienté résultats, conçu pour maximiser les
             opportunités de mise en relation entre investisseurs et porteurs de
-            projets.
+            projets.</T>
           </p>
         </header>
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
@@ -161,10 +162,10 @@ export const EventAgendaSection = () => {
                 <Badge
                   className={`rounded px-2 py-1 [font-family:'Inter',Helvetica] text-[10px] font-bold leading-[normal] tracking-[0] ${day.dayBadgeClassName}`}
                 >
-                  {day.dayLabel}
+                  <T>{day.dayLabel}</T>
                 </Badge>
                 <h3 className="font-['Tomorrow'] font-bold text-lg md:text-xl text-white uppercase">
-                  {day.city}
+                  <T>{day.city}</T>
                 </h3>
               </div>
               <CardContent className="bg-white p-6">
@@ -179,11 +180,11 @@ export const EventAgendaSection = () => {
                       </time>
                       <div className="flex-1 flex flex-col gap-2 border-l border-[#d7dbeb] pl-4">
                         <p className={`font-['Inter'] font-semibold text-[#1d1d1b] text-sm md:text-base ${item.featured ? "text-[#36499b]" : ""}`}>
-                          {item.title}
+                          <T>{item.title}</T>
                         </p>
                         {item.tag && (
                           <Badge className="h-auto rounded-md bg-[#cceee9] px-2 py-0.5 font-['Inter'] text-[10px] md:text-[11px] font-semibold text-[#00ab92] hover:bg-[#cceee9] w-fit">
-                            {item.tag}
+                            <T>{item.tag}</T>
                           </Badge>
                         )}
                       </div>

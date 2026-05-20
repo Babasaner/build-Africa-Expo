@@ -7,6 +7,7 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { PartnersShowcaseSection } from "../BaeHome/sections/PartnersShowcaseSection";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { T } from "../../lib/AutoTranslate";
 import {
   Building2,
   MapPin,
@@ -180,12 +181,10 @@ export const Partenaires = () => {
         <div className="absolute inset-0 bg-black/10"></div>
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] animate-fade-up uppercase">
-            UN ÉCOSYSTÈME DE PARTENAIRES ENGAGÉS
+            <T>UN ÉCOSYSTÈME DE PARTENAIRES ENGAGÉS</T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[700px] animate-fade-up [--animation-delay:200ms]">
-            Build Africa Expo rassemble des acteurs institutionnels, financiers
-            et techniques engagés dans la transformation durable des
-            infrastructures et des territoires du continent.
+            <T>Build Africa Expo rassemble des acteurs institutionnels, financiers et techniques engagés dans la transformation durable des infrastructures et des territoires du continent.</T>
           </p>
         </div>
       </section>
@@ -194,7 +193,7 @@ export const Partenaires = () => {
       <section className="reveal w-full h-auto mx-auto flex flex-col items-center justify-center px-[20px] py-16 md:py-[120px] bg-[#161D3E]">
         <div className="w-full max-w-[1000px] mx-auto flex flex-col md:flex-col justify-center items-center mb-10 gap-4">
           <h1 className="text-[#fff] text-[32px] mx-auto md:text-[64px] font-['Tomorrow'] uppercase leading-[42px] md:leading-[72px] font-bold">
-            PARTENAIRES PREMIUM
+            <T>PARTENAIRES PREMIUM</T>
           </h1>
         </div>
 
@@ -306,14 +305,10 @@ export const Partenaires = () => {
       <section className="relative w-full px-[20px] py-[120px] animate-fade-in animate-delay-200 animate-duration-1000 flex items-center justify-center  bg-white overflow-hidden">
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] ">
           <h2 className="text-[#1D1D1B] font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] w-fit md:w-[75%] animate-fade-up uppercase">
-            Un réseau au croisement des investissements et des territoires
+            <T>Un réseau au croisement des investissements et des territoires</T>
           </h2>
           <p className="text-[#1D1D1B] font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] w-fit md:w-[75%] animate-fade-up [--animation-delay:200ms]">
-            Build Africa Expo développe un écosystème de partenaires issus des
-            secteurs de la finance, des infrastructures, de la mobilité, de
-            l'énergie, de l'innovation, du sport, des industries créatives et du
-            développement territorial afin de favoriser les connexions à forte
-            valeur autour du continent africain.
+            <T>Build Africa Expo développe un écosystème de partenaires issus des secteurs de la finance, des infrastructures, de la mobilité, de l'énergie, de l'innovation, du sport, des industries créatives et du développement territorial afin de favoriser les connexions à forte valeur autour du continent africain.</T>
           </p>
         </div>
       </section>
@@ -322,7 +317,7 @@ export const Partenaires = () => {
       <section className="relative w-full px-[20px] py-[120px] bg-[#D7DBEB] animate-fade-in animate-delay-200 animate-duration-1000 flex items-center justify-center overflow-hidden">
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[40px] md:gap-[60px]">
           <h2 className="text-[#1D1D1B] font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] w-fit md:w-[75%] animate-fade-up uppercase">
-            Six écosystèmes au service de la transformation africaine
+            <T>Six écosystèmes au service de la transformation africaine</T>
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[16px]">
             {ecosystems.map((item, index) => (
@@ -339,10 +334,10 @@ export const Partenaires = () => {
                 </div>
                 <div className="flex-1 flex flex-col gap-[16px]">
                   <h3 className="font-['Inter'] font-bold text-[16px] leading-[20px] text-[#1D1D1B]">
-                    {item.title}
+                    <T>{item.title}</T>
                   </h3>
                   <p className="font-['Inter'] text-[16px] font-medium leading-[20px] text-[#343432]">
-                    {item.text}
+                    <T>{item.text}</T>
                   </p>
                 </div>
               </Card>
@@ -358,25 +353,17 @@ export const Partenaires = () => {
           <div className="flex-1 flex flex-col gap-8">
             <div className="flex max-w-[450px] gap-[24px]">
               <h3 className="text-[#1D1D1B] uppercase flex flex-col uppercase text-[32px] gap-[8px]  font-bold leading-[40px]">
-                Des projets structurants au cœur des transformations africaines
+                <T>Des projets structurants au cœur des transformations africaines</T>
               </h3>
             </div>
 
             <div className="text-[#343432] font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
-              Build Africa Expo met également en lumière des projets d'envergure
-              participant à la transformation économique, urbaine et
-              infrastructurelle du continent africain.
+              <T>Build Africa Expo met également en lumière des projets d'envergure participant à la transformation économique, urbaine et infrastructurelle du continent africain.</T>
               <p className="text-[#343432] font-['Inter'] mt-4 font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
-                Programmes immobiliers d'exception, smart cities, grands projets
-                d'infrastructures, hubs logistiques, mobilité, tourisme,
-                énergie, urbanisation et équipements stratégiques illustrent les
-                nouvelles dynamiques d'attractivité et de développement portées
-                par l'Afrique.
+                <T>Programmes immobiliers d'exception, smart cities, grands projets d'infrastructures, hubs logistiques, mobilité, tourisme, énergie, urbanisation et équipements stratégiques illustrent les nouvelles dynamiques d'attractivité et de développement portées par l'Afrique.</T>
               </p>
               <p className="text-[#343432] font-['Inter'] mt-4 font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[530px] animate-fade-up [--animation-delay:200ms]">
-                La plateforme ambitionne de favoriser les connexions entre
-                investisseurs, institutions, diaspora et porteurs de projets
-                autour d'opportunités à fort impact économique et territorial.
+                <T>La plateforme ambitionne de favoriser les connexions entre investisseurs, institutions, diaspora et porteurs de projets autour d'opportunités à fort impact économique et territorial.</T>
               </p>
             </div>
           </div>
@@ -397,32 +384,15 @@ export const Partenaires = () => {
           {/* Left Column */}
           <div className="flex-1 flex flex-col gap-[24px]">
             <h4 className="text-[#00A99D] font-['Tomorrow'] font-bold text-[18px] md:text-[20px] leading-[24px] uppercase">
-              SOUVERAINETÉ ÉCONOMIQUE
+              <T>SOUVERAINETÉ ÉCONOMIQUE</T>
             </h4>
             <h2 className="text-[#1D1D1B] text-[28px] md:text-[32px] font-['Tomorrow'] uppercase font-bold leading-[36px] md:leading-[40px]">
-              INDUSTRIALISATION, SOUVERAINETÉ ÉCONOMIQUE ET PROJETS STRATÉGIQUES
+              <T>INDUSTRIALISATION, SOUVERAINETÉ ÉCONOMIQUE ET PROJETS STRATÉGIQUES</T>
             </h2>
             <div className="text-[#343432] font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[22px] flex flex-col gap-[16px]">
-              <p>
-                Build Africa Expo s'intéresse également aux grands projets
-                industriels, énergétiques et stratégiques qui participent au
-                repositionnement économique du continent africain.
-              </p>
-              <p>
-                La plateforme souhaite mettre en avant les dynamiques liées à
-                l'industrialisation, à la transformation locale, au
-                développement des PME/PMI, aux investissements de la diaspora
-                ainsi qu'aux grands projets structurants capables d'accompagner
-                la souveraineté économique et énergétique des États africains.
-              </p>
-              <p>
-                Des initiatives majeures dans les secteurs de l'énergie, des
-                ressources naturelles, des infrastructures aéroportuaires,
-                portuaires, logistiques et industrielles illustrent les
-                nouvelles ambitions du continent en matière de transformation
-                endogène, de création de valeur locale et de compétitivité
-                internationale.
-              </p>
+              <p><T>Build Africa Expo s'intéresse également aux grands projets industriels, énergétiques et stratégiques qui participent au repositionnement économique du continent africain.</T></p>
+              <p><T>La plateforme souhaite mettre en avant les dynamiques liées à l'industrialisation, à la transformation locale, au développement des PME/PMI, aux investissements de la diaspora ainsi qu'aux grands projets structurants capables d'accompagner la souveraineté économique et énergétique des États africains.</T></p>
+              <p><T>Des initiatives majeures dans les secteurs de l'énergie, des ressources naturelles, des infrastructures aéroportuaires, portuaires, logistiques et industrielles illustrent les nouvelles ambitions du continent en matière de transformation endogène, de création de valeur locale et de compétitivité internationale.</T></p>
             </div>
           </div>
 
@@ -442,7 +412,7 @@ export const Partenaires = () => {
                   <Check strokeWidth={3} className="w-4 h-4 text-[#36499B]" />
                 </div>
                 <h4 className="text-[#1D1D1B] font-['Inter'] font-bold text-[14px] md:text-[20px] leading-[20px]">
-                  {item}
+                  <T>{item}</T>
                 </h4>
               </div>
             ))}
@@ -510,22 +480,15 @@ export const Partenaires = () => {
         <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-y-12 gap-x-24">
           <div className="w-full md:w-[450px]">
             <h2 className="text-[#fff] font-['Tomorrow'] font-bold text-[32px] leading-[40px] mb-2 uppercase">
-              Territoires, pôles de développement et vision Sénégal 2050
+              <T>Territoires, pôles de développement et vision Sénégal 2050</T>
             </h2>
           </div>
           <div className="w-full flex flex-col gap-[10px]">
             <p className="text-[#fff] font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[22px]">
-              À travers cette approche, Build Africa Expo ambitionne de
-              favoriser les connexions entre territoires, institutions,
-              investisseurs, diaspora et acteurs privés afin d'accompagner les
-              nouvelles dynamiques de développement et de structuration du
-              continent africain.
+              <T>À travers cette approche, Build Africa Expo ambitionne de favoriser les connexions entre territoires, institutions, investisseurs, diaspora et acteurs privés afin d'accompagner les nouvelles dynamiques de développement et de structuration du continent africain.</T>
             </p>
             <p className="text-[#fff] font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[22px]">
-              Dans cette perspective, la plateforme met en lumière les pôles de
-              développement du Plan Sénégal 2050, pensés comme des moteurs de
-              croissance, d'industrialisation, de connectivité, d'innovation et
-              de valorisation des territoires.
+              <T>Dans cette perspective, la plateforme met en lumière les pôles de développement du Plan Sénégal 2050, pensés comme des moteurs de croissance, d'industrialisation, de connectivité, d'innovation et de valorisation des territoires.</T>
             </p>
           </div>
         </div>
@@ -545,7 +508,7 @@ export const Partenaires = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                Capital humain & formation
+                <T>Capital humain & formation</T>
               </h3>
             </div>
           </div>
@@ -560,7 +523,7 @@ export const Partenaires = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                INFRASTRUCTURES ET ENERGIES
+                <T>INFRASTRUCTURES ET ENERGIES</T>
               </h3>
             </div>
           </div>
@@ -574,7 +537,7 @@ export const Partenaires = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                Urbanisation & habitat
+                <T>Urbanisation & habitat</T>
               </h3>
             </div>
           </div>
@@ -662,13 +625,13 @@ export const Partenaires = () => {
           <div className="grid grid-cols-1 gap-[40px]">
             <div className="text-center">
               <h2 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase  leading-[42px] md:leading-[72px] font-bold ">
-                Rejoignez le réseau qui bâtit l'Afrique de demain.
+                <T>Rejoignez le réseau qui bâtit l'Afrique de demain.</T>
               </h2>
             </div>
 
             <div className="mx-auto flex justify-center items-center  animate-fade-in  animate-delay-200  animate-duration-1000 2 gap-[24px]">
               <Button className="w-full md:w-auto mx-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                DEVENIR PARTENAIRE DU FORUM
+                <T>DEVENIR PARTENAIRE DU FORUM</T>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"

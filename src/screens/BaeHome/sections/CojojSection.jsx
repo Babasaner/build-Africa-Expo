@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { T } from "../../../lib/AutoTranslate";
 
 export const CojojSection = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -90,7 +91,7 @@ export const CojojSection = () => {
               letterSpacing: "0.02em",
             }}
           >
-            YOUTH OLYMPIC GAMES · DAKAR 2026
+            <T>YOUTH OLYMPIC GAMES · DAKAR 2026</T>
           </p>
 
           {/* Titre principal */}
@@ -105,9 +106,9 @@ export const CojojSection = () => {
               margin: 0,
             }}
           >
-            L&apos;Afrique accueille.
+            <T>L'Afrique accueille.</T>
             <br />
-            Le Sénégal célèbre.
+            <T>Le Sénégal célèbre.</T>
           </h2>
 
           {/* Description */}
@@ -121,8 +122,11 @@ export const CojojSection = () => {
               margin: 0,
             }}
           >
-            Retrouvez AYO à New York et Toronto pour célébrer l’énergie, la
-            jeunesse et l’esprit des Jeux Olympiques de la Jeunesse Dakar 2026.
+            <T>
+              Retrouvez AYO à New York et Toronto pour célébrer l’énergie, la
+              jeunesse et l’esprit des Jeux Olympiques de la Jeunesse Dakar
+              2026.
+            </T>
           </p>
         </div>
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 import { client } from "../../../lib/sanity";
+import { T } from "../../../lib/AutoTranslate";
 
 export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
   const scrollRef = React.useRef(null);
@@ -40,7 +41,7 @@ export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
     return (
       <section className="relative w-full bg-[#EAEDF5] py-[120px]">
         <div className="text-center text-[#36499B]">
-          Chargement des intervenants...
+          <T>Chargement des intervenants...</T>
         </div>
       </section>
     );
@@ -69,10 +70,10 @@ export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
         <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <div className="flex max-w-[683.8px] flex-col items-start gap-4">
             <p className="mt-[-1.00px] font-headings-h4 text-sm md:text-base font-bold text-[#00AB92]">
-              LES VOIX INFLUENTES
+              <T>LES VOIX INFLUENTES</T>
             </p>
             <h2 className="font-headings-h2 text-2xl md:text-3xl lg:text-4xl font-bold leading-tight tracking-tight text-[#36499B]">
-              SOYEZ INSPIRÉ PAR LES EXPERTS.
+              <T>SOYEZ INSPIRÉ PAR LES EXPERTS.</T>
             </h2>
           </div>
           <nav
@@ -130,14 +131,14 @@ export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
                 </div>
                 <div className="flex flex-1 flex-col gap-2 p-4 border-b-4 border-transparent transition-colors duration-300 group-hover:border-[#00AB92]">
                   <h3 className="font-body-bold text-[15px] uppercase font-bold text-[#1d1d1b] leading-tight min-h-[40px] flex items-center">
-                    {speaker.name}
+                    <T>{speaker.name}</T>
                   </h3>
                   <div className="font-caption-regular text-[12px] font-normal leading-tight text-[#1d1d1b]/100 min-h-[60px]">
                     {speaker.role
                       ?.split(/[,|—\n]|(?=\bet\s)/)
                       .map((part, i) => (
                         <span key={i} className="block">
-                          {part.trim()}
+                          <T>{part.trim()}</T>
                         </span>
                       ))}
                   </div>
@@ -156,7 +157,7 @@ export const ExpertSpeakersGridSection = ({ showViewAll = true }) => {
               variant="ghost"
               className="h-auto p-0 font-button-default text-[14px] font-bold text-[#00AB92] cursor-pointer hover:bg-transparent hover:text-[#00AB92]"
             >
-              VOIR TOUS LES INTERVENANTS →
+              <T>VOIR TOUS LES INTERVENANTS →</T>
             </Button>
           </a>
         </div>

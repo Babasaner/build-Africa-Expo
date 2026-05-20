@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "../../../components/ui/button";
 import { client, urlFor } from "../../../lib/sanity";
+import { T } from "../../../lib/AutoTranslate";
 
 const heroActions = [
   {
@@ -245,7 +246,7 @@ export const HeroBannerSection = () => {
                 src="https://c.animaapp.com/mot82cj4305Sf8/img/icons---bx-map.svg"
               />
               <p className="font-caption-regular text-[14px] font-normal leading-tight text-white">
-                {slides[currentSlide].location}
+                <T>{slides[currentSlide].location}</T>
               </p>
             </div>
           </div>
@@ -256,13 +257,13 @@ export const HeroBannerSection = () => {
             className="w-full max-w-[1200px] uppercase font-bold tracking-tight text-white text-center leading-[1.2]"
             style={{ fontSize: "clamp(1rem, 0.5rem + 2.8vw, 3rem)" }}
           >
-            <span className="block w-full">{slides[currentSlide].title1}</span>
+            <span className="block w-full"><T>{slides[currentSlide].title1}</T></span>
             <span className="block w-full">
-              {slides[currentSlide].title2}
+              <T>{slides[currentSlide].title2}</T>
               {slides[currentSlide].highlight && (
                 <span className="text-[#00AB92]">
                   {" "}
-                  {slides[currentSlide].highlight}
+                  <T>{slides[currentSlide].highlight}</T>
                 </span>
               )}
             </span>
@@ -271,7 +272,7 @@ export const HeroBannerSection = () => {
             className="max-w-[800px] text-center font-medium leading-relaxed text-white/90"
             style={{ fontSize: "clamp(0.85rem, 1.2vw + 0.4rem, 1.1rem)" }}
           >
-            {slides[currentSlide].desc}
+            <T>{slides[currentSlide].desc}</T>
           </p>
         </header>
 
@@ -292,7 +293,7 @@ export const HeroBannerSection = () => {
                   type="button"
                   className={`h-[48px] w-full rounded-lg px-[32px] py-[16px] font-button-default text-[length:var(--button-default-font-size)] font-bold tracking-wider ${action.className}`}
                 >
-                  {action.label}
+                  <T>{action.label}</T>
                 </Button>
               </a>
             ),

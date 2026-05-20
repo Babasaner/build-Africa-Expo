@@ -3,25 +3,42 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
+import { LanguageSwitcher } from "./LanguageSwitcher";
+import { useLanguage } from "../lib/i18n";
+import { ROUTE_MAP, EN_TO_FR } from "../lib/routes";
 
 const announcementLocations = ["New York", "Toronto"];
 
 const navigationItems = [
-  { label: "ACCUEIL", href: "/" },
-  { label: "À PROPOS", href: "/a-propos" },
-  { label: "INTERVENANTS", href: "/intervenants" },
-  { label: "PARTENAIRES", href: "/partenaires" },
-  { label: "NEWSROOM", href: "/newsroom" },
-  { label: "CONTACT", href: "/contact" },
+  { labelKey: "nav.home", href: "/" },
+  { labelKey: "nav.about", href: "/a-propos" },
+  { labelKey: "nav.speakers", href: "/intervenants" },
+  { labelKey: "nav.partners", href: "/partenaires" },
+  { labelKey: "nav.newsroom", href: "/newsroom" },
+  { labelKey: "nav.contact", href: "/contact" },
 ];
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
+  const { t } = useLanguage();
+  const { locale } = useLanguage();
 
-  const isActive = (href) => {
-    if (href === "/") return location.pathname === "/";
-    return location.pathname.startsWith(href);
+  // Returns the correct URL for the current locale
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
+
+
+  const isActive = (frPath) => {
+    const p = location.pathname;
+    if (frPath === "/") return p === "/" || p === "/en";
+    const enPath = ROUTE_MAP[frPath];
+    return p === frPath || p.startsWith(frPath + "/") ||
+           (enPath && (p === enPath || p.startsWith(enPath + "/")));
   };
 
   React.useEffect(() => {
@@ -43,7 +60,7 @@ export const Header = () => {
           <div className="mx-auto flex w-full max-w-[1440px] flex-wrap items-center justify-center gap-2 md:gap-3 px-4 py-3 md:py-4">
             <div className="inline-flex items-center justify-center gap-2">
               <Badge className="rounded bg-[#00AB92] px-1.5 py-0.5 font-bold text-[9px] md:text-[10px] text-white hover:bg-[#00AB92]/90">
-                NOUVEAU
+                {t("nav.new")}
               </Badge>
               <p className="text-center text-[13px] sm:text-[16px] md:text-[20px] font-bold leading-tight text-white">
                 Sénégal Diaspora Investment Forum 2026
@@ -72,7 +89,7 @@ export const Header = () => {
               className="inline-flex items-center gap-2 hover:opacity-80 transition-opacity"
             >
               <span className="text-[12px] md:text-[14px] font-bold text-[#ffc600]">
-                ÉDITION 2025
+                {t("nav.edition2025")}
               </span>
               <span className="text-[12px] md:text-[13px] font-bold text-[#f5c518]">→</span>
             </a>
@@ -83,8 +100,8 @@ export const Header = () => {
       {/* Main Header */}
       <header className="w-full border-b border-[#36499b14] bg-white">
         <div className="mx-auto flex h-[70px] md:h-[90px] w-full max-w-[1440px] items-center justify-between gap-6 px-5">
-          <a
-            href={import.meta.env.BASE_URL}
+          <Link
+            to={locale === "en" ? "/en" : "/"}
             className="relative h-[40px] md:h-[58px] w-auto"
             aria-label="Logo"
           >
@@ -93,45 +110,49 @@ export const Header = () => {
               alt="Build Africa Expo Logo"
               src={`${import.meta.env.BASE_URL}logo.png`}
             />
-          </a>
+          </Link>
 
           <div className="flex items-center gap-4 lg:gap-8">
             <nav aria-label="Primary" className="hidden lg:block">
               <ul className="flex items-center gap-6">
                 {navigationItems.map((item) => (
-                  <li key={item.label}>
+                  <li key={item.labelKey}>
                     <Link
-                      to={item.href}
+                      to={localizedHref(item.href)}
                       className={`text-[14px] font-bold transition-colors hover:text-[#00AB92] ${
                         isActive(item.href)
                           ? "text-[#00AB92]"
                           : "text-[#161D3E]"
                       }`}
                     >
-                      {item.label}
+                      {t(item.labelKey)}
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
+            <div className="hidden lg:flex">
+              <LanguageSwitcher />
+            </div>
+
             <div className="flex items-center gap-2 sm:gap-3">
               <Link
-                to="/inscription-visiteur"
+                to={localizedHref("/inscription-visiteur")}
               >
                 <Button className="h-[36px] md:h-[44px] rounded-lg bg-[#36499B] px-4 md:px-6 font-bold text-white transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer">
-                  S&apos;INSCRIRE
+                  {t("nav.register")}
                 </Button>
               </Link>
               <Link
-                to="/devenir-partenaire"
+                to={localizedHref("/devenir-partenaire")}
                 className="hidden sm:inline-flex"
               >
                 <Button
                   variant="outline"
                   className="h-[36px] md:h-[44px] rounded-lg border-[#36499B] px-4 md:px-6 font-bold text-[#36499B] transition-all duration-300 hover:bg-[#00AB92] hover:text-white hover:border-[#00AB92] cursor-pointer"
                 >
-                  DEVENIR PARTENAIRE
+                  {t("nav.becomePartner")}
                 </Button>
               </Link>
 
@@ -173,7 +194,7 @@ export const Header = () => {
             <div className="flex flex-col h-full">
               {/* Header inside drawer */}
               <div className="flex items-center justify-between p-5 border-b border-gray-100">
-                <span className="font-bold text-[#161D3E]">MENU</span>
+                <span className="font-bold text-[#161D3E]">{t("nav.menu")}</span>
                 <Button
                   variant="ghost"
                   size="icon"
@@ -188,9 +209,9 @@ export const Header = () => {
               <nav className="flex-1 overflow-y-auto p-5">
                 <ul className="flex flex-col gap-4">
                   {navigationItems.map((item) => (
-                    <li key={item.label}>
+                    <li key={item.labelKey}>
                       <Link
-                        to={item.href}
+                        to={localizedHref(item.href)}
                         onClick={() => setIsMenuOpen(false)}
                         className={`block w-full text-left py-3 font-bold text-[16px] transition-colors ${
                           isActive(item.href)
@@ -198,32 +219,36 @@ export const Header = () => {
                             : "text-[#161D3E] hover:text-[#00AB92]"
                         }`}
                       >
-                        {item.label}
+                        {t(item.labelKey)}
                       </Link>
                     </li>
                   ))}
                 </ul>
               </nav>
 
+              <div className="px-5 pb-5">
+                <LanguageSwitcher />
+              </div>
+
               {/* Actions at bottom */}
               <div className="p-5 border-t border-gray-100 bg-gray-50 flex flex-col gap-3">
                 <Link
-                  to="/inscription-visiteur"
+                  to={localizedHref("/inscription-visiteur")}
                   className="w-full"
                 >
                   <Button className="w-full h-12 rounded-lg bg-[#36499B] font-bold text-white">
-                    S&apos;INSCRIRE
+                    {t("nav.register")}
                   </Button>
                 </Link>
                 <Link
-                  to="/devenir-partenaire"
+                  to={localizedHref("/devenir-partenaire")}
                   className="w-full"
                 >
                   <Button
                     variant="outline"
                     className="w-full h-12 rounded-lg border-[#36499B] text-[#36499B] font-bold"
                   >
-                    DEVENIR PARTENAIRE
+                    {t("nav.becomePartner")}
                   </Button>
                 </Link>
               </div>

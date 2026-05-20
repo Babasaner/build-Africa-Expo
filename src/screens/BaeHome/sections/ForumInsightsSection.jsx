@@ -1,4 +1,5 @@
 import { Card, CardContent } from "../../../components/ui/card";
+import { T } from "../../../lib/AutoTranslate";
 
 const insightCards = [
   {
@@ -32,16 +33,13 @@ export const ForumInsightsSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start gap-[29px] px-5 py-14 lg:py-[120px]">
         <header className="flex w-full flex-col items-start gap-[29px]">
           <p className="mt-[-1.00px] w-fit whitespace-nowrap font-headings-h4 text-[length:var(--headings-h4-font-size)] font-[number:var(--headings-h4-font-weight)] leading-[var(--headings-h4-line-height)] tracking-[var(--headings-h4-letter-spacing)] text-[#00ab92] [font-style:var(--headings-h4-font-style)]">
-            POURQUOI LE FORUM DIASPORA ?
+            <T>POURQUOI LE FORUM DIASPORA ?</T>
           </p>
           <h2 className="max-w-[764px] font-headings-h1 text-[length:var(--headings-h1-font-size)] font-[number:var(--headings-h1-font-weight)] leading-[var(--headings-h1-line-height)] tracking-[var(--headings-h1-letter-spacing)] text-[#36499b] [font-style:var(--headings-h1-font-style)]">
-            Transformer la visibilité internationale en opportunités
-            économiques.
+            <T>Transformer la visibilité internationale en opportunités économiques.</T>
           </h2>
           <p className="max-w-[900px] font-body-regular text-[length:var(--body-regular-font-size)] font-[number:var(--body-regular-font-weight)] leading-[var(--body-regular-line-height)] tracking-[var(--body-regular-letter-spacing)] text-[#4b5570] [font-style:var(--body-regular-font-style)]">
-            En marge de la Coupe du Monde 2026, une fenêtre d&apos;opportunité
-            unique pour mobiliser la diaspora sénégalaise d&apos;Amérique du
-            Nord autour de projets d&apos;investissement concrets.
+            <T>En marge de la Coupe du Monde 2026, une fenêtre d'opportunité unique pour mobiliser la diaspora sénégalaise d'Amérique du Nord autour de projets d'investissement concrets.</T>
           </p>
         </header>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -55,10 +53,10 @@ export const ForumInsightsSection = () => {
                   {card.number}
                 </div>
                 <h3 className="w-full font-body-bold text-[length:var(--body-bold-font-size)] font-[number:var(--body-bold-font-weight)] leading-[var(--body-bold-line-height)] tracking-[var(--body-bold-letter-spacing)] text-[#36499b] [font-style:var(--body-bold-font-style)]">
-                  {card.title}
+                  <T>{card.title}</T>
                 </h3>
                 <p className="w-full font-body-regular text-[length:var(--body-regular-font-size)] font-[number:var(--body-regular-font-weight)] leading-[var(--body-regular-line-height)] tracking-[var(--body-regular-letter-spacing)] text-[#1d1d1b] [font-style:var(--body-regular-font-style)]">
-                  {card.description}
+                  <T>{card.description}</T>
                 </p>
               </CardContent>
             </Card>

@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+import { useLanguage } from "../../../lib/i18n";
+import { T } from "../../../lib/AutoTranslate";
 import { Link } from "react-router-dom";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
@@ -23,10 +25,10 @@ const ArticleCard = ({ item, index }) => (
         <span className="h-1 w-1 rounded-full bg-gray-300" />
       </div>
       <h3 className="font-headings-h4 text-[18px] md:text-[20px] font-bold leading-tight text-[#36499b]">
-        {item.title}
+        <T>{item.title}</T>
       </h3>
       <p className="flex-1 font-body-regular text-[15px] leading-relaxed text-[#1d1d1b]/80">
-        {item.description}
+        <T>{item.description}</T>
       </p>
     </CardContent>
   </Card>
@@ -35,6 +37,7 @@ const ArticleCard = ({ item, index }) => (
 export const NewsroomHighlightsSection = () => {
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const { locale } = useLanguage();
 
   useEffect(() => {
     const query = `*[_type == "post"] | order(publishedAt desc)[0...3] {
@@ -61,13 +64,13 @@ export const NewsroomHighlightsSection = () => {
         console.error("Sanity fetch error:", err);
         setIsLoading(false);
       });
-  }, []);
+  }, [locale]);
 
   if (isLoading) {
     return (
       <section className="relative w-full bg-[#D7DBEB] py-10 md:py-16 lg:py-[120px]">
         <div className="text-center text-[#36499B]">
-          Chargement des actualités...
+          <T>Chargement des actualités...</T>
         </div>
       </section>
     );
@@ -82,15 +85,15 @@ export const NewsroomHighlightsSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-5">
         <header className="flex w-full flex-wrap items-left justify-left gap-12">
           <h2 className="mt-[-1.00px] text-left font-headings-h1 text-[32px] md:text-[48px] font-[number:var(--headings-h1-font-weight)] leading-tight tracking-[var(--headings-h1-letter-spacing)] text-[#1D1D1B]">
-            DERNIÈRES NOUVELLES DU SECTEUR
+            <T>DERNIÈRES NOUVELLES DU SECTEUR</T>
           </h2>
         </header>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {articles.map((item, index) => (
+            {articles.map((item, index) => (
             <article key={`news-item-${index}`} className="flex h-full w-full">
               {item.slug ? (
                 <Link
-                  to={`/actualite/${item.slug}`}
+                  to={`/${locale === "en" ? "en/news" : "actualite"}/${item.slug}`}
                   className="flex h-full w-full"
                 >
                   <ArticleCard item={item} index={index} />
@@ -101,12 +104,12 @@ export const NewsroomHighlightsSection = () => {
             </article>
           ))}
         </div>
-        <Link to="/newsroom">
+        <Link to={locale === "en" ? "/en/news" : "/newsroom"}>
           <Button
             variant="outline"
             className="h-auto rounded-lg cursor-pointer border border-solid border-[#36499b] px-8 py-4 font-button-default text-[length:var(--button-default-font-size)] font-[number:var(--button-default-font-weight)] leading-[var(--button-default-line-height)] tracking-[var(--button-default-letter-spacing)] text-[#36499b] [font-style:var(--button-default-font-style)] hover:bg-transparent hover:text-[#36499b]"
           >
-            VOIR PLUS
+            <T>VOIR PLUS</T>
           </Button>
         </Link>
       </div>

@@ -1,6 +1,7 @@
 import { Check } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
+import { T } from "../../../lib/AutoTranslate";
 
 const calloutCards = [
   {
@@ -60,12 +61,12 @@ export const ParticipationCalloutSection = () => {
                   <p
                     className={`font-headings-h4 text-[16px] md:text-[20px] font-bold leading-tight tracking-tight ${card.eyebrowClassName}`}
                   >
-                    {card.eyebrow}
+                    <T>{card.eyebrow}</T>
                   </p>
                   <h2
                     className={`max-w-[486px] font-headings-h2 text-[28px] md:text-[40px] font-bold leading-tight tracking-tight ${card.titleClassName}`}
                   >
-                    {card.title}
+                    <T>{card.title}</T>
                   </h2>
                 </header>
                 <ul className="flex flex-col items-start gap-4">
@@ -90,7 +91,7 @@ export const ParticipationCalloutSection = () => {
                       <p
                         className={`font-body-regular text-[16px] font-normal leading-relaxed ${card.textClassName} ${item.widthClassName || ""}`}
                       >
-                        {item.text}
+                        <T>{item.text}</T>
                       </p>
                     </li>
                   ))}
@@ -105,7 +106,7 @@ export const ParticipationCalloutSection = () => {
                     type="button"
                     className={`h-[48px] w-full px-[32px] py-[16px] font-button-default text-[16px] font-bold tracking-wider ${card.buttonClassName}`}
                   >
-                    {card.buttonLabel}
+                    <T>{card.buttonLabel}</T>
                   </Button>
                 </a>
               </article>

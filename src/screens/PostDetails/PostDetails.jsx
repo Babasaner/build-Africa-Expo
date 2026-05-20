@@ -7,6 +7,7 @@ import { Card, CardContent } from "../../components/ui/card";
 import { ChevronLeft, Calendar, User } from "lucide-react";
 import { Header } from "../../components/Header";
 import { Footer } from "../../components/Footer";
+import { useLanguage } from "../../lib/i18n";
 
 const ArticleCard = ({ item, index }) => (
   <Card className="flex flex-col overflow-hidden rounded-none border-0 bg-white shadow-none h-full w-full transition-transform duration-300 hover:scale-[1.02]">
@@ -40,6 +41,8 @@ export const PostDetails = () => {
   const [recentPosts, setRecentPosts] = useState([]);
   const [loading, setLoading] = useState(true);
 
+  const { locale, t, translateText } = useLanguage();
+
   useEffect(() => {
     // Scroll to top on slug change
     window.scrollTo(0, 0);
@@ -57,12 +60,48 @@ export const PostDetails = () => {
         setPost(postData);
         setRecentPosts(recentData);
         setLoading(false);
+
+        // If the user requested English and DeepL is configured, translate fetched fields
+        if (postData && locale === "en" && translateText) {
+          (async () => {
+            try {
+              const translatedTitle = postData.title
+                ? await translateText(postData.title, "en")
+                : postData.title;
+              const translatedExcerpt = postData.excerpt
+                ? await translateText(postData.excerpt, "en")
+                : postData.excerpt;
+              // Translate PortableText body blocks (naive client-side approach)
+              let translatedBody = postData.body;
+              if (postData.body && Array.isArray(postData.body)) {
+                try {
+                  translatedBody = await Promise.all(
+                    postData.body.map(async (block) => {
+                      if (block && block._type === "block" && Array.isArray(block.children)) {
+                        const plain = block.children.map((c) => c.text || "").join(" ");
+                        const translated = plain ? await translateText(plain, "en") : plain;
+                        return { ...block, children: [{ ...block.children[0], text: translated }] };
+                      }
+                      return block;
+                    }),
+                  );
+                } catch (e) {
+                  console.warn("Body translation failed:", e);
+                }
+              }
+              setPost({ ...postData, title: translatedTitle, excerpt: translatedExcerpt });
+              if (translatedBody) setPost((p) => ({ ...p, body: translatedBody }));
+            } catch (e) {
+              console.warn("Translation failed:", e);
+            }
+          })();
+        }
       })
       .catch((err) => {
         console.error("Fetch error:", err);
         setLoading(false);
       });
-  }, [slug]);
+  }, [slug, locale]);
 
   if (loading)
     return (
@@ -70,7 +109,7 @@ export const PostDetails = () => {
         <div className="flex flex-col items-center gap-4">
           <div className="w-12 h-12 border-4 border-[#00AB92] border-t-transparent rounded-full animate-spin"></div>
           <p className="text-gray-500 font-medium">
-            Chargement de l'article...
+            {t("common.loadingArticle")}
           </p>
         </div>
       </div>
@@ -80,14 +119,14 @@ export const PostDetails = () => {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 px-5 text-center">
         <h2 className="text-2xl font-bold text-[#161D3E] mb-4">
-          Article non trouvé
+          {t("common.articleNotFound")}
         </h2>
         <p className="text-gray-500 mb-8">
-          Désolé, cet article n'existe pas ou a été déplacé.
+          {t("common.articleNotFoundMsg")}
         </p>
-        <Link to="/">
+        <Link to={locale === "en" ? "/en" : "/"}>
           <Button className="bg-[#00AB92] hover:bg-[#00AB92]/90">
-            Retour à l'accueil
+            {t("common.backHome")}
           </Button>
         </Link>
       </div>
@@ -120,12 +159,12 @@ export const PostDetails = () => {
         </div>
 
         <div className="mx-auto max-w-[900px] px-5 py-8 md:py-16">
-          <Link to="/">
+          <Link to={locale === "en" ? "/en" : "/"}>
             <Button
               variant="ghost"
               className="mb-8 p-0 text-[#00AB92] hover:bg-transparent font-bold"
             >
-              <ChevronLeft className="mr-2 h-4 w-4" /> Retour à l'accueil
+              <ChevronLeft className="mr-2 h-4 w-4" /> {t("common.backHome")}
             </Button>
           </Link>
 
@@ -134,12 +173,15 @@ export const PostDetails = () => {
               <Calendar className="h-4 w-4 text-[#00AB92]" />
               <span className="text-sm">
                 {post.publishedAt
-                  ? new Date(post.publishedAt).toLocaleDateString("fr-FR", {
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })
-                  : "Date inconnue"}
+                  ? new Date(post.publishedAt).toLocaleDateString(
+                      locale === "fr" ? "fr-FR" : "en-US",
+                      {
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      },
+                    )
+                  : t("common.dateUnknown")}
               </span>
             </div>
           </div>
@@ -161,7 +203,7 @@ export const PostDetails = () => {
           <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-10 px-5">
             <header className="flex w-full flex-wrap items-left justify-left gap-12">
               <h2 className="mt-[-1.00px] text-left font-headings-h1 text-[32px] md:text-[48px] font-bold leading-tight text-[#36499b] uppercase">
-                À LIRE AUSSI
+                {t("common.readAlso")}
               </h2>
             </header>
             <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -171,7 +213,7 @@ export const PostDetails = () => {
                   className="flex h-full w-full"
                 >
                   <Link
-                    to={`/actualite/${item.slug.current}`}
+                    to={`/${locale === "en" ? "en/news" : "actualite"}/${item.slug.current}`}
                     className="flex h-full w-full"
                   >
                     <ArticleCard item={item} index={index} />

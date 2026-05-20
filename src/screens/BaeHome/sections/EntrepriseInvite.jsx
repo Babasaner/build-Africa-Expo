@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "../../../components/ui/button";
+import { T } from "../../../lib/AutoTranslate";
 
 const EntrepriseInvite = () => {
   return (
@@ -9,7 +10,7 @@ const EntrepriseInvite = () => {
         <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
           <div className="text-center">
             <h2 className="text-[#202C5D] text-[32px] md:text-[48px] font-['Tomorrow'] uppercase font-bold leading-tight">
-              ENTREPRISES INVITÉES
+              <T>ENTREPRISES INVITÉES</T>
             </h2>
           </div>
 

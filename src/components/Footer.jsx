@@ -2,6 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useLanguage } from "../lib/i18n";
+import { T } from "../lib/AutoTranslate";
+import { ROUTE_MAP } from "../lib/routes";
 
 const socialLinks = [
   {
@@ -37,12 +40,12 @@ const socialLinks = [
 ];
 
 const navigationLinks = [
-  { label: "ACCUEIL", href: "/" },
-  { label: "À PROPOS", href: "/a-propos" },
-  { label: "INTERVENANTS", href: "/intervenants" },
-  { label: "PARTENAIRES", href: "/partenaires" },
-  { label: "NEWSROOM", href: "/newsroom" },
-  { label: "CONTACT", href: "/contact" },
+  { labelKey: "nav.home", href: "/" },
+  { labelKey: "nav.about", href: "/a-propos" },
+  { labelKey: "nav.speakers", href: "/intervenants" },
+  { labelKey: "nav.partners", href: "/partenaires" },
+  { labelKey: "nav.newsroom", href: "/newsroom" },
+  { labelKey: "nav.contact", href: "/contact" },
 ];
 const announcementLocations = ["New York", "Toronto"];
 const contactDetails = [
@@ -52,6 +55,15 @@ const contactDetails = [
 ];
 
 export const Footer = () => {
+  const { t, locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
+
   const scrollToTop = () => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   };
@@ -88,11 +100,13 @@ export const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-12">
             {/* Column 1: Logo, Socials, Copyright */}
             <div className="flex flex-col gap-12">
-              <img
-                className="h-auto w-[180px]"
-                alt="Build Africa Expo logo"
-                src="https://cdn.sanity.io/images/d4jrc26i/production/02196f445c7cfe260d35b7a96879e1f6a112756e-102x61.svg"
-              />
+              <Link to={locale === "en" ? "/en" : "/"}>
+                <img
+                  className="h-auto w-[180px]"
+                  alt="Build Africa Expo logo"
+                  src="https://cdn.sanity.io/images/d4jrc26i/production/02196f445c7cfe260d35b7a96879e1f6a112756e-102x61.svg"
+                />
+              </Link>
               <div className="flex flex-col gap-8">
                 <div className="flex flex-wrap items-start gap-3">
                   {socialLinks.map((socialLink, index) => (
@@ -113,8 +127,9 @@ export const Footer = () => {
                   ))}
                 </div>
                 <p className="text-[14px] text-white/100">
-                  © {new Date().getFullYear()} — Copyright. Tous droits réservés. Build Africa Expo
-                  Une initiative de Sovereign Insight Group
+                  {t("footer.copyright", {
+                    year: new Date().getFullYear(),
+                  })}
                 </p>
               </div>
             </div>
@@ -127,11 +142,11 @@ export const Footer = () => {
               >
                 {navigationLinks.map((link) => (
                   <Link
-                    key={link.label}
-                    to={link.href}
+                    key={link.labelKey}
+                    to={localizedHref(link.href)}
                     className="w-fit text-left text-[16px] text-white hover:text-[#00ab92] transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 ))}
               </nav>
@@ -146,24 +161,6 @@ export const Footer = () => {
                   </p>
                 ))}
               </address>
-
-              <div className="flex flex-wrap items-center justify-start gap-3">
-                {announcementLocations.map((location) => (
-                  <div
-                    key={location}
-                    className="inline-flex items-center gap-1"
-                  >
-                    <img
-                      className="h-4 w-4 opacity-80"
-                      alt="Location icon"
-                      src={`${import.meta.env.BASE_URL}icon/map.svg`}
-                    />
-                    <span className="text-[14px] font-normal text-white/100">
-                      {location}
-                    </span>
-                  </div>
-                ))}
-              </div>
             </div>
 
             {/* Column 3: Contact & Newsletter */}
@@ -179,25 +176,25 @@ export const Footer = () => {
                     type="button"
                     className="w-full h-auto rounded-lg bg-[#36499b] px-6 py-4 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#00ab92] cursor-pointer"
                   >
-                    S&apos;INSCRIRE
+                    {t("nav.register")}
                   </Button>
                 </a>
 
-                <a href="#" className="flex-1">
+                <Link to={localizedHref("/devenir-partenaire")} className="flex-1">
                   <Button
                     type="button"
                     className="w-full h-auto rounded-lg bg-[#36499b] px-6 py-4 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#00ab92] cursor-pointer"
                   >
-                    DEVENIR PARTENAIRE
+                    {t("nav.becomePartner")}
                   </Button>
-                </a>
+                </Link>
               </div>
               <form className="flex w-full flex-col gap-4">
                 <label
                   htmlFor="footer-newsletter-email"
                   className="text-[16px] text-white"
                 >
-                  Bulletin d&apos;information
+                  <T>Bulletin d'information</T>
                 </label>
                 <div className="flex w-full items-center bg-white  overflow-hidden">
                   <Input

@@ -1,5 +1,6 @@
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
+import { T } from "../../../lib/AutoTranslate";
 
 const forumActions = [
   {
@@ -41,23 +42,23 @@ export const CountryOverviewSection = () => {
         <header className="flex max-w-[620px] flex-col items-start gap-6">
           <div className="flex w-full flex-col items-start gap-2">
             <p className="font-bold text-[#00ab92] text-sm md:text-base uppercase tracking-wider">
-              2ÈME ÉDITION — BUILD AFRICA EXPO
+              <T>2ÈME ÉDITION — BUILD AFRICA EXPO</T>
             </p>
             <h2
               id="country-overview-title"
               className="font-['Tomorrow'] font-bold text-white text-3xl md:text-4xl lg:text-5xl leading-tight"
             >
-              Sénégal Diaspora Investment Forum
+              <T>Sénégal Diaspora Investment Forum</T>
             </h2>
             <p className="font-bold text-[#ffc600] text-xl md:text-2xl">
-              New York – Toronto 2026
+              <T>New York – Toronto 2026</T>
             </p>
           </div>
           <p className="max-w-[520px] font-['Inter'] font-normal text-white text-base md:text-lg leading-relaxed">
-            Organisé en marge de la Coupe du Monde FIFA 2026, le Sénégal
+            <T>Organisé en marge de la Coupe du Monde FIFA 2026, le Sénégal
             Diaspora Investment Forum est une plateforme stratégique visant à
-            connecter la diaspora sénégalaise d&apos;Amérique du Nord aux
-            opportunités d&apos;investissement au Sénégal.
+            connecter la diaspora sénégalaise d'Amérique du Nord aux
+            opportunités d'investissement au Sénégal.</T>
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-[10px] w-full">
             {forumActions.map((action) => {
@@ -66,7 +67,7 @@ export const CountryOverviewSection = () => {
                   type="button"
                   className={`${action.className} flex-1 justify-between`}
                 >
-                  <span className="text-left">{action.label}</span>
+                  <span className="text-left"><T>{action.label}</T></span>
                   <img className="h-4 w-4" alt="Arrow" src="icon/Vector.svg" />
                 </Button>
               );
@@ -98,7 +99,7 @@ export const CountryOverviewSection = () => {
               <CardContent className="flex flex-col items-start gap-4 p-6">
                 <div className="inline-flex items-start gap-2 rounded bg-[#1d1d1b] px-2 py-1">
                   <span className="mt-[-1.00px] whitespace-nowrap [font-family:'Inter',Helvetica] text-[10px] font-bold leading-[normal] tracking-[0] text-white">
-                    {item.day}
+                    <T>{item.day}</T>
                   </span>
                 </div>
                 <div className="inline-flex items-center justify-center gap-2">
@@ -108,11 +109,11 @@ export const CountryOverviewSection = () => {
                     src="https://c.animaapp.com/mot82cj4305Sf8/img/icons---bx-map.svg"
                   />
                   <h3 className="whitespace-nowrap font-['Tomorrow'] font-bold text-white text-xl">
-                    {item.city}
+                    <T>{item.city}</T>
                   </h3>
                 </div>
                 <p className="whitespace-nowrap font-['Inter'] font-normal text-white text-sm opacity-80">
-                  {item.participants}
+                  <T>{item.participants}</T>
                 </p>
               </CardContent>
             </Card>

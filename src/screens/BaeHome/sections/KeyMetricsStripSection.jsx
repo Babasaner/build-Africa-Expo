@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Card, CardContent } from "../../../components/ui/card";
+import { T } from "../../../lib/AutoTranslate";
 
 const metrics = [
   { value: 30, suffix: "+", label: "INTERVENANTS" },
@@ -49,7 +50,7 @@ export const KeyMetricsStripSection = () => {
       <Card className="h-auto w-full rounded-none border-0 bg-transparent shadow-none">
         <CardContent className="mx-auto w-full max-w-[1440px] px-5 py-20 lg:py-[120px]">
           <h2 className="mb-12 max-w-[450px] uppercase font-headings-h4 text-[20px] font-bold leading-[24px] text-white lg:mb-16">
-            Les chiffres clés de l'édition 2025
+            <T>Les chiffres clés de l'édition 2025</T>
           </h2>
 
           <div className="grid grid-cols-2 gap-y-12 gap-x-8 lg:flex lg:items-center lg:justify-between">
@@ -60,7 +61,7 @@ export const KeyMetricsStripSection = () => {
               >
                 <Counter target={metric.value} suffix={metric.suffix} />
                 <p className="font-body-regular text-[13px] sm:text-[14px] font-bold uppercase tracking-wider text-white opacity-100">
-                  {metric.label}
+                  <T>{metric.label}</T>
                 </p>
               </article>
             ))}

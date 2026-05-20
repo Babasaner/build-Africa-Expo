@@ -32,6 +32,13 @@ export default {
       description: 'A short summary of the article.',
     },
     {
+      name: 'category',
+      title: 'Catégorie',
+      type: 'reference',
+      to: [{ type: 'category' }],
+      validation: (Rule) => Rule.required(),
+    },
+    {
       name: 'publishedAt',
       title: 'Published at',
       type: 'datetime',

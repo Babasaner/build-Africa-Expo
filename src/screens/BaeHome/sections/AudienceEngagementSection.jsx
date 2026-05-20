@@ -1,5 +1,6 @@
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
+import { T } from "../../../lib/AutoTranslate";
 
 const audienceCards = [
   {
@@ -52,10 +53,10 @@ export const AudienceEngagementSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-start justify-center gap-10 px-5 py-20 lg:py-[120px]">
         <header className="flex flex-col items-start gap-4">
           <p className="mt-[-1.00px] font-headings-h4 text-[16px] md:text-[20px] font-bold text-[#00AB92]">
-            POURQUOI PARTICIPER ?
+            <T>POURQUOI PARTICIPER ?</T>
           </p>
           <h2 className="max-w-[980px] font-headings-h1 text-[32px] md:text-[48px] font-bold leading-tight text-primary-bae">
-            C&apos;EST ICI QUE LES OPPORTUNITÉS SE CONSTRUISENT.
+            <T>C'EST ICI QUE LES OPPORTUNITÉS SE CONSTRUISENT.</T>
           </h2>
         </header>
         <div className="grid w-full grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -71,10 +72,10 @@ export const AudienceEngagementSection = () => {
                   src={card.iconSrc}
                 />
                 <h3 className="font-headings-h4 text-[length:var(--headings-h4-font-size)] font-[number:var(--headings-h4-font-weight)] leading-[var(--headings-h4-line-height)] tracking-[var(--headings-h4-letter-spacing)] text-primary-bae">
-                  {card.title}
+                  <T>{card.title}</T>
                 </h3>
                 <p className="font-body-regular text-[15px] font-normal leading-relaxed text-defaultblack min-h-[80px]">
-                  {card.description}
+                  <T>{card.description}</T>
                 </p>
                 <Button
                   variant="ghost"

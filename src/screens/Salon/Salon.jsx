@@ -5,6 +5,7 @@ import { Footer } from "../../components/Footer";
 import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
+import { T } from "../../lib/AutoTranslate";
 import {
   Building2,
   MapPin,
@@ -80,14 +81,10 @@ export const Salon = () => {
         
         <div className="relative z-10 w-full max-w-[1440px] flex flex-col justify-center gap-[16px] md:gap-[24px] min-h-[300px] md:min-h-[356px] mt-[100px] md:mt-[90px] px-[20px]">
           <h1 className="text-white font-['Tomorrow'] font-bold text-[28px] sm:text-[32px] md:text-[48px] leading-[36px] md:leading-[56px] max-w-[900px] animate-fade-up uppercase">
-            Repositionner l’Afrique au cœur des grandes mutations du monde
+            <T>Repositionner l’Afrique au cœur des grandes mutations du monde</T>
           </h1>
           <p className="text-white/90 font-['Inter'] font-normal text-[14px] md:text-[16px] leading-[20px] max-w-[700px] animate-fade-up [--animation-delay:200ms]">
-            Build Africa Expo est une plateforme internationale portée par
-            Sovereign Insight Group, créée pour connecter investisseurs,
-            institutions, diaspora et territoires africains autour des grandes
-            transformations urbaines, économiques et infrastructurelles du
-            continent.
+            <T>Build Africa Expo est une plateforme internationale portée par Sovereign Insight Group, créée pour connecter investisseurs, institutions, diaspora et territoires africains autour des grandes transformations urbaines, économiques et infrastructurelles du continent.</T>
           </p>
         </div>
       </section>
@@ -98,25 +95,19 @@ export const Salon = () => {
           <div className="flex-1 flex flex-col gap-8">
             <div className="flex gap-[24px]">
               <h2 className="text-[#00AB92] flex flex-col uppercase text-[20px] gap-[8px]  font-bold leading-[24px]">
-                Plus qu’un salon. <br />
+                <T>Plus qu’un salon.</T> <br />
                 <span className="text-[#1D1D1B] font-bold text-[32px] font-['Tomorrow'] font-bold leading-[40px]">
-                  UNE PLATEFORME <br />
-                  STRATÉGIQUE.
+                  <T>UNE PLATEFORME STRATÉGIQUE.</T>
                 </span>
               </h2>
             </div>
 
             <p className="text-[#343432] font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[470px] animate-fade-up [--animation-delay:200ms]">
-              Build Africa Expo a été créé pour devenir une plateforme durable
-              de dialogue, d’influence, de rencontres et de développement autour
-              des grands enjeux de transformation du continent africain.
+              <T>Build Africa Expo a été créé pour devenir une plateforme durable de dialogue, d’influence, de rencontres et de développement autour des grands enjeux de transformation du continent africain.</T>
             </p>
 
             <p className="text-[#343432] font-['Inter'] font-normal text-[16px] md:text-[16px] leading-[20px] max-w-[470px] animate-fade-up [--animation-delay:200ms]">
-              Inspiré dans son esprit par des plateformes internationales, cet
-              événement se positionne autour du développement urbain, des
-              infrastructures, des investissements et de l’avenir des
-              territoires africains.
+              <T>Inspiré dans son esprit par des plateformes internationales, cet événement se positionne autour du développement urbain, des infrastructures, des investissements et de l’avenir des territoires africains.</T>
             </p>
           </div>
           <div className="flex-1 w-full">
@@ -129,7 +120,7 @@ export const Salon = () => {
             >
               <div className="flex flex-col items-center gap-[8px]">
                 <h4 className="text-white text-[20px] font-['Tomorrow'] font-bold uppercase">
-                  Connecter les capitaux à la vision.
+                  <T>Connecter les capitaux à la vision.</T>
                 </h4>
               </div>
             </div>
@@ -143,13 +134,10 @@ export const Salon = () => {
         <div className="w-full mx-auto ">
           <div className="text-center mb-16 px-[20px] flex flex-col items-center max-w-[800px] mx-auto gap-[8px]">
             <h2 className="text-[#fff] text-[32px]  font-['Tomorrow'] uppercase  leading-[56px] uppercase font-bold ">
-              Les grands piliers de transformation
+              <T>Les grands piliers de transformation</T>
             </h2>
-
             <p className=" text-[#fff] text-[16px] font-['inter']  leading-[20px] font-[400] font-normal ">
-              Pour soutenir des projets d'infrastructures à grande échelle, nous
-              facilitons l'accès aux mécanismes financiers essentiels, reliant
-              les porteurs de projets aux pools de liquidités mondiaux.
+              <T>Pour soutenir des projets d'infrastructures à grande échelle, nous facilitons l'accès aux mécanismes financiers essentiels, reliant les porteurs de projets aux pools de liquidités mondiaux.</T>
             </p>
           </div>
         </div>
@@ -165,11 +153,10 @@ export const Salon = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                Engagement de la diaspora
+                <T>Engagement de la diaspora</T>
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
-                Mobiliser l'expertise et les ressources de la diaspora africaine
-                pour des investissements à fort impact.
+                <T>Mobiliser l'expertise et les ressources de la diaspora africaine pour des investissements à fort impact.</T>
               </p>
             </div>
           </div>
@@ -184,11 +171,10 @@ export const Salon = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                Investissements internationaux
+                <T>Investissements internationaux</T>
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
-                Attirer les fonds d'investissement mondiaux et les capitaux
-                institutionnels vers des projets structurants.
+                <T>Attirer les fonds d'investissement mondiaux et les capitaux institutionnels vers des projets structurants.</T>
               </p>
             </div>
           </div>
@@ -202,11 +188,10 @@ export const Salon = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white text-[24px] w-[100%] md:w-[250px] font-['Tomorrow'] font-bold uppercase">
-                Capital Global & Vert
+                <T>Capital Global & Vert</T>
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
-                Faciliter l'accès aux financements innovants, fonds climatiques
-                et mécanismes de développement durable.
+                <T>Faciliter l'accès aux financements innovants, fonds climatiques et mécanismes de développement durable.</T>
               </p>
             </div>
           </div>
@@ -220,11 +205,10 @@ export const Salon = () => {
           >
             <div className="flex flex-col gap-[8px]">
               <h3 className="text-white w-[100%] md:w-[250px]  text-[24px] font-['Tomorrow'] font-bold uppercase">
-                Alliances Stratégiques
+                <T>Alliances Stratégiques</T>
               </h3>
               <p className="text-white/100 text-[16px] font-['Inter'] font-normal leading-[20px] max-w-[470px]">
-                Forger des synergies public-privé (PPP) et des consortiums pour
-                accélérer le développement territorial.
+                <T>Forger des synergies public-privé (PPP) et des consortiums pour accélérer le développement territorial.</T>
               </p>
             </div>
           </div>
@@ -244,22 +228,16 @@ export const Salon = () => {
           </div>
           <div className="w-full lg:w-[500px] flex flex-col justify-start gap-[40px]">
             <h1 className="text-[#1D1D1B] text-[28px] md:text-[40px] leading-[36px] md:leading-[48px] font-['Tomorrow'] font-bold uppercase">
-              Connecter l’Afrique aux dynamiques mondiales
+              <T>Connecter l’Afrique aux dynamiques mondiales</T>
             </h1>
 
             <div className="text-[#343432] text-[16px] font-['Inter'] font-normal leading-[20px] w-full lg:w-[483px] flex flex-col justify-start gap-[10px]">
-              L’Afrique connaît aujourd’hui une phase majeure de transformation
-              portée par l’urbanisation, les infrastructures, la mobilité,
-              l’énergie, l’innovation, la finance et le capital humain.
+              <T>L’Afrique connaît aujourd’hui une phase majeure de transformation portée par l’urbanisation, les infrastructures, la mobilité, l’énergie, l’innovation, la finance et le capital humain.</T>
               <p>
-                Build Africa Expo a été conçu pour accompagner et structurer ces
-                dynamiques en créant des connexions entre acteurs publics,
-                privés, investisseurs internationaux, institutions et diaspora
-                africaine.
+                <T>Build Africa Expo a été conçu pour accompagner et structurer ces dynamiques en créant des connexions entre acteurs publics, privés, investisseurs internationaux, institutions et diaspora africaine.</T>
               </p>
               <p>
-                La plateforme ambitionne de contribuer à l’attractivité, à la
-                compétitivité et au développement durable du continent.
+                <T>La plateforme ambitionne de contribuer à l’attractivité, à la compétitivité et au développement durable du continent.</T>
               </p>
             </div>
           </div>
@@ -271,7 +249,7 @@ export const Salon = () => {
         <div className="max-w-[1440px] mx-auto flex flex-col gap-16">
           <div className="text-center">
             <h2 className="text-[#202C5D] text-[32px] md:text-[48px] font-['Tomorrow'] uppercase font-bold leading-tight">
-              ENTREPRISES INVITÉES
+              <T>ENTREPRISES INVITÉES</T>
             </h2>
           </div>
 
@@ -297,13 +275,13 @@ export const Salon = () => {
           <div className="grid grid-cols-1 gap-[40px]">
             <div className="text-center">
               <h2 className="text-[#fff] text-[32px] md:text-[64px] font-['Tomorrow'] uppercase  leading-[42px] md:leading-[72px] font-bold ">
-                Rejoignez le réseau qui bâtit l'Afrique de demain.
+                <T>Rejoignez le réseau qui bâtit l'Afrique de demain.</T>
               </h2>
             </div>
 
             <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
               <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                DEVENIR PARTENAIRE DU FORUM
+                <T>DEVENIR PARTENAIRE DU FORUM</T>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="10"
@@ -324,7 +302,7 @@ export const Salon = () => {
                 rel="noopener noreferrer"
               >
                 <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                  S'INSCRIRE COMME VISITEUR
+                  <T>S'INSCRIRE COMME VISITEUR</T>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="10"
