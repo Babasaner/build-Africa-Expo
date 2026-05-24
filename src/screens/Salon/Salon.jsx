@@ -6,6 +6,9 @@ import { Button } from "../../components/ui/button";
 import { Card, CardContent } from "../../components/ui/card";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { T } from "../../lib/AutoTranslate";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../../lib/i18n";
+import { ROUTE_MAP } from "../../lib/routes";
 import {
   Building2,
   MapPin,
@@ -18,6 +21,14 @@ import {
 
 export const Salon = () => {
   useScrollReveal();
+  const { locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
 
   const pillars = [
     {
@@ -280,28 +291,26 @@ export const Salon = () => {
             </div>
 
             <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
-              <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                <T>DEVENIR PARTENAIRE DU FORUM</T>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="9"
-                  viewBox="0 0 10 9"
-                  fill="none"
-                >
-                  <path
-                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </Button>
+              <Link to={localizedHref("/devenir-partenaire")} className="w-full md:w-auto">
+                <Button className="w-full h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+                  <T>DEVENIR PARTENAIRE DU FORUM</T>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="9"
+                    viewBox="0 0 10 9"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </Button>
+              </Link>
 
-              <a
-                href="https://tickets.buildafricaexpo.com/fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+              <Link to={localizedHref("/inscription-visiteur")} className="w-full md:w-auto">
+                <Button className="w-full cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
                   <T>S'INSCRIRE COMME VISITEUR</T>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -316,7 +325,7 @@ export const Salon = () => {
                     />
                   </svg>
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

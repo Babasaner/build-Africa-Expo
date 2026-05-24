@@ -166,19 +166,14 @@ export const Footer = () => {
             {/* Column 3: Contact & Newsletter */}
             <div className="flex flex-col gap-12">
               <div className="flex w-full flex-col sm:flex-row gap-4 items-stretch sm:items-center">
-                <a
-                  href="https://tickets.buildafricaexpo.com/fr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                >
+                <Link to={localizedHref("/inscription-visiteur")} className="flex-1">
                   <Button
                     type="button"
                     className="w-full h-auto rounded-lg bg-[#36499b] px-6 py-4 text-[16px] font-bold text-white transition-colors duration-300 hover:bg-[#00ab92] cursor-pointer"
                   >
                     {t("nav.register")}
                   </Button>
-                </a>
+                </Link>
 
                 <Link to={localizedHref("/devenir-partenaire")} className="flex-1">
                   <Button

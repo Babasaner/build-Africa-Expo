@@ -1,6 +1,9 @@
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 import { T } from "../../../lib/AutoTranslate";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../../../lib/i18n";
+import { ROUTE_MAP } from "../../../lib/routes";
 
 const forumActions = [
   {
@@ -29,6 +32,14 @@ const forumDays = [
 ];
 
 export const CountryOverviewSection = () => {
+  const { locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
   return (
     <section
       className="relative w-full bg-cover bg-center bg-no-repeat"
@@ -74,15 +85,25 @@ export const CountryOverviewSection = () => {
 
               if (action.label.includes("INSCRIRE")) {
                 return (
-                  <a
+                  <Link
                     key={action.label}
-                    href="https://tickets.buildafricaexpo.com/fr/"
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    to={localizedHref("/inscription-visiteur")}
                     className="flex-1"
                   >
                     {button}
-                  </a>
+                  </Link>
+                );
+              }
+
+              if (action.label.includes("PARTENAIRE")) {
+                return (
+                  <Link
+                    key={action.label}
+                    to={localizedHref("/devenir-partenaire")}
+                    className="flex-1"
+                  >
+                    {button}
+                  </Link>
                 );
               }
 

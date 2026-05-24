@@ -178,7 +178,7 @@ const detectCountryLanguage = async () => {
 const deeplTranslateText = async (text, targetLang) => {
   if (!text) return text;
 
-  const proxy = import.meta.env.VITE_DEEPL_PROXY;
+  const proxy = import.meta.env.VITE_DEEPL_PROXY || (import.meta.env.DEV ? null : "/translate.php");
 
   // If a proxy is configured, send a JSON POST to it and let the server
   // attach the auth key. This avoids exposing the key client-side and
@@ -208,7 +208,10 @@ const deeplTranslateText = async (text, targetLang) => {
   const authKey = import.meta.env.VITE_DEEPL_API_KEY;
   if (!authKey) return text;
 
-  const endpoint = "/api/deepl/v2/translate";
+  const isFreeKey = authKey.endsWith(":fx");
+  const endpoint = import.meta.env.DEV
+    ? "/api/deepl/v2/translate"
+    : (isFreeKey ? "https://api-free.deepl.com/v2/translate" : "https://api.deepl.com/v2/translate");
 
   try {
     const response = await fetch(endpoint, {
@@ -239,10 +242,38 @@ const deeplTranslateText = async (text, targetLang) => {
 const deeplTranslateTexts = async (texts, targetLang) => {
   if (!texts || texts.length === 0) return texts;
 
+  const proxy = import.meta.env.VITE_DEEPL_PROXY || (import.meta.env.DEV ? null : "/translate.php");
+
+  // If a proxy is configured, send a JSON POST to it and let the server
+  // attach the auth key.
+  if (proxy) {
+    try {
+      const response = await fetch(proxy, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ text: texts, target_lang: targetLang.toUpperCase() }),
+      });
+
+      if (!response.ok) {
+        console.warn("DeepL proxy failed", response.status, response.statusText);
+        return texts;
+      }
+
+      const json = await response.json();
+      return json?.translations?.map(t => t.text) || texts;
+    } catch (err) {
+      console.warn("DeepL proxy request error:", err);
+      return texts;
+    }
+  }
+
   const authKey = import.meta.env.VITE_DEEPL_API_KEY;
   if (!authKey) return texts;
 
-  const endpoint = "/api/deepl/v2/translate";
+  const isFreeKey = authKey.endsWith(":fx");
+  const endpoint = import.meta.env.DEV
+    ? "/api/deepl/v2/translate"
+    : (isFreeKey ? "https://api-free.deepl.com/v2/translate" : "https://api.deepl.com/v2/translate");
 
   try {
     const response = await fetch(endpoint, {

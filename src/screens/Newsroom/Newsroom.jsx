@@ -90,7 +90,7 @@ export const Newsroom = () => {
         } else {
           setPodcasts([
             {
-              ep: "EP. 12",
+              ep: "à venir",
               title:
                 "Bâtir l'Afrique : conversation avec les architectes du continent",
               sub: "Diébédo Francis Kéré · Pierre Goudiaby Atepa",
@@ -98,7 +98,7 @@ export const Newsroom = () => {
               img: "https://cdn.sanity.io/images/d4jrc26i/production/32a05929e0c85e9f6f605fef2a18c2735e99e88f-519x779.jpg",
             },
             {
-              ep: "EP. 11",
+              ep: "à venir",
               title:
                 "Diaspora & capital : structurer les flux d'investissement vers l'Afrique",
               sub: "Acha Leke · Mossadeck Bally",
@@ -106,7 +106,7 @@ export const Newsroom = () => {
               img: "https://cdn.sanity.io/images/d4jrc26i/production/1683d30a74ec909b4c7110be972c49bb03bad187-666x999.jpg",
             },
             {
-              ep: "EP. 10",
+              ep: "à venir",
               title:
                 "Sport & industries créatives : l'Afrique comme puissance d'influence",
               sub: "Mamadou Gaye · Aliou Cissé",

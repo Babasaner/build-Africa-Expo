@@ -8,9 +8,20 @@ import { ExpertSpeakersGridSection } from "../BaeHome/sections/ExpertSpeakersGri
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { client } from "../../lib/sanity";
 import { T } from "../../lib/AutoTranslate";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../../lib/i18n";
+import { ROUTE_MAP } from "../../lib/routes";
 
 export const Intervenants = () => {
   useScrollReveal();
+  const { locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
   const [speakers, setSpeakers] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [activeIndex, setActiveIndex] = useState(0);
@@ -201,11 +212,10 @@ export const Intervenants = () => {
                     <button
                       key={i}
                       onClick={() => scrollToPage(i)}
-                      className={`h-2 transition-all duration-300 rounded-none ${
-                        activeIndex === i
-                          ? "w-8 bg-[#00AB92]"
-                          : "w-2 bg-white/100 hover:bg-white/100"
-                      }`}
+                      className={`h-2 transition-all duration-300 rounded-none ${activeIndex === i
+                        ? "w-8 bg-[#00AB92]"
+                        : "w-2 bg-white/100 hover:bg-white/100"
+                        }`}
                       aria-label={`Go to page ${i + 1}`}
                     />
                   ),
@@ -257,9 +267,16 @@ export const Intervenants = () => {
                 text: "Smart cities, mobilité intelligente, énergie, data et innovation appliquée au développement.",
               },
               {
+
+                title: "Développement urbain & cadre de vie",
+                text: "Mobilité, urbanisation, assainissement, agriculture urbaine et villes durables.",
+              },
+              {
                 title: "Capital Humain & Gouvernance",
                 text: "Formation, normes, gouvernance, compétences et structuration des écosystèmes.",
               },
+
+
             ].map((item, index) => (
               <div
                 key={index}
@@ -284,9 +301,9 @@ export const Intervenants = () => {
           <div className="flex-1 flex flex-col gap-8">
             <div className="flex gap-[24px]">
               <h2 className="text-[#00AB92] flex flex-col uppercase text-[20px] gap-[8px]  font-bold leading-[24px]">
-              <T>EXECUTIVE EXPERIENCES</T>
-            </h2>
-          </div>
+                <T>EXECUTIVE EXPERIENCES</T>
+              </h2>
+            </div>
 
             <div className="flex max-w-[530px] gap-[24px]">
               <h3 className="text-[#fff] uppercase flex flex-col uppercase text-[32px] gap-[8px]  font-bold leading-[40px]">
@@ -329,28 +346,26 @@ export const Intervenants = () => {
             </div>
 
             <div className="mx-auto grid grid-cols-1 animate-fade-in  animate-delay-200  animate-duration-1000  md:grid-cols-2 gap-[24px]">
-              <Button className="w-full md:w-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                <T>DEVENIR PARTENAIRE DU FORUM</T>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="9"
-                  viewBox="0 0 10 9"
-                  fill="none"
-                >
-                  <path
-                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </Button>
+              <Link to={localizedHref("/devenir-partenaire")} className="w-full md:w-auto">
+                <Button className="w-full h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+                  <T>DEVENIR PARTENAIRE DU FORUM</T>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="9"
+                    viewBox="0 0 10 9"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </Button>
+              </Link>
 
-              <a
-                href="https://tickets.buildafricaexpo.com/fr/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <Button className="w-full md:w-auto cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
+              <Link to={localizedHref("/inscription-visiteur")} className="w-full md:w-auto">
+                <Button className="w-full cursor-pointer h-[48px] bg-[#00AB92] font-bold text-white rounded-[8px] hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
                   <T>S'INSCRIRE COMME VISITEUR</T>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -365,7 +380,7 @@ export const Intervenants = () => {
                     />
                   </svg>
                 </Button>
-              </a>
+              </Link>
             </div>
           </div>
         </div>

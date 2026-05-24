@@ -2,6 +2,9 @@ import { Check } from "lucide-react";
 import { Button } from "../../../components/ui/button";
 import { Card, CardContent } from "../../../components/ui/card";
 import { T } from "../../../lib/AutoTranslate";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../../../lib/i18n";
+import { ROUTE_MAP } from "../../../lib/routes";
 
 const calloutCards = [
   {
@@ -14,6 +17,7 @@ const calloutCards = [
     buttonClassName: "bg-[#00AB92] text-white transition-colors duration-300 hover:bg-[#36499B] cursor-pointer",
     buttonLabel: "S'INSCRIRE POUR VISITER",
     checkColor: "#00AB92",
+    to: "/inscription-visiteur",
     items: [
       {
         text: "Accès aux dernières innovations de la construction africaine.",
@@ -21,7 +25,7 @@ const calloutCards = [
       },
       { text: "Rencontres avec 55+ exposants sélectionnés." },
       { text: "7+ panels et workshops avec des experts du secteur." },
-      { text: "Opportunités de networking avec 1.500+ professionnels." },
+      { text: "Opportunités de networking avec 1.500+ professionals." },
     ],
   },
   {
@@ -34,6 +38,7 @@ const calloutCards = [
     buttonClassName: "bg-primary-bae text-white transition-colors duration-300 hover:bg-[#00AB92] cursor-pointer",
     buttonLabel: "S'INSCRIRE POUR EXPOSER",
     checkColor: "#36499B",
+    to: "/devenir-partenaire",
     items: [
       {
         text: "Exposition directe à des décideurs africains et internationaux.",
@@ -47,6 +52,15 @@ const calloutCards = [
 ];
 
 export const ParticipationCalloutSection = () => {
+  const { locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
+
   return (
     <section className="relative w-full" aria-label="Participation callout">
       <div className="grid w-full grid-cols-1 md:grid-cols-2">
@@ -96,10 +110,8 @@ export const ParticipationCalloutSection = () => {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="https://tickets.buildafricaexpo.com/fr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <Link
+                  to={localizedHref(card.to)}
                   className="w-full max-w-[253px]"
                 >
                   <Button
@@ -108,7 +120,7 @@ export const ParticipationCalloutSection = () => {
                   >
                     <T>{card.buttonLabel}</T>
                   </Button>
-                </a>
+                </Link>
               </article>
             </CardContent>
           </Card>

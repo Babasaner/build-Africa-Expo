@@ -8,6 +8,9 @@ import { Card, CardContent } from "../../components/ui/card";
 import { PartnersShowcaseSection } from "../BaeHome/sections/PartnersShowcaseSection";
 import { useScrollReveal } from "../../hooks/useScrollReveal";
 import { T } from "../../lib/AutoTranslate";
+import { Link } from "react-router-dom";
+import { useLanguage } from "../../lib/i18n";
+import { ROUTE_MAP } from "../../lib/routes";
 import {
   Building2,
   MapPin,
@@ -25,6 +28,14 @@ import {
 
 export const Partenaires = () => {
   useScrollReveal();
+  const { locale } = useLanguage();
+
+  const localizedHref = (frPath) => {
+    if (locale === "en") {
+      return ROUTE_MAP[frPath] || `/en${frPath}`;
+    }
+    return frPath;
+  };
 
   const [partners, setPartners] = useState([]);
   const [stratPartners, setStratPartners] = useState([]);
@@ -135,6 +146,7 @@ export const Partenaires = () => {
       image:
         "https://cdn.sanity.io/images/d4jrc26i/production/1fbb9e8cab3d2be0ee2e1f8e11ef369dcdfc92e7-671x448.jpg",
     },
+
   ];
 
   const benefits = [
@@ -630,21 +642,23 @@ export const Partenaires = () => {
             </div>
 
             <div className="mx-auto flex justify-center items-center  animate-fade-in  animate-delay-200  animate-duration-1000 2 gap-[24px]">
-              <Button className="w-full md:w-auto mx-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D]">
-                <T>DEVENIR PARTENAIRE DU FORUM</T>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="10"
-                  height="9"
-                  viewBox="0 0 10 9"
-                  fill="none"
-                >
-                  <path
-                    d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
-                    fill="#fff"
-                  />
-                </svg>
-              </Button>
+              <Link to={localizedHref("/devenir-partenaire")} className="w-full md:w-auto mx-auto cursor-pointer">
+                <Button className="w-full md:w-auto mx-auto   h-[48px] bg-[#36499B] font-bold px-[32px] rounded-[8px] py-[16px] text-white hover:bg-[#202C5D]/100 focus-visible:ring-[#202C5D] cursor-pointer">
+                  <T>DEVENIR PARTENAIRE DU FORUM</T>
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="10"
+                    height="9"
+                    viewBox="0 0 10 9"
+                    fill="none"
+                  >
+                    <path
+                      d="M5.02273 8.95588L4.07173 8.01412L6.9201 5.16575H0V3.79004H6.9201L4.07173 0.946289L5.02273 -8.89897e-05L9.50071 4.47789L5.02273 8.95588Z"
+                      fill="#fff"
+                    />
+                  </svg>
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
