@@ -28,7 +28,7 @@ const agendaDays = [
         title: "Panel 2 : Immobilier, logement et cadre de vie",
         titleClassName:
           "font-caption-bold font-[number:var(--caption-bold-font-weight)] text-[#36499b] text-[length:var(--caption-bold-font-size)] tracking-[var(--caption-bold-letter-spacing)] leading-[var(--caption-bold-line-height)] [font-style:var(--caption-bold-font-style)]",
-        tag: "PROMOTEURS IMMOBILIERS",
+        tag: "DÉVELOPPEURS & PROMOTEURS IMMOBILIERS",
       },
       {
         time: "13:00",
@@ -41,7 +41,7 @@ const agendaDays = [
         title: "Panel 3 : Infrastructures & services",
         titleClassName:
           "font-caption-bold font-[number:var(--caption-bold-font-weight)] text-[#36499b] text-[length:var(--caption-bold-font-size)] tracking-[var(--caption-bold-letter-spacing)] leading-[var(--caption-bold-line-height)] [font-style:var(--caption-bold-font-style)]",
-        tag: "INSTITUTIONS PUBLIQUES",
+        tag: "INSTITUTIONS PUBLIQUES,PRIVÉES & MULTINATIONALES",
       },
       {
         time: "16:30",
@@ -90,7 +90,7 @@ const agendaDays = [
         title: "Panel 2 : Immobilier, logement et cadre de vie",
         titleClassName:
           "font-caption-bold font-[number:var(--caption-bold-font-weight)] text-[#36499b] text-[length:var(--caption-bold-font-size)] tracking-[var(--caption-bold-letter-spacing)] leading-[var(--caption-bold-line-height)] [font-style:var(--caption-bold-font-style)]",
-        tag: "PROMOTEURS IMMOBILIERS",
+        tag: "DÉVELOPPEURS & PROMOTEURS IMMOBILIERS",
       },
       {
         time: "13:00",
@@ -103,7 +103,7 @@ const agendaDays = [
         title: "Panel 3 : Infrastructures & services",
         titleClassName:
           "font-caption-bold font-[number:var(--caption-bold-font-weight)] text-[#36499b] text-[length:var(--caption-bold-font-size)] tracking-[var(--caption-bold-letter-spacing)] leading-[var(--caption-bold-line-height)] [font-style:var(--caption-bold-font-style)]",
-        tag: "INSTITUTIONS PUBLIQUES",
+        tag: "INSTITUTIONS PUBLIQUES,PRIVÉES & MULTINATIONALES",
       },
       {
         time: "16:30",
@@ -146,8 +146,8 @@ export const EventAgendaSection = () => {
           </h2>
           <p className="max-w-[760px] font-body-regular text-base md:text-lg text-white/100">
             <T>Un programme dense et orienté résultats, conçu pour maximiser les
-            opportunités de mise en relation entre investisseurs et porteurs de
-            projets.</T>
+              opportunités de mise en relation entre investisseurs et porteurs de
+              projets.</T>
           </p>
         </header>
         <div className="grid w-full grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8">
